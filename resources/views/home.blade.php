@@ -69,7 +69,7 @@
                     <div class="bulk-orders">
                         <h3>For bigger bulk orders exceeding 100 boxes, reach out to our partnerships team at <a href="mailto:partnerships@boxcity.com">partnerships@boxcity.com</a></h3>
                     </div>
-                    <table>
+                    <table id="product-table">
                         <thead>
                         <tr>
                             <th rowspan="2">Product ID</th>
@@ -84,172 +84,117 @@
                             <th class="bulk-price-header">100+</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td>703804334</td>
-                            <td>Corrugated Boxes 3 X 3 X 4</td>
-                            <td>$1.58</td>
-                            <td class="bulk-price">$1.33</td>
-                            <td class="bulk-price">$1.11</td>
-                            <td class="bulk-price">$0.79</td>
-                            <td>
-                                <div class="quantity-container">
-                                    <div class="qty-container">
-                                        <button class="quantity-btn">−</button>
-                                        <input type="text" class="quantity-input" value="25">
-                                        <button class="quantity-btn">+</button>
+                        <tbody id="product-list">
+                        @foreach ($products as $product)
+                            <tr>
+                                <td>{{ $product['id'] }}</td>
+                                <td>{{ $product['name'] }}</td>
+                                <td>${{ number_format($product['price'], 2) }}</td>
+                                <td class="bulk-price">${{ number_format($product['price'] * 0.84, 2) }}</td>
+                                <td class="bulk-price">${{ number_format($product['price'] * 0.70, 2) }}</td>
+                                <td class="bulk-price">${{ number_format($product['price'] * 0.50, 2) }}</td>
+                                <td>
+                                    <div class="quantity-container">
+                                        <div class="qty-container">
+                                            <button class="quantity-btn">−</button>
+                                            <input type="text" class="quantity-input" value="1">
+                                            <button class="quantity-btn">+</button>
+                                        </div>
+                                        <button class="add-btn">ADD</button>
                                     </div>
-                                    <button class="add-btn">ADD</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>703806294</td>
-                            <td>Corrugated Boxes 4 X 4 X 3</td>
-                            <td>$1.25</td>
-                            <td class="bulk-price">$1.05</td>
-                            <td class="bulk-price">$0.88</td>
-                            <td class="bulk-price">$0.63</td>
-                            <td>
-                                <div class="quantity-container">
-                                    <div class="qty-container">
-                                        <button class="quantity-btn">−</button>
-                                        <input type="text" class="quantity-input" value="25">
-                                        <button class="quantity-btn">+</button>
-                                    </div>
-                                    <button class="add-btn">ADD</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>703807007</td>
-                            <td>Corrugated Boxes 4 1/2 X 4 1/2 X 4 1/2</td>
-                            <td>$0.99</td>
-                            <td class="bulk-price">$0.83</td>
-                            <td class="bulk-price">$0.69</td>
-                            <td class="bulk-price">$0.50</td>
-                            <td>
-                                <div class="quantity-container">
-                                    <div class="qty-container">
-                                        <button class="quantity-btn">−</button>
-                                        <input type="text" class="quantity-input" value="25">
-                                        <button class="quantity-btn">+</button>
-                                    </div>
-                                    <button class="add-btn">ADD</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>703807007</td>
-                            <td>Corrugated Boxes 4 1/2 X 4 1/2 X 4 1/2</td>
-                            <td>$0.99</td>
-                            <td class="bulk-price">$0.83</td>
-                            <td class="bulk-price">$0.69</td>
-                            <td class="bulk-price">$0.50</td>
-                            <td>
-                                <div class="quantity-container">
-                                    <div class="qty-container">
-                                        <button class="quantity-btn">−</button>
-                                        <input type="text" class="quantity-input" value="25">
-                                        <button class="quantity-btn">+</button>
-                                    </div>
-                                    <button class="add-btn">ADD</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>703807007</td>
-                            <td>Corrugated Boxes 4 1/2 X 4 1/2 X 4 1/2</td>
-                            <td>$0.99</td>
-                            <td class="bulk-price">$0.83</td>
-                            <td class="bulk-price">$0.69</td>
-                            <td class="bulk-price">$0.50</td>
-                            <td>
-                                <div class="quantity-container">
-                                    <div class="qty-container">
-                                        <button class="quantity-btn">−</button>
-                                        <input type="text" class="quantity-input" value="25">
-                                        <button class="quantity-btn">+</button>
-                                    </div>
-                                    <button class="add-btn">ADD</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>703807007</td>
-                            <td>Corrugated Boxes 4 1/2 X 4 1/2 X 4 1/2</td>
-                            <td>$0.99</td>
-                            <td class="bulk-price">$0.83</td>
-                            <td class="bulk-price">$0.69</td>
-                            <td class="bulk-price">$0.50</td>
-                            <td>
-                                <div class="quantity-container">
-                                    <div class="qty-container">
-                                        <button class="quantity-btn">−</button>
-                                        <input type="text" class="quantity-input" value="25">
-                                        <button class="quantity-btn">+</button>
-                                    </div>
-                                    <button class="add-btn">ADD</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>703807007</td>
-                            <td>Corrugated Boxes 4 1/2 X 4 1/2 X 4 1/2</td>
-                            <td>$0.99</td>
-                            <td class="bulk-price">$0.83</td>
-                            <td class="bulk-price">$0.69</td>
-                            <td class="bulk-price">$0.50</td>
-                            <td>
-                                <div class="quantity-container">
-                                    <div class="qty-container">
-                                        <button class="quantity-btn">−</button>
-                                        <input type="text" class="quantity-input" value="25">
-                                        <button class="quantity-btn">+</button>
-                                    </div>
-                                    <button class="add-btn">ADD</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>703807007</td>
-                            <td>Corrugated Boxes 4 1/2 X 4 1/2 X 4 1/2</td>
-                            <td>$0.99</td>
-                            <td class="bulk-price">$0.83</td>
-                            <td class="bulk-price">$0.69</td>
-                            <td class="bulk-price">$0.50</td>
-                            <td>
-                                <div class="quantity-container">
-                                    <div class="qty-container">
-                                        <button class="quantity-btn">−</button>
-                                        <input type="text" class="quantity-input" value="25">
-                                        <button class="quantity-btn">+</button>
-                                    </div>
-                                    <button class="add-btn">ADD</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>703807007</td>
-                            <td>Corrugated Boxes 4 1/2 X 4 1/2 X 4 1/2</td>
-                            <td>$0.99</td>
-                            <td class="bulk-price">$0.83</td>
-                            <td class="bulk-price">$0.69</td>
-                            <td class="bulk-price">$0.50</td>
-                            <td>
-                                <div class="quantity-container">
-                                    <div class="qty-container">
-                                        <button class="quantity-btn">−</button>
-                                        <input type="text" class="quantity-input" value="25">
-                                        <button class="quantity-btn">+</button>
-                                    </div>
-                                    <button class="add-btn">ADD</button>
-                                </div>
-                            </td>
-                        </tr>
-
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
+
+                    <!-- Loading Indicator -->
+                    <div id="loading" style="text-align: center; display: none;">
+                        <p>Loading more products...</p>
+                    </div>
+
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script>
+                        let offset = 0; // Start at 0, update dynamically
+                        let loading = false;
+                        let hasMore = true; // Track if more products exist
+
+                        function loadMoreProducts() {
+                            if (loading || !hasMore) return;
+
+                            console.log('Loading more products...'); // Debugging
+
+                            loading = true;
+                            $('#loading').show(); // Show loading indicator
+                            console.log(`Current offset: ${offset}`);
+
+                            $.ajax({
+                                url: '{{ url('/') }}',
+                                method: 'GET',
+                                data: { offset: offset },
+                                dataType: 'json',
+                                success: function(response) {
+                                    console.log('AJAX request successful:', response); // Debugging
+
+                                    if (response.products.length > 0) {
+                                        response.products.forEach(product => {
+                                            console.log(`Adding product: ${product.id} - ${product.name}`);
+                                            $('#product-list').append(`
+                            <tr>
+                                <td>${product.id}</td>
+                                <td>${product.name}</td>
+                                <td>$${product.price.toFixed(2)}</td>
+                                <td class="bulk-price">$${(product.price * 0.84).toFixed(2)}</td>
+                                <td class="bulk-price">$${(product.price * 0.70).toFixed(2)}</td>
+                                <td class="bulk-price">$${(product.price * 0.50).toFixed(2)}</td>
+                                <td>
+                                    <div class="quantity-container">
+                                        <div class="qty-container">
+                                            <button class="quantity-btn">−</button>
+                                            <input type="text" class="quantity-input" value="1">
+                                            <button class="quantity-btn">+</button>
+                                        </div>
+                                        <button class="add-btn">ADD</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `);
+                                        });
+
+                                        offset = response.newOffset; // Update offset
+                                        console.log(`Updated offset: ${offset}`);
+                                        hasMore = response.hasMore; // Update if more products exist
+                                        console.log(`More products available: ${hasMore}`);
+                                    } else {
+                                        console.log('No more products to load.');
+                                    }
+
+                                    if (!hasMore) {
+                                        $(window).off('scroll'); // Stop checking for scroll when all products are loaded
+                                        console.log('Infinite scroll disabled.');
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error('Error loading more products:', error);
+                                },
+                                complete: function() {
+                                    loading = false;
+                                    $('#loading').hide(); // Hide loading indicator
+                                    console.log('Finished loading batch.');
+                                }
+                            });
+                        }
+
+                        // Infinite Scroll Listener
+                        $(window).on('scroll', function() {
+                            console.log('Scroll event triggered.');
+
+                            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
+                                console.log('User reached bottom. Loading more products...');
+                                loadMoreProducts();
+                            }
+                        });
+                    </script>
                 </div>
             </div>
         </div>
