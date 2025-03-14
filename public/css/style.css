@@ -116,8 +116,8 @@ header {
 
 
 header .container-fluid .row{
-    justify-content: center; 
-    padding: 0px 108px;   
+    justify-content: center;
+    padding: 0px 108px;
 }
 
 header .col-md-2{
@@ -126,7 +126,7 @@ header .col-md-2{
         justify-content: center;
         padding-left: 0px;
         padding-right: 0px;
-    
+
 }
 
 
@@ -136,13 +136,13 @@ header .col-md-2{
 
 .menu-btn {
     background: #000;
-    padding: 14px 37px !important;
+    padding: 14px 36px 14px 45px !important;
     border-radius: 40px;
 }
 
 .menu-btn a{
  color: #F8BE00;
- font-size: 19px;   
+ font-size: 19px;
 }
 
 nav {
@@ -281,7 +281,7 @@ h1 {
     -ms-touch-action: pan-y;
     touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
-     clear: left; 
+     clear: left;
     overflow: hidden;
 }
 
@@ -551,12 +551,12 @@ header ul{
 }
 
 .accordion-body ul{
-   padding-left: 0px; 
+   padding-left: 0px;
 }
 
 .accordion-body li{
    list-style: none;
-   font-family: 'gilroy-mediumuploaded_file'; 
+   font-family: 'gilroy-mediumuploaded_file';
    line-height: 29px;
 }
 
@@ -568,18 +568,18 @@ header ul{
 .accordion{
     z-index: 99999999999;
     position: relative;
-    padding: 0px 24px;  
+    padding: 0px 24px;
 }
 
 .banner{
  background-color:#1D1D1D ;
- border-radius: 25px;   
+ border-radius: 25px;
 }
 
 .bulk-orders{
     background-color:#F1EEE4 ;
-    border-radius: 25px; 
-    padding: 40px 50px 25px 50px;  
+    border-radius: 25px;
+    padding: 40px 50px 25px 50px;
     margin-top: 10px;
    }
 
@@ -649,7 +649,7 @@ table {
     background: white;
     font-family: 'gilroy-semibolduploaded_file';
     border-radius: 15px;
-    border: 2px solid #ADADAD; 
+    border: 2px solid #ADADAD;
     border-collapse: collapse;
     overflow: hidden;
     margin-top: 20px;
@@ -672,7 +672,7 @@ tbody tr:nth-child(odd) {
 }
 
 tbody tr:nth-child(even) {
-    background: #f9f9f9; 
+    background: #f9f9f9;
 }
 
 table tr:first-child th {
@@ -737,7 +737,7 @@ table tr:last-child td {
 
 .qty-container{
     border: 1px solid;
-    border-radius: 38px; 
+    border-radius: 38px;
     padding: 0px 2px;
 }
 
@@ -942,11 +942,11 @@ footer form input::placeholder {
     .container {
         max-width: 1500px !important;
     }
- 
+
     header .container-fluid .row {
         justify-content: center;
         padding: 0px 0px;
-    } 
+    }
 
     .menu-btn a:before {
         right: 231px;
@@ -958,7 +958,7 @@ footer form input::placeholder {
         width: 417px;
     }
 
-    
+
 
     .heading-container::after {
         top: 214px;
@@ -1004,16 +1004,16 @@ footer form input::placeholder {
     .container {
         max-width: 1400px !important;
     }
- 
+
     header .container-fluid .row {
         justify-content: center;
         padding: 0px 0px;
-    } 
+    }
 
     .menu-btn a:before {
         right: 231px;
     }
-    
+
     .heading-container h4 {
         font-family: 'gilroy-mediumuploaded_file';
         font-size: 19px;
@@ -1072,16 +1072,16 @@ footer form input::placeholder {
     .container {
         max-width: 1400px !important;
     }
- 
+
     header .container-fluid .row {
         justify-content: center;
         padding: 0px 0px;
-    } 
+    }
 
     .menu-btn a:before {
         right: 222px;
     }
-    
+
     .heading-container h4 {
         font-family: 'gilroy-mediumuploaded_file';
         font-size: 19px;
@@ -1146,16 +1146,16 @@ footer form input::placeholder {
     .container {
         max-width: 1300px !important;
     }
- 
+
     header .container-fluid .row {
         justify-content: center;
         padding: 0px 0px;
-    } 
+    }
 
     .menu-btn a:before {
         right: 222px;
     }
-    
+
     .heading-container h4 {
         font-family: 'gilroy-mediumuploaded_file';
         font-size: 19px;

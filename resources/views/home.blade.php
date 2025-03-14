@@ -4,6 +4,11 @@
 
 @section('content')
 
+ <?php
+
+ $site_url = env('SITE_URL');
+ ?>
+
     <section class="products-container">
         <div class="container">
             <div class="row">
@@ -96,9 +101,9 @@
                                 <td>
                                     <div class="quantity-container">
                                         <div class="qty-container">
-                                            <button class="quantity-btn">−</button>
+                                            <button class="quantity-btn minus">−</button>
                                             <input type="text" class="quantity-input" value="1">
-                                            <button class="quantity-btn">+</button>
+                                            <button class="quantity-btn plus">+</button>
                                         </div>
                                         <button class="add-btn">ADD</button>
                                     </div>
@@ -194,6 +199,35 @@
                                 loadMoreProducts();
                             }
                         });
+
+                        $(document).ready(function () {
+                            $(".quantity-btn").click(function () {
+                                let $wrapper = $(this).closest(".quantity-container");
+                                let $input = $wrapper.find(".quantity-input");
+                                let value = parseInt($input.val()) || 1;
+
+                                if ($(this).hasClass("plus")) {
+                                    $input.val(value + 1);
+                                } else if ($(this).hasClass("minus") && value > 1) {
+                                    $input.val(value - 1);
+                                }
+                            });
+                        });
+
+                        $(".add-btn").on("click", function () {
+                            let $container = $(this).closest(".quantity-container");
+                            let productName = $(this).data("product");
+                            let quantity = parseInt($container.find(".quantity-input").val());
+
+                            if (quantity > 0) {
+                                $("#cart-list").append(`<li>${productName} - ${quantity}</li>`);
+                                alert(`${productName} added to cart!`);
+                            } else {
+                                alert("Quantity must be at least 1");
+                            }
+                        });
+                        });
+
                     </script>
                 </div>
             </div>
@@ -283,7 +317,7 @@
                 <div class="col-sm-5">
                     <video width="" height="" autoplay="" muted="" loop="" __idm_id__="1835009">
                         <source
-                            src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/a20d-4f15-be89-0917535dee92.mp4"
+                            src="<?php echo $site_url ?>wp-content/uploads/2024/12/a20d-4f15-be89-0917535dee92.mp4"
                             type="video/mp4">
                     </video>
                 </div>
