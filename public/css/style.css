@@ -937,6 +937,92 @@ footer form input::placeholder {
     font-size: 18px;
 }
 
+.cart-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: transparent;
+    color: #000;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+    border-style: solid;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.cart-counter {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #000;
+    background: #ffe175;
+    font-size: 14px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    display: none;
+    text-align: center;
+    font-family: 'gilroy-bolduploaded_file';
+    font-size: 14px;
+}
+
+.cart-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Cart Panel */
+.cart-panel {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 250px;
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    display: none !important;
+}
+
+.cart-panel h3 {
+    margin: 0;
+    text-align: center;
+}
+
+.cart-panel ul {
+    list-style: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.cart-panel ul li {
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-panel button {
+    width: 100%;
+    background: red;
+    color: white;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 @media screen and (min-width:1600px) and (max-width:1699px){
 
     .container {
@@ -996,6 +1082,11 @@ footer form input::placeholder {
         padding: 29px 20px 40px 20px;
     }
 
+}
+
+
+.cart-container{
+ margin: 40px 0px;
 }
 
 

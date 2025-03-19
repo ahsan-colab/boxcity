@@ -7,6 +7,7 @@
  <?php
 
  $site_url = env('SITE_URL');
+ $home_url = env ('HOME_URL');
  ?>
 
     <section class="products-container">
@@ -94,10 +95,10 @@
                             <tr>
                                 <td>{{ $product['id'] }}</td>
                                 <td>{{ $product['name'] }}</td>
-                                <td>${{ number_format($product['price'], 2) }}</td>
-                                <td class="bulk-price">${{ number_format($product['price'] * 0.84, 2) }}</td>
-                                <td class="bulk-price">${{ number_format($product['price'] * 0.70, 2) }}</td>
-                                <td class="bulk-price">${{ number_format($product['price'] * 0.50, 2) }}</td>
+                                <td class="retail-price">${{ number_format($product['price'], 2) }}</td>
+                                <td class="bulk-price-12">${{ number_format($product['price'] * 0.84, 2) }}</td>
+                                <td class="bulk-price-50">${{ number_format($product['price'] * 0.70, 2) }}</td>
+                                <td class="bulk-price-100">${{ number_format($product['price'] * 0.50, 2) }}</td>
                                 <td>
                                     <div class="quantity-container">
                                         <div class="qty-container">
@@ -105,7 +106,7 @@
                                             <input type="text" class="quantity-input" value="1">
                                             <button class="quantity-btn plus">+</button>
                                         </div>
-                                        <button class="add-btn">ADD</button>
+                                        <button class="add-btn" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-image="{{ $product['imageUrl'] ?? ''}}" data-product-retail-price="{{number_format($product['price'], 2)}}" data-product-bulk-price-12="{{number_format($product['price'] * 0.84, 2)}}" data-product-bulk-price-50="{{number_format($product['price'] * 0.70, 2)}}" data-product-bulk-price-100="{{number_format($product['price'] * 0.50, 2)}}">ADD</button>
                                     </div>
                                 </td>
                             </tr>
@@ -117,124 +118,21 @@
                     <div id="loading" style="text-align: center; display: none;">
                         <p>Loading more products...</p>
                     </div>
-
-                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                    <script>
-                        let offset = 0; // Start at 0, update dynamically
-                        let loading = false;
-                        let hasMore = true; // Track if more products exist
-
-                        function loadMoreProducts() {
-                            if (loading || !hasMore) return;
-
-                            console.log('Loading more products...'); // Debugging
-
-                            loading = true;
-                            $('#loading').show(); // Show loading indicator
-                            console.log(`Current offset: ${offset}`);
-
-                            $.ajax({
-                                url: '{{ url('/') }}',
-                                method: 'GET',
-                                data: { offset: offset },
-                                dataType: 'json',
-                                success: function(response) {
-                                    console.log('AJAX request successful:', response); // Debugging
-
-                                    if (response.products.length > 0) {
-                                        response.products.forEach(product => {
-                                            console.log(`Adding product: ${product.id} - ${product.name}`);
-                                            $('#product-list').append(`
-                            <tr>
-                                <td>${product.id}</td>
-                                <td>${product.name}</td>
-                                <td>$${product.price.toFixed(2)}</td>
-                                <td class="bulk-price">$${(product.price * 0.84).toFixed(2)}</td>
-                                <td class="bulk-price">$${(product.price * 0.70).toFixed(2)}</td>
-                                <td class="bulk-price">$${(product.price * 0.50).toFixed(2)}</td>
-                                <td>
-                                    <div class="quantity-container">
-                                        <div class="qty-container">
-                                            <button class="quantity-btn">−</button>
-                                            <input type="text" class="quantity-input" value="1">
-                                            <button class="quantity-btn">+</button>
-                                        </div>
-                                        <button class="add-btn">ADD</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        `);
-                                        });
-
-                                        offset = response.newOffset; // Update offset
-                                        console.log(`Updated offset: ${offset}`);
-                                        hasMore = response.hasMore; // Update if more products exist
-                                        console.log(`More products available: ${hasMore}`);
-                                    } else {
-                                        console.log('No more products to load.');
-                                    }
-
-                                    if (!hasMore) {
-                                        $(window).off('scroll'); // Stop checking for scroll when all products are loaded
-                                        console.log('Infinite scroll disabled.');
-                                    }
-                                },
-                                error: function(xhr, status, error) {
-                                    console.error('Error loading more products:', error);
-                                },
-                                complete: function() {
-                                    loading = false;
-                                    $('#loading').hide(); // Hide loading indicator
-                                    console.log('Finished loading batch.');
-                                }
-                            });
-                        }
-
-                        // Infinite Scroll Listener
-                        $(window).on('scroll', function() {
-                            console.log('Scroll event triggered.');
-
-                            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
-                                console.log('User reached bottom. Loading more products...');
-                                loadMoreProducts();
-                            }
-                        });
-
-                        $(document).ready(function () {
-                            $(".quantity-btn").click(function () {
-                                let $wrapper = $(this).closest(".quantity-container");
-                                let $input = $wrapper.find(".quantity-input");
-                                let value = parseInt($input.val()) || 1;
-
-                                if ($(this).hasClass("plus")) {
-                                    $input.val(value + 1);
-                                } else if ($(this).hasClass("minus") && value > 1) {
-                                    $input.val(value - 1);
-                                }
-                            });
-                        });
-
-                        $(".add-btn").on("click", function () {
-                            let $container = $(this).closest(".quantity-container");
-                            let productName = $(this).data("product");
-                            let quantity = parseInt($container.find(".quantity-input").val());
-
-                            if (quantity > 0) {
-                                $("#cart-list").append(`<li>${productName} - ${quantity}</li>`);
-                                alert(`${productName} added to cart!`);
-                            } else {
-                                alert("Quantity must be at least 1");
-                            }
-                        });
-                        });
-
-                    </script>
                 </div>
             </div>
         </div>
     </section>
-
-
+<a href="<?php echo $home_url?>cart">
+ <div class="cart-icon"><i class="fa-solid fa-cart-shopping"></i>
+     <div class="cart-counter">0</div>
+ </div>
+</a>
+ <!-- Cart Panel -->
+ <div class="cart-panel">
+     <h3>Shopping Cart</h3>
+     <ul id="cart-list"></ul>
+     <button id="clear-cart">Clear Cart</button>
+ </div>
 
     <section class="quote" id="quote">
         <div class="container">
