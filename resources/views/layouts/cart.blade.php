@@ -8,6 +8,7 @@
         <table class="table">
             <thead>
             <tr>
+                <th></th>
                 <th>Product Name</th>
                 <th>Quantity</th>
                 <th>Price</th>
@@ -20,7 +21,7 @@
         </table>
         <div class="cart-total-container">
         <button id="clear-cart" class="btn btn-danger">Clear Cart</button>
-            <h3 class="cart-total">Total Price :$85.55</h3>
+            <h3 class="cart-total">Total Price :</h3>
         </div>
     </div>
 
@@ -40,6 +41,7 @@
                         console.log("Cart Item:", item);
                         $cartPageList.append(`
                     <tr>
+                        <td><img src="${item.productThumb}" class="product-thumb"></td>
                         <td>${item.product}</td>
                         <td>
                             <div class="quantity-container">
@@ -138,8 +140,22 @@
 
                     // Update only the closest `.cart-price` inside the same row
                     $row.find(".cart-price").text(`$${displayPrice.toFixed(2)}`);
+                    updateTotalPrice();
                 }
             }
+
+            updateTotalPrice();
+
+            function updateTotalPrice() {
+                let total = 0;
+
+                cart.forEach(item => {
+                    total += item.price * item.quantity; // Multiply price by quantity
+                });
+
+                $(".cart-total").text(`Total Price: $${total.toFixed(2)}`);
+            }
+
 
 
 
@@ -154,6 +170,7 @@
                 localStorage.setItem("cart", JSON.stringify(cart));
                 updateCartPage();
                 syncCartWithSession(); // Update session after item removal
+                updateTotalPrice();
             });
 
             // Clear Cart
@@ -167,6 +184,7 @@
                         location.reload();
                     }
                 });
+                updateTotalPrice();
             });
         });
 
@@ -206,9 +224,8 @@
 
         #cart-page-list tr {
             border-radius: 15px !important;
-            margin: 32px 20px !important;
             padding: 0px 0px;
-            box-shadow: 0px 0px 2px 2px #e1dcdc;
+            border: 1px solid #e4e4e4;
         }
 
         td{
@@ -238,6 +255,14 @@
 
         .cart-total {
             font-family: 'gilroy-semibolduploaded_file';
+        }
+
+        .product-thumb {
+            width: 27%;
+        }
+
+        td{
+         width:20%;
         }
 
 
