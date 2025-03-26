@@ -20,87 +20,48 @@ jQuery(document).ready(function($) {
           }
         ]
       });
+});
 
-    });
+document.addEventListener('DOMContentLoaded', function () {
+    const locationItems = document.querySelectorAll('.list-group-item');
+    const locationInfos = document.querySelectorAll('.location-info');
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const locationItems = document.querySelectorAll('.list-group-item');
-        const locationInfos = document.querySelectorAll('.location-info');
+    locationItems.forEach(item => {
+      item.addEventListener('click', function () {
+        // Remove active class from all items and details
+        locationItems.forEach(i => i.classList.remove('active'));
+        locationInfos.forEach(info => info.classList.remove('active'));
 
-        locationItems.forEach(item => {
-          item.addEventListener('click', function () {
-            // Remove active class from all items and details
-            locationItems.forEach(i => i.classList.remove('active'));
-            locationInfos.forEach(info => info.classList.remove('active'));
-
-            // Add active class to clicked item and corresponding details
-            const location = this.dataset.location;
-            this.classList.add('active');
-            document.getElementById(location).classList.add('active');
-          });
-        });
+        // Add active class to clicked item and corresponding details
+        const location = this.dataset.location;
+        this.classList.add('active');
+        document.getElementById(location).classList.add('active');
       });
+    });
+});
 
 
-
-
-let offset = 0; // Start at 0, update dynamically
+let nextPageUrl = 'load-more-products';
 let loading = false;
-let hasMore = true; // Track if more products exist
+let hasMore = true;
 
 function loadMoreProducts() {
     if (loading || !hasMore) return;
-
-    console.log('Loading more products...'); // Debugging
-
     loading = true;
-    $('#loading').show(); // Show loading indicator
-    console.log(`Current offset: ${offset}`);
-
+    $('#loading').show();
     $.ajax({
-        url: '{{ url('/') }}',
+        url: nextPageUrl,
         method: 'GET',
-        data: { offset: offset },
         dataType: 'json',
         success: function(response) {
-            console.log('AJAX request successful:', response); // Debugging
-
-            if (response.products.length > 0) {
-                response.products.forEach(product => {
-                    console.log(`Adding product: ${product.id} - ${product.name}`);
-                    $('#product-list').append(`
-                            <tr>
-                                <td>${product.id}</td>
-                                <td>${product.name}</td>
-                                <td>$${product.price.toFixed(2)}</td>
-                                <td class="bulk-price">$${(product.price * 0.84).toFixed(2)}</td>
-                                <td class="bulk-price">$${(product.price * 0.70).toFixed(2)}</td>
-                                <td class="bulk-price">$${(product.price * 0.50).toFixed(2)}</td>
-                                <td>
-                                    <div class="quantity-container">
-                                        <div class="qty-container">
-                                            <button class="quantity-btn">−</button>
-                                            <input type="text" class="quantity-input" value="1">
-                                            <button class="quantity-btn">+</button>
-                                        </div>
-                                        <button class="add-btn">ADD</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        `);
-                });
-
-                offset = response.newOffset; // Update offset
-                console.log(`Updated offset: ${offset}`);
-                hasMore = response.hasMore; // Update if more products exist
-                console.log(`More products available: ${hasMore}`);
-            } else {
-                console.log('No more products to load.');
+            if (response.product_html) {
+                // Append the rendered HTML for the products
+                $('#product-list').append(response.product_html);
+                nextPageUrl = response.next_page_url;
+                hasMore = response.has_more;
             }
-
             if (!hasMore) {
-                $(window).off('scroll'); // Stop checking for scroll when all products are loaded
-                console.log('Infinite scroll disabled.');
+                $(window).off('scroll');
             }
         },
         error: function(xhr, status, error) {
@@ -108,20 +69,21 @@ function loadMoreProducts() {
         },
         complete: function() {
             loading = false;
-            $('#loading').hide(); // Hide loading indicator
-            console.log('Finished loading batch.');
+            $('#loading').hide();
         }
     });
 }
 
-// Infinite Scroll Listener
+// Trigger load more on scroll
 $(window).on('scroll', function() {
-    console.log('Scroll event triggered.');
-
     if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
-        console.log('User reached bottom. Loading more products...');
         loadMoreProducts();
     }
+});
+
+// Initial load on page load if necessary (can be skipped if infinite scroll is used right away)
+$(document).ready(function() {
+    loadMoreProducts();
 });
 
 $(document).ready(function () {

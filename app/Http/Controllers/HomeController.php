@@ -2,71 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Client;
-use Illuminate\Http\Request;
+use App\Models\Product;
+
 
 class HomeController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $ecwidApiUrl = 'https://app.ecwid.com/api/v3/109333282/products';
-        $accessToken = env('ECWID_SECRET_KEY');
-        $client = new Client();
+       return view('home');
+    }
 
-        $limit = 30;
-        $offset = $request->input('offset', 0);
-        $filteredProducts = [];
+    public function loadMoreProducts()
+    {
+        $products = Product::paginate(60);
 
-        try {
-            while (count($filteredProducts) < $limit) {
-                $response = $client->request('GET', $ecwidApiUrl, [
-                    'headers' => [
-                        'Authorization' => 'Bearer ' . $accessToken,
-                        'Accept' => 'application/json',
-                    ],
-                    'query' => [
-                        'category' => 174055330,
-                        'limit' => $limit + 400,
-                        'offset' => $offset,
-                    ],
-                ]);
+        $productHtml = view('partials.product_list', ['products' => $products])->render();
 
-                $data = json_decode($response->getBody()->getContents(), true);
-//                dd($data);
-                if (isset($data['items'])) {
-                    foreach ($data['items'] as $product) {
-                        if (isset($product['quantity']) && $product['quantity'] > 0) {
-                            $filteredProducts[] = $product;
-                        }
-                        if (count($filteredProducts) >= $limit) {
-                            break; // Stop when we have 30 valid products
-                        }
-                    }
-                }
-
-                // Increase offset for next batch if needed
-                $offset += $limit + 10;
-
-                // If no more products exist, break loop
-                if (count($data['items']) < ($limit + 10)) {
-                    break;
-                }
-            }
-
-            $hasMore = count($filteredProducts) === $limit;
-
-            if ($request->ajax()) {
-                return response()->json([
-                    'products' => array_values($filteredProducts),
-                    'hasMore' => $hasMore,
-                    'newOffset' => $offset,
-                ]);
-            }
-
-            return view('home', ['products' => $filteredProducts]);
-
-        } catch (\Exception $e) {
-            return view('home', ['error' => 'Error fetching data: ' . $e->getMessage()]);
-        }
+        return response()->json([
+            'product_html' => $productHtml,
+            'next_page_url' => $products->nextPageUrl(),
+            'has_more' => $products->hasMorePages(),
+        ]);
     }
 }

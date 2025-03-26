@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Home Page')  <!-- This will replace the @yield('title') in the master layout -->
+@section('title', 'Home Page')
+
+@yield('title')
 
 @section('content')
 
@@ -91,26 +93,6 @@
                         </tr>
                         </thead>
                         <tbody id="product-list">
-                        @foreach ($products as $product)
-                            <tr>
-                                <td>{{ $product['id'] }}</td>
-                                <td>{{ $product['name'] }}</td>
-                                <td class="retail-price">${{ number_format($product['price'], 2) }}</td>
-                                <td class="bulk-price-12">${{ number_format($product['price'] * 0.84, 2) }}</td>
-                                <td class="bulk-price-50">${{ number_format($product['price'] * 0.70, 2) }}</td>
-                                <td class="bulk-price-100">${{ number_format($product['price'] * 0.50, 2) }}</td>
-                                <td>
-                                    <div class="quantity-container">
-                                        <div class="qty-container">
-                                            <button class="quantity-btn minus">−</button>
-                                            <input type="text" class="quantity-input" value="1">
-                                            <button class="quantity-btn plus">+</button>
-                                        </div>
-                                        <button class="add-btn" data-product-id="{{ $product['id'] }}" data-product-name="{{ $product['name'] }}" data-product-image="{{ $product['imageUrl'] ?? ''}}" data-product-retail-price="{{number_format($product['price'], 2)}}" data-product-bulk-price-12="{{number_format($product['price'] * 0.84, 2)}}" data-product-bulk-price-50="{{number_format($product['price'] * 0.70, 2)}}" data-product-bulk-price-100="{{number_format($product['price'] * 0.50, 2)}}">ADD</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
                         </tbody>
                     </table>
 
