@@ -16,12 +16,15 @@
             </tr>
             </thead>
             <tbody id="cart-page-list">
-            <tr><td colspan="4">Loading cart...</td></tr>
+            <tr><td colspan="5">Loading cart...</td></tr>
             </tbody>
         </table>
         <div class="cart-total-container">
         <button id="clear-cart" class="btn btn-danger">Clear Cart</button>
             <h3 class="cart-total">Total Price :</h3>
+        </div>
+        <div class="proceed-container">
+        <button id="proceed-to-checkout" class="btn btn-danger">Proceed To Checkout</button>
         </div>
     </div>
 
@@ -35,13 +38,14 @@
                 $cartPageList.empty();
 
                 if (cart.length === 0) {
-                    $cartPageList.append("<tr><td colspan='4'>Cart is empty</td></tr>");
+                    $cartPageList.append("<tr><td colspan='5'>Cart is empty</td></tr>");
                 } else {
                     cart.forEach(item => {
                         console.log("Cart Item:", item);
                         $cartPageList.append(`
                     <tr>
                         <td><img src="${item.productThumb}" class="product-thumb"></td>
+                        <td style="display: none;">${item.productId}</td>
                         <td>${item.product}</td>
                         <td>
                             <div class="quantity-container">
@@ -90,6 +94,7 @@
                 }
 
                 let newQuantity = parseInt($input.val());
+
                 updateCartQuantity(productName, newQuantity, $row); // Pass row for updating
             });
 
@@ -186,6 +191,11 @@
                 });
                 updateTotalPrice();
             });
+
+
+            $("#proceed-to-checkout").click(function () {
+                window.location.href = "{{ url('/checkout') }}";
+            });
         });
 
     </script>
@@ -255,15 +265,33 @@
 
         .cart-total {
             font-family: 'gilroy-semibolduploaded_file';
+            font-size: 24px;
         }
 
         .product-thumb {
             width: 27%;
         }
 
-        td{
+        td,th{
          width:20%;
         }
+
+        .proceed-container{
+            text-align: right;
+            margin: 33px 0px;
+        }
+
+        #proceed-to-checkout {
+            font-family: 'gilroy-bolduploaded_file';
+            background: #ffe175;
+            border: 1px solid #ffe175;
+            color: #000;
+            font-size: 21px;
+            padding: 11px 20px;
+        }
+
+
+
 
 
     </style>

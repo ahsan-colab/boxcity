@@ -127,7 +127,7 @@ $(document).ready(function () {
         let priceBulkTwo = $(this).data("product-bulk-price-50");
         let priceBulkThree = $(this).data("product-bulk-price-100");
         let productThumb = $(this).data("product-image");
-        console.log(productThumb);
+        let productId = $(this).data("product-id");
         let quantity = parseInt($container.find(".quantity-input").val()) || 1;
 
         let finalPrice;
@@ -151,7 +151,7 @@ $(document).ready(function () {
                 existingItem.quantity += quantity;
                 existingItem.price = finalPrice; // Update price if quantity changes
             } else {
-                cart.push({ product: productName, quantity: quantity, price: finalPrice, priceBulkOne: priceBulkOne, priceBulkTwo: priceBulkTwo, priceBulkThree: priceBulkThree, retailPrice : price, productThumb: productThumb});
+                cart.push({ product: productName, quantity: quantity, price: finalPrice, priceBulkOne: priceBulkOne, priceBulkTwo: priceBulkTwo, priceBulkThree: priceBulkThree, retailPrice : price, productThumb: productThumb, productId: productId});
             }
 
             localStorage.setItem("cart", JSON.stringify(cart));

@@ -742,6 +742,11 @@ table tr:last-child td {
 }
 
 
+.product-single{
+ color:#000;
+  text-decoration: none;
+}
+
 /* Footer CSS */
 footer {
     background: #1D1D1D;
