@@ -6,11 +6,11 @@
 
 @section('content')
 
- <?php
+    <?php
 
- $site_url = env('SITE_URL');
- $home_url = env ('HOME_URL');
- ?>
+    $site_url = env('SITE_URL');
+    $home_url = env ('HOME_URL');
+    ?>
 
     <section class="products-container">
         <div class="container">
@@ -104,17 +104,17 @@
             </div>
         </div>
     </section>
-<a href="<?php echo $home_url?>cart">
- <div class="cart-icon"><i class="fa-solid fa-cart-shopping"></i>
-     <div class="cart-counter">0</div>
- </div>
-</a>
- <!-- Cart Panel -->
- <div class="cart-panel">
-     <h3>Shopping Cart</h3>
-     <ul id="cart-list"></ul>
-     <button id="clear-cart">Clear Cart</button>
- </div>
+    <a href="<?php echo $home_url?>cart">
+        <div class="cart-icon"><i class="fa-solid fa-cart-shopping"></i>
+            <div class="cart-counter">0</div>
+        </div>
+    </a>
+    <!-- Cart Panel -->
+    <div class="cart-panel">
+        <h3>Shopping Cart</h3>
+        <ul id="cart-list"></ul>
+        <button id="clear-cart">Clear Cart</button>
+    </div>
 
     <section class="quote" id="quote">
         <div class="container">
@@ -197,7 +197,7 @@
                 <div class="col-sm-5">
                     <video width="" height="" autoplay="" muted="" loop="" __idm_id__="1835009">
                         <source
-                            src="<?php echo $site_url ?>wp-content/uploads/2024/12/a20d-4f15-be89-0917535dee92.mp4"
+                            src="public/assets/video.mp4"
                             type="video/mp4">
                     </video>
                 </div>
@@ -222,10 +222,10 @@
                         <div class="slider">
                             <div class="customer-slide">
                                 <div class="img-box">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/customer-loves-1.png" alt="Logo">
+                                    <img src="public/assets/customer-loves-1.png" alt="Logo">
                                 </div>
                                 <div class="rating-box">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/star-review.png" alt="Star Review">
+                                    <img src="public/assets/star-review.png" alt="Star Review">
                                     <p>5 months ago</p>
                                 </div>
                                 <div class="content-box">
@@ -237,15 +237,15 @@
                                     <p>
                                         Gfire M.<span>Verified buyer</span>
                                     </p>
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/google-bedge.png" alt="Google Badge">
+                                    <img src="public/assets/google-bedge.png" alt="Google Badge">
                                 </div>
                             </div>
                             <div class="customer-slide">
                                 <div class="img-box">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/customer-loves-2.png" alt="Logo">
+                                    <img src="public/assets/customer-loves-2.png" alt="Logo">
                                 </div>
                                 <div class="rating-box">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/star-review.png" alt="Star Review">
+                                    <img src="public/assets/star-review.png" alt="Star Review">
                                     <p>6 months ago</p>
                                 </div>
                                 <div class="content-box">
@@ -257,15 +257,15 @@
                                     <p>
                                         Syreeta B.<span>Verified buyer</span>
                                     </p>
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/yelp-bedge.png" alt="Yelp Badge">
+                                    <img src="public/assets/yelp-bedge.png" alt="Yelp Badge">
                                 </div>
                             </div>
                             <div class="customer-slide">
                                 <div class="img-box">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/customer-loves-3.png" alt="Logo">
+                                    <img src="public/assets/customer-loves-3.png" alt="Logo">
                                 </div>
                                 <div class="rating-box">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/star-review.png" alt="Star Review">
+                                    <img src="public/assets/star-review.png" alt="Star Review">
                                     <p>6 months ago</p>
                                 </div>
                                 <div class="content-box">
@@ -277,15 +277,15 @@
                                     <p>
                                         Mellisa R.<span>Verified buyer</span>
                                     </p>
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/google-bedge.png" alt="Google Badge">
+                                    <img src="public/assets/google-bedge.png" alt="Google Badge">
                                 </div>
                             </div>
                             <div class="customer-slide">
                                 <div class="img-box">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/customer-loves-2.png" alt="Logo">
+                                    <img src="public/assets/customer-loves-2.png" alt="Logo">
                                 </div>
                                 <div class="rating-box">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/star-review.png" alt="Star Review">
+                                    <img src="public/assets/star-review.png" alt="Star Review">
                                     <p>6 months ago</p>
                                 </div>
                                 <div class="content-box">
@@ -297,7 +297,7 @@
                                     <p>
                                         Syreeta B.<span>Verified buyer</span>
                                     </p>
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/yelp-bedge.png" alt="Yelp Badge">
+                                    <img src="public/assets/yelp-bedge.png" alt="Yelp Badge">
                                 </div>
                             </div>
                         </div>
@@ -347,7 +347,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2025/01/Van-Nuys-Img.png" alt="Van Nuys Location">
+                                    <img src="public/assets/Van-Nuys-Img.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -369,7 +369,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2025/01/North-Hollywood.png" alt="Van Nuys Location">
+                                    <img src="public/assets/North-Hollywood.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -391,7 +391,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2025/01/West-Los-Angeles.png" alt="Van Nuys Location">
+                                    <img src="public/assets/West-Los-Angeles.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -413,7 +413,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2025/01/Valencia.png" alt="Van Nuys Location">
+                                    <img src="public/assets/Valencia.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -435,7 +435,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2025/01/Pasadena.png" alt="Van Nuys Location">
+                                    <img src="public/assets/Pasadena.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -457,7 +457,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2025/01/Marina-Del-Rey.png" alt="Van Nuys Location">
+                                    <img src="public/assets/Marina-Del-Rey.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -479,7 +479,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2025/01/Canoga-Park.png" alt="Van Nuys Location">
+                                    <img src="public/assets/Canoga-Park.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -501,7 +501,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2025/02/Glendale.png" alt="Van Nuys Location">
+                                    <img src="public/assets/Glendale.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -523,7 +523,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="https://boxcityweb.colabwebdemo.com/wp-content/uploads/2025/02/AZUSA.png" alt="Van Nuys Location">
+                                    <img src="public/assets/AZUSA.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">

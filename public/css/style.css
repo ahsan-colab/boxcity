@@ -840,7 +840,7 @@ footer h2 {
 
 .menu-btn a:before {
     content: "";
-    background: url('https://boxcityweb.colabwebdemo.com/wp-content/uploads/2024/12/phone-icon.png');
+    background: url('../assets/phone-icon.png');
     background-repeat: no-repeat;
     position: absolute;
     width: 15px;
