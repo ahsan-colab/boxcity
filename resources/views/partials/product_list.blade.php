@@ -9,11 +9,15 @@
         <td>
             <div class="quantity-container">
                 <div class="qty-container">
-                    <button class="quantity-btn">−</button>
-                    <input type="text" class="quantity-input" value="1">
-                    <button class="quantity-btn">+</button>
+                    <button class="quantity-btn minus">−</button>
+                    <input type="text" class="quantity-input" value="1"/>
+                    <button class="quantity-btn plus">+</button>
                 </div>
-                <button class="add-btn">ADD</button>
+                <button class="add-btn" data-product-id="{{ $product->productId }}" data-product-name="{{ $product->name }}" data-product-image="{{ $product->thumbnailUrl ?? ''}}"
+                        data-product-retail-price="{{number_format($product->price, 2)}}" data-product-bulk-price-12="{{number_format($product->price * 0.84, 2)}}"
+                        data-product-bulk-price-50="{{number_format($product->price * 0.70, 2)}}" data-product-bulk-price-100="{{number_format($product->price * 0.50, 2)}}">
+                    ADD
+                </button>
             </div>
         </td>
     </tr>

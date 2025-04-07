@@ -87,7 +87,7 @@ $(document).ready(function() {
 });
 
 $(document).ready(function () {
-    $(".quantity-btn").click(function () {
+    $(document).on("click", ".quantity-btn", function () {
         let $wrapper = $(this).closest(".quantity-container");
         let $input = $wrapper.find(".quantity-input");
         let value = Number($input.val()) || 1; // Use Number() to avoid skipping numbers
@@ -100,7 +100,7 @@ $(document).ready(function () {
     });
 
     // Prevent manual entry of negative or invalid values
-    $(".quantity-input").on("input", function () {
+    $(document).on("input", ".quantity-input", function () {
         let val = $(this).val().replace(/[^0-9]/g, ""); // Remove non-numeric characters
         $(this).val(val || 1); // Ensure at least 1 is set
     });
@@ -119,7 +119,7 @@ $(document).ready(function () {
     });
 
     // Add to Cart Functionality
-    $(".add-btn").on("click", function () {
+    $(document).on("click", ".add-btn", function () {
         let $container = $(this).closest(".quantity-container");
         let productName = $(this).data("product-name");
         let price = $(this).data("product-retail-price");
