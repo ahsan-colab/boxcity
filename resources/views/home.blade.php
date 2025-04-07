@@ -93,8 +93,8 @@
                         <tbody id="product-list">
                         @foreach ($products as $product)
                             <tr>
-                                <td>{{ $product['id'] }}</td>
-                                <td>{{ $product['name'] }}</td>
+                                <td><a class="product-single" href="product/{{ $product['id'] }}">{{ $product['id'] }}</a></td>
+                                <td><a class="product-single" href="product/{{ $product['id'] }}">{{ $product['name'] }}</a></td>
                                 <td class="retail-price">${{ number_format($product['price'], 2) }}</td>
                                 <td class="bulk-price-12">${{ number_format($product['price'] * 0.84, 2) }}</td>
                                 <td class="bulk-price-50">${{ number_format($product['price'] * 0.70, 2) }}</td>

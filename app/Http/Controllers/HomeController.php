@@ -26,7 +26,7 @@ class HomeController extends Controller
                     ],
                     'query' => [
                         'category' => 174055330,
-                        'limit' => $limit + 400,
+                        'limit' => $limit,
                         'offset' => $offset,
                     ],
                 ]);
@@ -44,13 +44,13 @@ class HomeController extends Controller
                     }
                 }
 
-                // Increase offset for next batch if needed
-                $offset += $limit + 10;
-
-                // If no more products exist, break loop
-                if (count($data['items']) < ($limit + 10)) {
-                    break;
-                }
+//                // Increase offset for next batch if needed
+//                $offset += $limit + 10;
+//
+//                // If no more products exist, break loop
+//                if (count($data['items']) < ($limit + 10)) {
+//                    break;
+//                }
             }
 
             $hasMore = count($filteredProducts) === $limit;

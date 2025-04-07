@@ -70,8 +70,8 @@ function loadMoreProducts() {
                     console.log(`Adding product: ${product.id} - ${product.name}`);
                     $('#product-list').append(`
                             <tr>
-                                <td>${product.id}</td>
-                                <td>${product.name}</td>
+                            <td><a class="product-single" href="product/${product.id}">${product.id}</a></td>
+                             <td><a class="product-single" href="product/${product.id}">${product.name}</a></td>
                                 <td>$${product.price.toFixed(2)}</td>
                                 <td class="bulk-price">$${(product.price * 0.84).toFixed(2)}</td>
                                 <td class="bulk-price">$${(product.price * 0.70).toFixed(2)}</td>
@@ -165,7 +165,7 @@ $(document).ready(function () {
         let priceBulkTwo = $(this).data("product-bulk-price-50");
         let priceBulkThree = $(this).data("product-bulk-price-100");
         let productThumb = $(this).data("product-image");
-        console.log(productThumb);
+        let productId = $(this).data("product-id");
         let quantity = parseInt($container.find(".quantity-input").val()) || 1;
 
         let finalPrice;
@@ -189,7 +189,7 @@ $(document).ready(function () {
                 existingItem.quantity += quantity;
                 existingItem.price = finalPrice; // Update price if quantity changes
             } else {
-                cart.push({ product: productName, quantity: quantity, price: finalPrice, priceBulkOne: priceBulkOne, priceBulkTwo: priceBulkTwo, priceBulkThree: priceBulkThree, retailPrice : price, productThumb: productThumb});
+                cart.push({ product: productName, quantity: quantity, price: finalPrice, priceBulkOne: priceBulkOne, priceBulkTwo: priceBulkTwo, priceBulkThree: priceBulkThree, retailPrice : price, productThumb: productThumb, productId: productId});
             }
 
             localStorage.setItem("cart", JSON.stringify(cart));
