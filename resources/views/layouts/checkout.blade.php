@@ -284,7 +284,7 @@
                     },
                     success: function (response) {
                         console.log("Order placed successfully!", response);
-                        window.location.href = "/thank-you";
+                        window.location.href = "/boxcity/thank-you";
                         localStorage.removeItem("cart");
                     },
                     error: function (xhr, status, error) {

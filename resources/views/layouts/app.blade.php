@@ -19,33 +19,42 @@
 </head>
 
 <body>
-
 <header>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-5">
-                <nav>
-                    <ul class="sub-menu">
-                        <li id="menu-item-504" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-504"><a href="https://boxcityweb.colabwebdemo.com/b2b-incentives/">Services</a></li>
-                        <li id="menu-item-503" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-503"><a href="https://boxcityweb.colabwebdemo.com/custom-boxes/">Shop Products</a></li>
-                        <li id="menu-item-502" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-502"><a href="https://boxcityweb.colabwebdemo.com/custom-tape/">Locations</a></li>
-                    </ul>
-                </nav>
-            </div>
-
-            <div class="col-md-2">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-md-2 col-6">
                 <a href="#">
                     <img src="public/assets/header-logo.png" alt="logo">
                 </a>
             </div>
 
+            <div class="col-md-10 col-6 d-flex justify-content-end align-items-center">
+                <!-- Hamburger Button -->
+                <button class="hamburger d-md-none" id="hamburger-btn">
+                    ☰
+                </button>
 
-            <div class="col-md-5">
-                <nav>
-                    <ul class="sub-menu">
-                        <li id="menu-item-504" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-504"><a href="https://boxcityweb.colabwebdemo.com/b2b-incentives/">Wholesale / Bulk Orders</a></li>
-                        <li id="menu-item-503" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-503"><a href="https://boxcityweb.colabwebdemo.com/custom-boxes/">Contact</a></li>
-                        <li id="menu-item-503" class="menu-item menu-btn"><a href="tel:8009926924">(800) 992-6924</a></li>
+                <div class="mobile-menu d-md-none" id="mobile-menu">
+                    <button class="close-btn" id="close-menu">✕</button>
+                    <ul class="mobile-sub-menu">
+                        <li><a href="https://boxcityweb.colabwebdemo.com/b2b-incentives/">Services</a></li>
+                        <li><a href="https://boxcityweb.colabwebdemo.com/custom-boxes/">Shop Products</a></li>
+                        <li><a href="https://boxcityweb.colabwebdemo.com/custom-tape/">Locations</a></li>
+                        <li><a href="https://boxcityweb.colabwebdemo.com/b2b-incentives/">Wholesale / Bulk Orders</a></li>
+                        <li><a href="https://boxcityweb.colabwebdemo.com/custom-boxes/">Contact</a></li>
+                        <li class="menu-btn"><a href="tel:8009926924">(800) 992-6924</a></li>
+                    </ul>
+                </div>
+
+                <!-- Full Menu -->
+                <nav class="main-nav" id="main-nav">
+                    <ul class="sub-menu d-md-flex">
+                        <li><a href="https://boxcityweb.colabwebdemo.com/b2b-incentives/">Services</a></li>
+                        <li><a href="https://boxcityweb.colabwebdemo.com/custom-boxes/">Shop Products</a></li>
+                        <li><a href="https://boxcityweb.colabwebdemo.com/custom-tape/">Locations</a></li>
+                        <li><a href="https://boxcityweb.colabwebdemo.com/b2b-incentives/">Wholesale / Bulk Orders</a></li>
+                        <li><a href="https://boxcityweb.colabwebdemo.com/custom-boxes/">Contact</a></li>
+                        <li class="menu-btn"><a href="tel:8009926924">(800) 992-6924</a></li>
                     </ul>
                 </nav>
             </div>
@@ -53,7 +62,6 @@
     </div>
 </header>
 
-<!-- Main Content Section -->
 <main>
     @yield('content')
 </main>
@@ -142,6 +150,62 @@
         </div>
     </div>
 </footer>
+
+
+<style>
+
+    /* Basic mobile styles */
+    .hamburger {
+        font-size: 28px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    /* Hide nav by default on small screens */
+    #main-nav {
+        display: none;
+        position: absolute;
+        top: 80px; /* adjust depending on your header height */
+        right: 0;
+        background: #fff;
+        width: 100%;
+        padding: 20px;
+        z-index: 1000;
+    }
+
+    #main-nav.open {
+        display: block;
+    }
+
+    @media (min-width: 1100px) {
+        .hamburger {
+            display: none;
+        }
+
+        #main-nav {
+            display: block !important;
+            position: static;
+            background: transparent;
+            width: auto;
+            padding: 0;
+        }
+
+        .sub-menu {
+            flex-direction: row;
+            gap: 20px;
+            list-style: none;
+        }
+    }
+
+    .sub-menu li {
+        list-style: none;
+        margin-bottom: 10px;
+    }
+
+
+</style>
 
 </body>
 

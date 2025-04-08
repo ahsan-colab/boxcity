@@ -2,8 +2,6 @@
 
 @section('title', 'Home Page')
 
-@yield('title')
-
 @section('content')
 
     <?php
@@ -66,7 +64,7 @@
 
                 </div>
 
-                <div class="col-sm-9">
+                <div class="col-lg-9 col-sm-12">
                     <div class="banner">
                         <div class="heading-container">
                             <h4>CORRUGATED BOXES</h4>
@@ -77,24 +75,28 @@
                     <div class="bulk-orders">
                         <h3>For bigger bulk orders exceeding 100 boxes, reach out to our partnerships team at <a href="mailto:partnerships@boxcity.com">partnerships@boxcity.com</a></h3>
                     </div>
-                    <table id="product-table">
-                        <thead>
-                        <tr>
-                            <th rowspan="2">Product ID</th>
-                            <th rowspan="2">Name</th>
-                            <th rowspan="2">Retail Price</th>
-                            <th colspan="3" class="bulk-price-header main">Discounted Bulk Price</th>
-                            <th rowspan="2">Add To Cart</th>
-                        </tr>
-                        <tr>
-                            <th class="bulk-price-header">12+</th>
-                            <th class="bulk-price-header">50+</th>
-                            <th class="bulk-price-header">100+</th>
-                        </tr>
-                        </thead>
-                        <tbody id="product-list">
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table id="product-table" class="responsive-table">
+                            <thead>
+                            <tr>
+                                <th rowspan="2">Product ID</th>
+                                <th rowspan="2">Name</th>
+                                <th rowspan="2">Retail Price</th>
+                                <th colspan="3" class="bulk-price-header main">Discounted Bulk Price</th>
+                                <th rowspan="2">Add To Cart</th>
+                            </tr>
+                            <tr>
+                                <th class="bulk-price-header">12+</th>
+                                <th class="bulk-price-header">50+</th>
+                                <th class="bulk-price-header">100+</th>
+                            </tr>
+                            </thead>
+                            <tbody id="product-list">
+                            <!-- Data will populate here -->
+                            </tbody>
+                        </table>
+                    </div>
+
 
                     <!-- Loading Indicator -->
                     <div id="loading" style="text-align: center; display: none;">
@@ -105,11 +107,10 @@
         </div>
     </section>
     <a href="<?php echo $home_url?>cart">
-        <div class="cart-icon"><i class="fa-solid fa-cart-shopping"></i>
+        <div class="cart-icon"><svg class="icon-default" width="36" height="30" viewBox="0 0 36 30" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M7 7h22v18a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4V7z" stroke="currentColor" stroke-width="2"></path><path d="M13 10V6c0-2.993 2.009-5 5-5s5 2.026 5 5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
             <div class="cart-counter">0</div>
         </div>
     </a>
-    <!-- Cart Panel -->
     <div class="cart-panel">
         <h3>Shopping Cart</h3>
         <ul id="cart-list"></ul>

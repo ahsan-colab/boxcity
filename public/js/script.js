@@ -254,6 +254,47 @@ $(document).ready(function () {
     $(window).on("unload", function () {
         sessionStorage.removeItem("cart");
     });
+
+
+
+    function applyDataLabels() {
+        const headers = [
+            "Product ID :", "Name :", "Retail Price :", "12+ :", "50+ :", "100+ :",
+        ];
+
+        $("#product-list tr").each(function () {
+            $(this).find("td").each(function (index) {
+                $(this).attr("data-label", headers[index]);
+            });
+        });
+    }
+
+    setTimeout(function () {
+        applyDataLabels();
+    }, 1000); // 200ms delay, adjust as needed
+
+
+
+
 });
 
 
+$(document).ready(function () {
+    $('#hamburger-btn').on('click', function () {
+        $('#mobile-menu').addClass('active');
+        $('body').addClass('menu-open');
+    });
+
+    $('#close-menu').on('click', function () {
+        $('#mobile-menu').removeClass('active');
+        $('body').removeClass('menu-open');
+    });
+
+    // Optional: Close menu when clicking outside
+    $(document).on('click', function (e) {
+        if (!$(e.target).closest('#mobile-menu, #hamburger-btn').length) {
+            $('#mobile-menu').removeClass('active');
+            $('body').removeClass('menu-open');
+        }
+    });
+});
