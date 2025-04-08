@@ -198,7 +198,7 @@
                 <div class="col-sm-5">
                     <video width="" height="" autoplay="" muted="" loop="" __idm_id__="1835009">
                         <source
-                            src="public/assets/video.mp4"
+                            src="<?php echo $home_url?>/public/assets/video.mp4"
                             type="video/mp4">
                     </video>
                 </div>
@@ -223,10 +223,10 @@
                         <div class="slider">
                             <div class="customer-slide">
                                 <div class="img-box">
-                                    <img src="public/assets/customer-loves-1.png" alt="Logo">
+                                    <img src="<?php echo $home_url?>/public/assets/customer-loves-1.png" alt="Logo">
                                 </div>
                                 <div class="rating-box">
-                                    <img src="public/assets/star-review.png" alt="Star Review">
+                                    <img src="<?php echo $home_url?>/public/assets/star-review.png" alt="Star Review">
                                     <p>5 months ago</p>
                                 </div>
                                 <div class="content-box">
@@ -238,15 +238,15 @@
                                     <p>
                                         Gfire M.<span>Verified buyer</span>
                                     </p>
-                                    <img src="public/assets/google-bedge.png" alt="Google Badge">
+                                    <img src="<?php echo $home_url?>/public/assets/google-bedge.png" alt="Google Badge">
                                 </div>
                             </div>
                             <div class="customer-slide">
                                 <div class="img-box">
-                                    <img src="public/assets/customer-loves-2.png" alt="Logo">
+                                    <img src="<?php echo $home_url?>/public/assets/customer-loves-2.png" alt="Logo">
                                 </div>
                                 <div class="rating-box">
-                                    <img src="public/assets/star-review.png" alt="Star Review">
+                                    <img src="<?php echo $home_url?>/public/assets/star-review.png" alt="Star Review">
                                     <p>6 months ago</p>
                                 </div>
                                 <div class="content-box">
@@ -258,15 +258,15 @@
                                     <p>
                                         Syreeta B.<span>Verified buyer</span>
                                     </p>
-                                    <img src="public/assets/yelp-bedge.png" alt="Yelp Badge">
+                                    <img src="<?php echo $home_url?>/public/assets/yelp-bedge.png" alt="Yelp Badge">
                                 </div>
                             </div>
                             <div class="customer-slide">
                                 <div class="img-box">
-                                    <img src="public/assets/customer-loves-3.png" alt="Logo">
+                                    <img src="<?php echo $home_url?>/public/assets/customer-loves-3.png" alt="Logo">
                                 </div>
                                 <div class="rating-box">
-                                    <img src="public/assets/star-review.png" alt="Star Review">
+                                    <img src="<?php echo $home_url?>/public/assets/star-review.png" alt="Star Review">
                                     <p>6 months ago</p>
                                 </div>
                                 <div class="content-box">
@@ -278,15 +278,15 @@
                                     <p>
                                         Mellisa R.<span>Verified buyer</span>
                                     </p>
-                                    <img src="public/assets/google-bedge.png" alt="Google Badge">
+                                    <img src="<?php echo $home_url?>/public/assets/google-bedge.png" alt="Google Badge">
                                 </div>
                             </div>
                             <div class="customer-slide">
                                 <div class="img-box">
-                                    <img src="public/assets/customer-loves-2.png" alt="Logo">
+                                    <img src="<?php echo $home_url?>/public/assets/customer-loves-2.png" alt="Logo">
                                 </div>
                                 <div class="rating-box">
-                                    <img src="public/assets/star-review.png" alt="Star Review">
+                                    <img src="<?php echo $home_url?>/public/assets/star-review.png" alt="Star Review">
                                     <p>6 months ago</p>
                                 </div>
                                 <div class="content-box">
@@ -298,7 +298,7 @@
                                     <p>
                                         Syreeta B.<span>Verified buyer</span>
                                     </p>
-                                    <img src="public/assets/yelp-bedge.png" alt="Yelp Badge">
+                                    <img src="<?php echo $home_url?>/public/assets/yelp-bedge.png" alt="Yelp Badge">
                                 </div>
                             </div>
                         </div>
@@ -348,7 +348,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="public/assets/Van-Nuys-Img.png" alt="Van Nuys Location">
+                                    <img src="<?php echo $home_url?>/public/assets/Van-Nuys-Img.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -370,7 +370,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="public/assets/North-Hollywood.png" alt="Van Nuys Location">
+                                    <img src="<?php echo $home_url?>/public/assets/North-Hollywood.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -392,7 +392,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="public/assets/West-Los-Angeles.png" alt="Van Nuys Location">
+                                    <img src="<?php echo $home_url?>/public/assets/West-Los-Angeles.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -414,7 +414,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="public/assets/Valencia.png" alt="Van Nuys Location">
+                                    <img src="<?php echo $home_url?>/public/assets/Valencia.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -436,7 +436,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="public/assets/Pasadena.png" alt="Van Nuys Location">
+                                    <img src="<?php echo $home_url?>/public/assets/Pasadena.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -458,7 +458,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="public/assets/Marina-Del-Rey.png" alt="Van Nuys Location">
+                                    <img src="<?php echo $home_url?>/public/assets/Marina-Del-Rey.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -480,7 +480,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="public/assets/Canoga-Park.png" alt="Van Nuys Location">
+                                    <img src="<?php echo $home_url?>/public/assets/Canoga-Park.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -502,7 +502,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="public/assets/Glendale.png" alt="Van Nuys Location">
+                                    <img src="<?php echo $home_url?>/public/assets/Glendale.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -524,7 +524,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="public/assets/AZUSA.png" alt="Van Nuys Location">
+                                    <img src="<?php echo $home_url?>/public/assets/AZUSA.png" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">

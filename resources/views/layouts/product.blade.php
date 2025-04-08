@@ -27,7 +27,8 @@ $home_url = env ('HOME_URL');
 
     <div class="row table-row">
         <div class="col-md-12">
-            <table id="product-table">
+            <div class="table-responsive">
+            <table id="product-table" class="responsive-table">
                 <thead>
                 <tr>
                     <th rowspan="2">Product ID</th>
@@ -64,7 +65,7 @@ $home_url = env ('HOME_URL');
                     </tr>
                 </tbody>
             </table>
-
+            </div>
         </div>
     </div>
 

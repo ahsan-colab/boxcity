@@ -19,12 +19,19 @@
 </head>
 
 <body>
+
+<?php
+
+$site_url = env('SITE_URL');
+$home_url = env ('HOME_URL');
+?>
+
 <header>
     <div class="container-fluid">
         <div class="row align-items-center justify-content-between">
             <div class="col-md-2 col-6">
                 <a href="#">
-                    <img src="public/assets/header-logo.png" alt="logo">
+                    <img src="<?php echo $home_url?>/public/assets/header-logo.png" alt="logo">
                 </a>
             </div>
 
@@ -71,16 +78,16 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="footer-detail">
-                    <a href="https://boxcityweb.colabwebdemo.com"><img src="public/assets/footer-logo.png" alt="Logo" width="auto" height="auto">	</a>						 <div class="social-icons">
-                        <a href="https://www.facebook.com/OfficialBoxCity/"><img src="public/assets/fb-icon.png" alt="Logo" width="auto" height="auto"></a>
-                        <a href="https://www.instagram.com/officialboxcity/?hl=en"><img src="public/assets/insta-icon.png" alt="Logo" width="auto" height="auto"></a>
-                        <a href="https://www.linkedin.com/company/boxcitystores/"><img src="public/assets/linkedin-icon.png" alt="Logo" width="auto" height="auto"></a>
+                    <a href="https://boxcityweb.colabwebdemo.com"><img src="<?php echo $home_url?>/public/assets/footer-logo.png" alt="Logo" width="auto" height="auto">	</a>						 <div class="social-icons">
+                        <a href="https://www.facebook.com/OfficialBoxCity/"><img src="<?php echo $home_url?>/public/assets/fb-icon.png" alt="Logo" width="auto" height="auto"></a>
+                        <a href="https://www.instagram.com/officialboxcity/?hl=en"><img src="<?php echo $home_url?>/public/assets/insta-icon.png" alt="Logo" width="auto" height="auto"></a>
+                        <a href="https://www.linkedin.com/company/boxcitystores/"><img src="<?php echo $home_url?>/public/assets/linkedin-icon.png" alt="Logo" width="auto" height="auto"></a>
                     </div>
                     <p>
                         Box City is L.A.’s premier packing and shipping service for businesses and consumers. Contact us today to pack and ship any item.
                     </p>
                     <div class="phone-numer">
-                        <a href="tel:8009926924"><img src="public/assets/phone-icon-1.png" alt="Logo" width="auto" height="auto"> <span>(800) 992-6924</span></a>
+                        <a href="tel:8009926924"><img src="<?php echo $home_url?>/public/assets/phone-icon-1.png" alt="Logo" width="auto" height="auto"> <span>(800) 992-6924</span></a>
                     </div>
                 </div>
             </div>
