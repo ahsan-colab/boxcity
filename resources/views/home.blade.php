@@ -106,7 +106,7 @@
             </div>
         </div>
     </section>
-    <a href="<?php echo $home_url?>cart">
+    <a href="{{route('cart')}}">
         <div class="cart-icon"><svg class="icon-default" width="36" height="30" viewBox="0 0 36 30" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M7 7h22v18a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4V7z" stroke="currentColor" stroke-width="2"></path><path d="M13 10V6c0-2.993 2.009-5 5-5s5 2.026 5 5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
             <div class="cart-counter">0</div>
         </div>
@@ -198,7 +198,7 @@
                 <div class="col-sm-5">
                     <video width="" height="" autoplay="" muted="" loop="" __idm_id__="1835009">
                         <source
-                            src="<?php echo $home_url?>/public/assets/video.mp4"
+                            src="{{ asset('public/assets/video.mp4')}}"
                             type="video/mp4">
                     </video>
                 </div>
@@ -223,10 +223,10 @@
                         <div class="slider">
                             <div class="customer-slide">
                                 <div class="img-box">
-                                    <img src="<?php echo $home_url?>/public/assets/customer-loves-1.png" alt="Logo">
+                                    <img src="{{ asset('public/assets/customer-loves-1.png')}}" alt="Logo">
                                 </div>
                                 <div class="rating-box">
-                                    <img src="<?php echo $home_url?>/public/assets/star-review.png" alt="Star Review">
+                                    <img src="{{ asset('public/assets/star-review.png')}}" alt="Star Review">
                                     <p>5 months ago</p>
                                 </div>
                                 <div class="content-box">
@@ -238,15 +238,15 @@
                                     <p>
                                         Gfire M.<span>Verified buyer</span>
                                     </p>
-                                    <img src="<?php echo $home_url?>/public/assets/google-bedge.png" alt="Google Badge">
+                                    <img src="{{ asset('public/assets/google-bedge.png')}}" alt="Google Badge">
                                 </div>
                             </div>
                             <div class="customer-slide">
                                 <div class="img-box">
-                                    <img src="<?php echo $home_url?>/public/assets/customer-loves-2.png" alt="Logo">
+                                    <img src="{{ asset('public/assets/customer-loves-2.png')}}" alt="Logo">
                                 </div>
                                 <div class="rating-box">
-                                    <img src="<?php echo $home_url?>/public/assets/star-review.png" alt="Star Review">
+                                    <img src="{{ asset('public/assets/star-review.png')}}" alt="Star Review">
                                     <p>6 months ago</p>
                                 </div>
                                 <div class="content-box">
@@ -258,15 +258,15 @@
                                     <p>
                                         Syreeta B.<span>Verified buyer</span>
                                     </p>
-                                    <img src="<?php echo $home_url?>/public/assets/yelp-bedge.png" alt="Yelp Badge">
+                                    <img src="{{ asset('public/assets/yelp-bedge.png')}}" alt="Yelp Badge">
                                 </div>
                             </div>
                             <div class="customer-slide">
                                 <div class="img-box">
-                                    <img src="<?php echo $home_url?>/public/assets/customer-loves-3.png" alt="Logo">
+                                    <img src="{{ asset('public/assets/customer-loves-3.png')}}" alt="Logo">
                                 </div>
                                 <div class="rating-box">
-                                    <img src="<?php echo $home_url?>/public/assets/star-review.png" alt="Star Review">
+                                    <img src="{{ asset('public/assets/star-review.png')}}" alt="Star Review">
                                     <p>6 months ago</p>
                                 </div>
                                 <div class="content-box">
@@ -278,15 +278,15 @@
                                     <p>
                                         Mellisa R.<span>Verified buyer</span>
                                     </p>
-                                    <img src="<?php echo $home_url?>/public/assets/google-bedge.png" alt="Google Badge">
+                                    <img src="{{ asset('public/assets/google-bedge.png')}}" alt="Google Badge">
                                 </div>
                             </div>
                             <div class="customer-slide">
                                 <div class="img-box">
-                                    <img src="<?php echo $home_url?>/public/assets/customer-loves-2.png" alt="Logo">
+                                    <img src="{{ asset('public/assets/customer-loves-2.png')}}" alt="Logo">
                                 </div>
                                 <div class="rating-box">
-                                    <img src="<?php echo $home_url?>/public/assets/star-review.png" alt="Star Review">
+                                    <img src="{{ asset('public/assets/star-review.png')}}" alt="Star Review">
                                     <p>6 months ago</p>
                                 </div>
                                 <div class="content-box">
@@ -298,7 +298,7 @@
                                     <p>
                                         Syreeta B.<span>Verified buyer</span>
                                     </p>
-                                    <img src="<?php echo $home_url?>/public/assets/yelp-bedge.png" alt="Yelp Badge">
+                                    <img src="{{ asset('public/assets/yelp-bedge.png')}}" alt="Yelp Badge">
                                 </div>
                             </div>
                         </div>
@@ -348,7 +348,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="<?php echo $home_url?>/public/assets/Van-Nuys-Img.png" alt="Van Nuys Location">
+                                    <img src="{{ asset('public/assets/Van-Nuys-Img.png')}}" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -370,7 +370,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="<?php echo $home_url?>/public/assets/North-Hollywood.png" alt="Van Nuys Location">
+                                    <img src="{{ asset('public/assets/North-Hollywood.png')}}" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -392,7 +392,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="<?php echo $home_url?>/public/assets/West-Los-Angeles.png" alt="Van Nuys Location">
+                                    <img src="{{ asset('public/assets/West-Los-Angeles.png')}}" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -414,7 +414,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="<?php echo $home_url?>/public/assets/Valencia.png" alt="Van Nuys Location">
+                                    <img src="{{ asset('public/assets/Valencia.png')}}" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -436,7 +436,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="<?php echo $home_url?>/public/assets/Pasadena.png" alt="Van Nuys Location">
+                                    <img src="{{ asset('public/assets/Pasadena.png')}}" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -458,7 +458,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="<?php echo $home_url?>/public/assets/Marina-Del-Rey.png" alt="Van Nuys Location">
+                                    <img src="{{ asset('public/assets/Marina-Del-Rey.png')}}" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -480,7 +480,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="<?php echo $home_url?>/public/assets/Canoga-Park.png" alt="Van Nuys Location">
+                                    <img src="{{ asset('public/assets/Canoga-Park.png')}}" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -502,7 +502,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="<?php echo $home_url?>/public/assets/Glendale.png" alt="Van Nuys Location">
+                                    <img src="{{ asset('public/assets/Glendale.png')}}" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">
@@ -524,7 +524,7 @@
                                     </a>
                                 </div>
                                 <div class="location-img">
-                                    <img src="<?php echo $home_url?>/public/assets/AZUSA.png" alt="Van Nuys Location">
+                                    <img src="{{ asset('public/assets/AZUSA.png')}}" alt="Van Nuys Location">
                                 </div>
                             </div>
                             <div class="location-map">

@@ -3,6 +3,9 @@
 @section('title', 'Checkout')
 
 @section('content')
+
+
+
     <div class="container checkout-container">
         <h2>Checkout</h2>
         <div class="row">

@@ -4,6 +4,7 @@
 
 @section('content')
 
+
     <div class="thank-you">
         <h1>Thank you for your order!</h1>
         <p>Your order was placed successfully. You’ll receive a confirmation email shortly.</p>

@@ -8,7 +8,7 @@ body {
 @font-face {
     font-family: 'gilroy-lightuploaded_file';
     src: url('../fonts/gilroy-light-webfont.woff2') format('woff2'),
-         url('../fonts/gilroy-light-webfont.woff') format('woff');
+    url('../fonts/gilroy-light-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -20,7 +20,7 @@ body {
 @font-face {
     font-family: 'gilroy-bolduploaded_file';
     src: url('../fonts/gilroy-bold-webfont.woff2') format('woff2'),
-         url('../fonts/gilroy-bold-webfont.woff') format('woff');
+    url('../fonts/gilroy-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -31,7 +31,7 @@ body {
 @font-face {
     font-family: 'gilroy-heavyuploaded_file';
     src: url('../fonts/gilroy-heavy-webfont.woff2') format('woff2'),
-         url('../fonts/gilroy-heavy-webfont.woff') format('woff');
+    url('../fonts/gilroy-heavy-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -39,7 +39,7 @@ body {
 @font-face {
     font-family: 'gilroy-semibolduploaded_file';
     src: url('../fonts/gilroy-semibold-webfont.woff2') format('woff2'),
-         url('../fonts/gilroy-semibold-webfont.woff') format('woff');
+    url('../fonts/gilroy-semibold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -47,7 +47,7 @@ body {
 @font-face {
     font-family: 'gilroy-extrabolduploaded_file';
     src: url('../fonts/gilroy-extrabold-webfont.woff2') format('woff2'),
-         url('../fonts/gilroy-extrabold-webfont.woff') format('woff');
+    url('../fonts/gilroy-extrabold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -55,7 +55,7 @@ body {
 @font-face {
     font-family: 'gilroy-blackuploaded_file';
     src: url('../fonts/gilroy-black-webfont.woff2') format('woff2'),
-         url('../fonts/gilroy-black-webfont.woff') format('woff');
+    url('../fonts/gilroy-black-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -63,7 +63,7 @@ body {
 @font-face {
     font-family: 'gilroy-ultralightuploadedfile';
     src: url('../fonts/gilroy-ultralight-webfont.woff2') format('woff2'),
-         url('../fonts/gilroy-ultralight-webfont.woff') format('woff');
+    url('../fonts/gilroy-ultralight-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -71,7 +71,7 @@ body {
 @font-face {
     font-family: 'gilroy-mediumuploaded_file';
     src: url('../fonts/gilroy-medium-webfont.woff2') format('woff2'),
-         url('../fonts/gilroy-medium-webfont.woff') format('woff');
+    url('../fonts/gilroy-medium-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -79,7 +79,7 @@ body {
 @font-face {
     font-family: 'gilroy-regularuploaded_file';
     src: url('../fonts/gilroy-regular-webfont.woff2') format('woff2'),
-         url('../fonts/gilroy-regular-webfont.woff') format('woff');
+    url('../fonts/gilroy-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -87,25 +87,25 @@ body {
 @font-face {
     font-family: 'gilroy-thinuploaded_file';
     src: url('../fonts/gilroy-thin-webfont.woff2') format('woff2'),
-         url('../fonts/gilroy-thin-webfont.woff') format('woff');
+    url('../fonts/gilroy-thin-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
 }
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 html body, input, textarea, .page-title span, .pingback a.url {
-	font-family: 'Roboto' !important;
+    font-family: 'Roboto' !important;
 }
 body {
-	background: #fff;
+    background: #fff;
 }
 body, input, textarea {
-	color: #303030;
-	font-size: 27px;
-	line-height: 18px;
-	font-family: 'gilroy-mediumuploaded_file';
+    color: #303030;
+    font-size: 27px;
+    line-height: 18px;
+    font-family: 'gilroy-mediumuploaded_file';
 }
 
 
@@ -121,11 +121,11 @@ header .container-fluid .row{
 }
 
 header .col-md-2{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-left: 0px;
-        padding-right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0px;
+    padding-right: 0px;
 
 }
 
@@ -141,8 +141,8 @@ header .col-md-2{
 }
 
 .menu-btn a{
- color: #F8BE00 !important;
- font-size: 19px;
+    color: #F8BE00 !important;
+    font-size: 19px;
 }
 
 nav {
@@ -281,7 +281,7 @@ h1 {
     -ms-touch-action: pan-y;
     touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
-     clear: left;
+    clear: left;
     overflow: hidden;
 }
 
@@ -551,13 +551,13 @@ header ul{
 }
 
 .accordion-body ul{
-   padding-left: 0px;
+    padding-left: 0px;
 }
 
 .accordion-body li{
-   list-style: none;
-   font-family: 'gilroy-mediumuploaded_file';
-   line-height: 29px;
+    list-style: none;
+    font-family: 'gilroy-mediumuploaded_file';
+    line-height: 29px;
 }
 
 .accordion-button:focus{
@@ -572,8 +572,8 @@ header ul{
 }
 
 .banner{
- background-color:#1D1D1D ;
- border-radius: 25px;
+    background-color:#1D1D1D ;
+    border-radius: 25px;
 }
 
 .bulk-orders{
@@ -581,9 +581,9 @@ header ul{
     border-radius: 25px;
     padding: 40px 50px 25px 50px;
     margin-top: 10px;
-   }
+}
 
-   .bulk-orders  h3 {
+.bulk-orders  h3 {
     text-align: center;
     font-family: 'gilroy-semibolduploaded_file';
     padding: 0px 159px;
@@ -743,8 +743,8 @@ table tr:last-child td {
 
 
 .product-single{
- color:#000;
-  text-decoration: none;
+    color:#000;
+    text-decoration: none;
 }
 
 /* Footer CSS */
@@ -846,7 +846,7 @@ footer h2 {
     width: 15px;
     height: 22px;
     right: 324px;
-    top: 44px;
+    top: 57px;
 }
 
 
@@ -1040,8 +1040,13 @@ footer form input::placeholder {
         padding: 0px 0px;
     }
 
+
+    .sub-menu {
+        gap: 34px !important;
+    }
+
     .menu-btn a:before {
-        right: 231px;
+        right: 216px;
     }
 
     .heading-container::before {
@@ -1081,7 +1086,7 @@ footer form input::placeholder {
     }
 
     .offer {
-        background: url(images/Offer-BG.png);
+        background: url(https://boxcityweb.colabwebdemo.com/boxcity/public/assets/Offer-BG.png);
         background-repeat: no-repeat;
         background-size: contain;
         margin: 20px 22px;
@@ -1092,7 +1097,7 @@ footer form input::placeholder {
 
 
 .cart-container{
- margin: 40px 0px;
+    margin: 40px 0px;
 }
 
 
@@ -1107,8 +1112,13 @@ footer form input::placeholder {
         padding: 0px 0px;
     }
 
+    .sub-menu {
+        gap: 21px !important;
+    }
+
     .menu-btn a:before {
-        right: 231px;
+        right: 217px;
+        top: 58px;
     }
 
     .heading-container h4 {
@@ -1175,9 +1185,21 @@ footer form input::placeholder {
         padding: 0px 0px;
     }
 
-    .menu-btn a:before {
-        right: 222px;
+    header {
+        padding: 26px 0px !important;
     }
+
+
+    .menu-btn a:before {
+        right: 182px;
+        top: 58px;
+    }
+
+    .sub-menu {
+        gap: 27px !important;
+    }
+
+
 
     .heading-container h4 {
         font-family: 'gilroy-mediumuploaded_file';
@@ -1249,8 +1271,25 @@ footer form input::placeholder {
         padding: 0px 0px;
     }
 
+    header {
+        padding: 26px 0px !important;
+    }
+
+
     .menu-btn a:before {
-        right: 222px;
+        right: 182px;
+        top: 58px;
+    }
+
+
+    header .col-md-2 {
+        left: -54px;
+        position: relative;
+    }
+
+
+    .sub-menu {
+        gap: 16px !important;
     }
 
     .heading-container h4 {
@@ -1329,13 +1368,31 @@ footer form input::placeholder {
         max-width: 1300px !important;
     }
 
+
     header .container-fluid .row {
         justify-content: center;
         padding: 0px 0px;
     }
 
+    header {
+        padding: 26px 0px !important;
+    }
+
+
     .menu-btn a:before {
-        right: 222px;
+        right: 183px !important;
+        top: 58px !important;
+    }
+
+
+    header .col-md-2 {
+        left: -34px;
+        position: relative;
+    }
+
+
+    .sub-menu {
+        gap: 16px !important;
     }
 
     .heading-container h4 {
@@ -1543,7 +1600,7 @@ footer form input::placeholder {
     }
 
     [alt="logo"]{
-     width:100%;
+        width:100%;
     }
 
     .bulk-orders {
@@ -1787,7 +1844,7 @@ footer form input::placeholder {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 88%;
+    width: 100%;
     max-width: 100%;
     height: 100%;
     background-color: #fff;
