@@ -14,4 +14,9 @@ class ProductController extends Controller
         return view('layouts.product');
     }
 
+    public function detail($id)
+    {
+        return view('layouts.product', ['productId' => $id]);
+    }
+
 }

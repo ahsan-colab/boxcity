@@ -1,7 +1,7 @@
 @foreach ($products as $product)
     <tr>
-        <td><a class="product-single" href="product/{{$product->productId}}">{{ $product->productId }}</a></td>
-        <td><a class="product-single" href="product/{{$product->productId}}">{{ $product->name }}</a></td>
+        <td><a class="product-single" href="{{ route('product.detail', ['id' => $product->productId]) }}">{{ $product->productId }}</a></td>
+        <td><a class="product-single" href="{{ route('product.detail', ['id' => $product->productId]) }}">{{ $product->name }}</a></td>
         <td>${{ number_format($product->price, 2) }}</td>
         <td class="bulk-price">${{ number_format($product->price * 0.84, 2) }}</td>
         <td class="bulk-price">${{ number_format($product->price * 0.70, 2) }}</td>

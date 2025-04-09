@@ -70,4 +70,12 @@ class CheckoutController extends Controller
         }
     }
 
+    public function thankyou()
+    {
+        return view('layouts.orderthankyou');
+    }
+
 }
+
+
+
