@@ -76,12 +76,15 @@ function loadMoreProducts() {
 
 // Trigger load more on scroll
 $(window).on('scroll', function() {
-    if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
+    var tableBody = $('#product-list');
+    var bottomOfTableBody = tableBody.offset().top + tableBody.height();
+    var bottomOfWindow = $(window).scrollTop() + $(window).height();
+
+    if (bottomOfWindow >= bottomOfTableBody - 100) {
         loadMoreProducts();
     }
 });
 
-// Initial load on page load if necessary (can be skipped if infinite scroll is used right away)
 $(document).ready(function() {
     loadMoreProducts();
 });
