@@ -112,6 +112,21 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+
+        'wordpress' => [
+            'driver'    => 'mysql',
+            'host'      => env('WP_DB_HOST', 'localhost'),
+            'database'  => env('WP_DB_DATABASE', 'boxcity_forms'),
+            'username'  => env('WP_DB_USERNAME', 'root'),
+            'password'  => env('WP_DB_PASSWORD', ''),
+            'charset'   => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_520_ci',
+            'prefix'    => 'g1sonfx_',
+            'strict'    => false,
+            'engine'    => null,
+        ],
+
+
     ],
 
     /*

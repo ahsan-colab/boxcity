@@ -7,6 +7,7 @@ use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\ProductController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/post-contact', [HomeController::class, 'submitContactForm'])->name('submit.contact');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('/product', [ProductController::class, 'index'])->name('product');
 Route::get('/product/{id}', [ProductController::class, 'detail'])->name('product.detail');
