@@ -287,7 +287,7 @@
                     },
                     success: function (response) {
                         console.log("Order placed successfully!", response);
-                        window.location.href = "{{route('checkout.thankyou')}}}";
+                        window.location.href = "{{route('checkout.thankyou')}}";
                         localStorage.removeItem("cart");
                     },
                     error: function (xhr, status, error) {

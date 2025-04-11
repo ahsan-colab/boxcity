@@ -34,8 +34,33 @@ $home_url = env ('HOME_URL');
             <div class="col-md-5 d-none d-md-block">
                 <nav>
                     <ul class="sub-menu d-flex justify-content-start">
-                        <li><a href="<?php echo $site_url?>/b2b-incentives/">Services</a></li>
-                        <li><a href="<?php echo $site_url?>/custom-boxes/">Shop Products</a></li>
+                        <li><a href="javascript:void(0)">Shop Products</a>
+                            <ul class="primary-sub-menu">
+                                <li><a href="<?php echo $site_url?>/gift-supplies/">Gift Supplies</a></li>
+                                <li><a href="<?php echo $site_url?>/bags-and-pouches/">Bags And Pouches</a></li>
+                                <li><a href="<?php echo $site_url?>/corrugated-boxes/">Corrugated Boxes</a></li>
+                                <li><a href="<?php echo $site_url?>/mailing-items/">Mailing Items</a></li>
+                                <li><a href="<?php echo $site_url?>/">Packing Supplies</a></li>
+                                <li><a href="<?php echo $site_url?>/moving-boxes-and-supplies/">Moving Boxes And Supplies</a></li>
+                            </ul>
+
+                        </li>
+
+                        <li><a href="javascript:void(0)">Services</a>
+                            <ul class="primary-sub-menu">
+                                <li><a href="<?php echo $site_url?>/b2b-incentives/">Business Owner Incentives</a></li>
+                                <li><a href="<?php echo $site_url?>/custom-boxes/">Custom Boxes</a></li>
+                                <li><a href="<?php echo $site_url?>/custom-tape/">Custom Tape</a></li>
+                                <li><a href="<?php echo $site_url?>/domestic-shipping/">Domestic Shipping</a></li>
+                                <li><a href="<?php echo $site_url?>/international-shipping/">International Shipping</a></li>
+                                <li><a href="<?php echo $site_url?>/international-freight-forwarding/">International Freight Forwarding</a></li>
+                                <li><a href="<?php echo $site_url?>/ltl-and-tl-shipping/">LTL and TL Shipping</a></li>
+                                <li><a href="<?php echo $site_url?>/pack-and-ship/">Pack and Ship</a></li>
+                                <li><a href="<?php echo $site_url?>/specialized-packing-for-irregular-shapes/">Specialized Packing For Irregular Shapes</a></li>
+                                <li><a href="<?php echo $site_url?>/ups-access-point/">UPS Access Point</a></li>
+                            </ul>
+                        </li>
+
                         <li><a href="<?php echo $site_url?>/custom-tape/">Locations</a></li>
                     </ul>
                 </nav>
@@ -225,6 +250,42 @@ $home_url = env ('HOME_URL');
     .sub-menu li {
         list-style: none;
         margin-bottom: 10px;
+    }
+
+
+
+    li {
+        position: relative; /* Important: this makes the submenu position relative to the parent <li> */
+    }
+
+    .primary-sub-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        padding: 31px 30px 25px 30px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        z-index: 100000000;
+        transition: all 0.3s ease;
+        border-radius: 7px;
+        min-width: 425px;
+    }
+
+    li:hover > .primary-sub-menu {
+        display: block;
+    }
+
+
+    .menu-item-has-children > a::after {
+        content: '';
+        background: url(https://boxcity.com//wp-content/uploads/2025/02/arrow.png) no-repeat;
+        width: 9px;
+        height: 9px;
+        background-size: 100%;
+        display: inline-block;
+        left: 8px;
+        position: relative;
     }
 
 

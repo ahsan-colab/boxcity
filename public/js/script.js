@@ -300,4 +300,21 @@ $(document).ready(function () {
             $('body').removeClass('menu-open');
         }
     });
+
+    $(document).ready(function () {
+        $('li').has('.primary-sub-menu').addClass('menu-item-has-children');
+    });
+
+    $('li').has('.primary-sub-menu').hover(
+
+        function () {
+            // Mouse enter: show submenu
+            $(this).find('.primary-sub-menu').stop(true, true).slideDown(5);
+        },
+        function () {
+            // Mouse leave: hide submenu
+            $(this).find('.primary-sub-menu').stop(true, true).slideUp(5);
+        }
+    );
+
 });
