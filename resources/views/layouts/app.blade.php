@@ -109,6 +109,24 @@ $home_url = env ('HOME_URL');
 </header>
 
 
+<div id="cartDrawer" class="cart-drawer">
+    <div class="cart-header">
+        <h5>Your Cart</h5>
+        <button id="closeCartDrawer" class="close-btn">&times;</button>
+    </div>
+    <div class="cart-body">
+        <table class="table">
+            <tbody id="cart-drawer-list">
+            <!-- Items will be injected here -->
+            </tbody>
+        </table>
+        <a href="{{route('cart')}}" class="popup-cart-btn">View Cart</a>
+    </div>
+</div>
+
+
+
+
 <main>
     @yield('content')
 </main>

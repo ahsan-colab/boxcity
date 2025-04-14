@@ -8,6 +8,7 @@
 
 $site_url = env('SITE_URL');
 $home_url = env ('HOME_URL');
+
 ?>
 
 
@@ -56,7 +57,7 @@ $home_url = env ('HOME_URL');
                             <div class="quantity-container">
                                 <div class="qty-container">
                                     <button class="quantity-btn minus">−</button>
-                                    <input type="text" class="quantity-input" value="0">
+                                    <input type="text" class="quantity-input" value="12">
                                     <button class="quantity-btn plus">+</button>
                                 </div>
                                 <button class="add-btn" data-product-id="" data-product-name="" data-product-image="" data-product-retail-price="" data-product-bulk-price-12="" data-product-bulk-price-50="" data-product-bulk-price-100="">ADD</button>
@@ -129,10 +130,10 @@ $home_url = env ('HOME_URL');
             $('#product-description').html(response.description);
             $('#product-id').text(productId);
             $('#product-name').text(response.name);
-            $('#retail-price').text(response.price);
-            $('#bulk-12').text((response.price * 0.84).toFixed(2));
-            $('#bulk-50').text((response.price * 0.70).toFixed(2));
-            $('#bulk-100').text((response.price * 0.50).toFixed(2));
+            $('#retail-price').text('$' + response.price);
+            $('#bulk-12').text('{{env("CURRENCY_SYMBOL")}}' + (response.price * 0.84).toFixed(2));
+            $('#bulk-50').text('{{env("CURRENCY_SYMBOL")}}' + (response.price * 0.70).toFixed(2));
+            $('#bulk-100').text('{{env("CURRENCY_SYMBOL")}}' + ( response.price * 0.50).toFixed(2));
             $('.add-btn').attr('data-product-id', productId);
             $('.add-btn').attr('data-product-name', response.name);
             $('.add-btn').attr('data-product-image', response.imageUrl);
