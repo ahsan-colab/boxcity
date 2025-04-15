@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="{{ asset('public/js/script.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/2.2.3/jquery.elevatezoom.min.js" integrity="sha512-UH428GPLVbCa8xDVooDWXytY8WASfzVv3kxCvTAFkxD2vPjouf1I3+RJ2QcSckESsb7sI+gv3yhsgw9ZhM7sDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -92,7 +94,7 @@ $home_url = env ('HOME_URL');
 
             <!-- Mobile Menu -->
             <div class="col-12 d-md-none">
-                <div class="mobile-menu" id="mobile-menu" style="display: none;">
+                <div class="mobile-menu" id="mobile-menu">
                     <button class="close-btn" id="close-menu">✕</button>
                     <ul class="mobile-sub-menu">
                         <li><a href="<?php echo $site_url?>/b2b-incentives/">Services</a></li>
@@ -219,7 +221,6 @@ $home_url = env ('HOME_URL');
 
 <style>
 
-    /* Basic mobile styles */
     .hamburger {
         font-size: 28px;
         background: none;
@@ -228,21 +229,22 @@ $home_url = env ('HOME_URL');
         z-index: 1001;
     }
 
-    /* Hide nav by default on small screens */
-    #main-nav {
-        display: none;
-        position: absolute;
-        top: 80px; /* adjust depending on your header height */
-        right: 0;
-        background: #fff;
-        width: 100%;
-        padding: 20px;
-        z-index: 1000;
+    #mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateX(-20px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    #main-nav.open {
-        display: block;
+    #mobile-menu.active {
+        max-height: 1000px;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
     }
+
 
     @media (min-width: 1100px) {
         .hamburger {

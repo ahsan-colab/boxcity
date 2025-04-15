@@ -1588,12 +1588,8 @@ footer form input::placeholder {
 
 
 @media screen and (min-width:1000px) and (max-width:1099px){
-    th, td {
-        padding: 2px !important;
-    }
-
-    .container {
-        max-width: 1300px !important;
+    header {
+        padding: 26px 3px;
     }
 
     header .container-fluid .row {
@@ -1601,93 +1597,234 @@ footer form input::placeholder {
         padding: 0px 0px;
     }
 
-    .menu-btn a:before {
-        right: 222px;
+    header .col-md-2 {
+        justify-content: normal;
     }
 
-    .heading-container h4 {
-        font-family: 'gilroy-mediumuploaded_file';
-        font-size: 19px;
+    [alt="logo"]{
+        width:100%;
     }
 
-    .heading-container h2 {
-        font-family: 'gilroy-mediumuploaded_file';
-        font-size: 48px;
-    }
-
-    .heading-container p {
-        font-family: 'gilroy-mediumuploaded_file';
-        font-size: 19px;
-    }
-
-    .heading-container::before {
-        left: 269px;
-        top: 177px;
-        width: 350px;
-    }
-
-    .heading-container::after {
-        top: 264px;
-        width: 352px;
-        right: -41px;
-        height: 315px;
+    .bulk-orders {
+        padding: 40px 10px 25px 10px;
     }
 
     .bulk-orders h3 {
-        padding: 0px 29px;
+        padding: 0px 0px;
     }
 
-    footer h1 {
-        font-size: 21px !important;
+    .heading-container {
+        padding: 220px 40px 242px 40px;
     }
 
-    footer .footer-detail {
-        background: #F1EEE4;
-        border-radius: 20px;
-        padding: 21px 21px;
-        margin-right: 16px;
+    .heading-container h2 {
+        font-size: 36px;
     }
 
-    .offer {
-        padding: 20px 20px 40px 20px;
+    .heading-container p {
+        font-size: 18px;
     }
 
-    .offer h3 {
-        font-size: 30px;
+    .heading-container h4 {
+        font-size: 19px;
     }
 
     .offer h4 {
-        font-size: 24px;
-        margin-top: 10px;
+        font-size: 22px;
     }
 
-    .offer li {
-        font-size: 15px;
+    .offer a {
+        font-size: 35px;
+    }
+
+    .heading-container::before {
+        top: 975px;
+        left: 64px;
+        width: 267px;
+        height: 297px;
+    }
+
+    .heading-container::after {
+        top: 1497px;
+        width: 265px;
+        right: 62px;
+        height: 265px;
     }
 
 
-    header ul li a {
-        font-size: 15px;
+    .cart-drawer {
+        right: -110%;
     }
 
-    header {
-        padding: 26px 0px;
-        box-shadow: 2px 2px 2px 2px #e0e0e0;
+    .banner {
+        margin-top: 62px;
     }
 
-    header .col-md-2 {
+
+    video {
+        margin-top: 34px;
+    }
+
+
+    .responsive-table,
+    .responsive-table thead,
+    .responsive-table tbody,
+    .responsive-table th,
+    .responsive-table td,
+    .responsive-table tr {
+        display: block;
+        width: 100%;
+    }
+
+    .responsive-table td{
+        display: block !important;
+    }
+
+    .responsive-table thead {
+        display: none;
+    }
+
+    .responsive-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        background: #f9f9f9;
+    }
+
+    .responsive-table td {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: flex-end;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding: 8px 10px;
+        text-align: left;
+        position: relative;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .responsive-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        flex-basis: 50%;
+        color: #333;
+        padding-right: 10px;
+    }
+
+    .responsive-table td:last-child {
+        border-bottom: none;
+    }
+
+    section.quote h2 {
+        font-size: 40px;
+    }
+
+
+    h1 {
+        font-size: 44px !important;
+    }
+
+    .location-details .location-img {
+        width: 100%;
+    }
+    .location-details-img {
+        flex-direction: column-reverse;
+        margin-top: 32px;
+    }
+
+
+
+    footer .footer-detail {
+        margin-right: 0px;
+        margin-bottom: 40px;
+    }
+
+    .footer-detail p {
+        padding-right: 0%;
+        font-size: 19px !important;
+    }
+
+    footer h1 {
+        font-size: 24px !important;
+        margin-top: 32px;
+    }
+
+    footer input[type="email"] {
+        width: 77%;
+    }
+
+    .cart-icon {
+        right: 18px;
+    }
+
+    .location-details {
+        margin-top: 32px;
+    }
+
+    .locations-sec {
+        padding-top: 40px;
+        padding-bottom: 100px;
+    }
+
+    section.testimonials-sec {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    header ul {
+        flex-direction: column;
+    }
+
+    body {
+        position: relative;
+        z-index: 1; /* Make sure the body's stacking context is at the base */
+    }
+
+    .mobile-menu {
+        position: fixed !important;
+        top: 0;
+        left: -100%;
+        width: 87%;
+        height: 100%;
+        background-color: #fff;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        z-index: 2147483647 !important; /* Maximum z-index */
+        transition: left 0.3s ease-in-out;
+    }
+
+    /* When active, it slides in */
+    .mobile-menu.active {
+        left: 0;
     }
 
     .menu-btn a:before {
-        right: 192px;
-        top: 82px;
+        right: 255px;
+        top: 401px;
+    }
+
+
+    #product-image {
+        width: 92%;
+    }
+
+    #single-product {
+        display: none;
+        margin: 72px 0px;
+        flex-direction: column;
+    }
+
+    #product-title {
+        font-size: 28px !important;
+    }
+
+    .quote .row .col-sm-7 {
+        padding-right: 14px;
     }
 }
+
+
+
 
 
 
@@ -1922,6 +2059,10 @@ footer form input::placeholder {
         font-size: 28px !important;
     }
 
+    .quote .row .col-sm-7 {
+        padding-right: 14px;
+    }
+
 }
 
 
@@ -2093,6 +2234,7 @@ footer form input::placeholder {
 
     .cart-icon {
         right: 18px;
+        z-index: 99999999;
     }
 
     .location-details {
@@ -2154,6 +2296,10 @@ footer form input::placeholder {
 
     #product-title {
         font-size: 28px !important;
+    }
+
+    .quote .row .col-sm-7 {
+        padding-right: 14px;
     }
 
 }
@@ -2386,13 +2532,9 @@ footer form input::placeholder {
 
 
 
-
-
-
-
-
-
-
+    .quote .row .col-sm-7 {
+        padding-right: 14px;
+    }
 
 
     .heading-container::before {

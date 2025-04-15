@@ -10,13 +10,17 @@ $site_url = env('SITE_URL');
 $home_url = env ('HOME_URL');
 
 ?>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/2.2.3/jquery.elevatezoom.min.js" integrity="sha512-UH428GPLVbCa8xDVooDWXytY8WASfzVv3kxCvTAFkxD2vPjouf1I3+RJ2QcSckESsb7sI+gv3yhsgw9ZhM7sDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <div class="container">
     <div class="row">
         <div id="single-product">
         <div class="col-md-6">
-            <img id="product-image" src="" alt="Product Image" />
+
+            <div class="img-magnifier-container" style="width: 65%;">
+                <img id="product-image" src=""  alt="Product Image"  data-action="zoom" style="width: 100%;" />
+            </div>
+
         </div>
         <div class="col-md-6">
             <h1 id="product-title"></h1>
@@ -103,6 +107,23 @@ $home_url = env ('HOME_URL');
         font-family: 'gilroy-semibolduploaded_file';
         font-size: 17px;
     }
+
+    #product-image {
+        transition: transform 0.3s ease;
+    }
+
+    #product-image:hover {
+        transform: scale(1.2);
+        cursor: zoom-in;
+    }
+
+    .zoom-wrapper {
+        overflow: hidden;
+        display: inline-block;
+    }
+
+
+
 </style>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -141,7 +162,8 @@ $home_url = env ('HOME_URL');
             $('.add-btn').attr('data-product-bulk-price-12', (response.price * 0.84).toFixed(2));
             $('.add-btn').attr('data-product-bulk-price-50', (response.price * 0.70).toFixed(2));
             $('.add-btn').attr('data-product-bulk-price-100', (response.price * 0.50).toFixed(2));
-
+            $('#product-image').attr('src', response.imageUrl);
+            $('#lightbox-link').attr('href', response.imageUrl);
 
 
         },
@@ -150,6 +172,22 @@ $home_url = env ('HOME_URL');
             console.error("Full Error Response:", xhr.responseText);
             alert("Failed to load product. Please try again.");
         }
+
+
     });
+
+    $(document).ready(function () {
+        $('#product-image').elevateZoom({
+            zoomType: "lens",
+            lensShape: "square",
+            lensSize: 200
+        });
+    });
+
+
+
+
+
+
 </script>
 
