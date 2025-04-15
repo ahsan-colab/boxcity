@@ -33,7 +33,7 @@ $home_url = env ('HOME_URL');
     <div class="container-fluid">
         <div class="row align-items-center justify-content-between">
             <!-- Left Nav -->
-            <div class="col-md-5 d-none d-md-block">
+            <div class="col-md-5 d-none d-lg-block mb-hide">
                 <nav>
                     <ul class="sub-menu d-flex justify-content-start">
                         <li><a href="javascript:void(0)">Shop Products</a>
@@ -78,7 +78,7 @@ $home_url = env ('HOME_URL');
             <!-- Right Nav + Hamburger -->
             <div class="col-md-5 col-6 d-flex justify-content-end align-items-center">
                 <!-- Desktop Right Menu -->
-                <nav class="d-none d-md-block">
+                <nav class="d-none d-lg-block mb-hide">
                     <ul class="sub-menu d-flex justify-content-end">
                         <li><a href="<?php echo $site_url?>/b2b-incentives/">Wholesale / Bulk Orders</a></li>
                         <li><a href="<?php echo $site_url?>/custom-boxes/">Contact</a></li>
@@ -87,18 +87,41 @@ $home_url = env ('HOME_URL');
                 </nav>
 
                 <!-- Hamburger Button for Mobile -->
-                <button class="hamburger d-md-none" id="hamburger-btn">
+                <button class="hamburger d-lg-none mb-show" id="hamburger-btn">
                     ☰
                 </button>
             </div>
 
             <!-- Mobile Menu -->
-            <div class="col-12 d-md-none">
+            <div class="col-12 d-lg-none mb-show">
                 <div class="mobile-menu" id="mobile-menu">
                     <button class="close-btn" id="close-menu">✕</button>
                     <ul class="mobile-sub-menu">
-                        <li><a href="<?php echo $site_url?>/b2b-incentives/">Services</a></li>
-                        <li><a href="<?php echo $site_url?>/custom-boxes/">Shop Products</a></li>
+                        <li><a href="<?php echo $site_url?>/b2b-incentives/">Services</a>
+                            <ul class="primary-sub-menu">
+                                <li><a href="<?php echo $site_url?>/b2b-incentives/">Business Owner Incentives</a></li>
+                                <li><a href="<?php echo $site_url?>/custom-boxes/">Custom Boxes</a></li>
+                                <li><a href="<?php echo $site_url?>/custom-tape/">Custom Tape</a></li>
+                                <li><a href="<?php echo $site_url?>/domestic-shipping/">Domestic Shipping</a></li>
+                                <li><a href="<?php echo $site_url?>/international-shipping/">International Shipping</a></li>
+                                <li><a href="<?php echo $site_url?>/international-freight-forwarding/">International Freight Forwarding</a></li>
+                                <li><a href="<?php echo $site_url?>/ltl-and-tl-shipping/">LTL and TL Shipping</a></li>
+                                <li><a href="<?php echo $site_url?>/pack-and-ship/">Pack and Ship</a></li>
+                                <li><a href="<?php echo $site_url?>/specialized-packing-for-irregular-shapes/">Specialized Packing For Irregular Shapes</a></li>
+                                <li><a href="<?php echo $site_url?>/ups-access-point/">UPS Access Point</a></li>
+                            </ul>
+
+                        </li>
+                        <li><a href="<?php echo $site_url?>/custom-boxes/">Shop Products</a>
+                            <ul class="primary-sub-menu">
+                                <li><a href="<?php echo $site_url?>/gift-supplies/">Gift Supplies</a></li>
+                                <li><a href="<?php echo $site_url?>/bags-and-pouches/">Bags And Pouches</a></li>
+                                <li><a href="<?php echo $site_url?>/corrugated-boxes/">Corrugated Boxes</a></li>
+                                <li><a href="<?php echo $site_url?>/mailing-items/">Mailing Items</a></li>
+                                <li><a href="<?php echo $site_url?>/">Packing Supplies</a></li>
+                                <li><a href="<?php echo $site_url?>/moving-boxes-and-supplies/">Moving Boxes And Supplies</a></li>
+                            </ul>
+                        </li>
                         <li><a href="<?php echo $site_url?>/custom-tape/">Locations</a></li>
                         <li><a href="<?php echo $site_url?>/b2b-incentives/">Wholesale / Bulk Orders</a></li>
                         <li><a href="<?php echo $site_url?>/custom-boxes/">Contact</a></li>
@@ -160,7 +183,7 @@ $home_url = env ('HOME_URL');
                     <!--		</h1>-->
                     <!--		<ul>-->
                     <!--			<li><a href="javascript:void(0)">About Us</a></li>-->
-                    <!--			<li><a href="<?php echo $site_url?>/custom-boxes/">Custom Boxes</a></li>-->
+                    <!--			<li><a href="/custom-boxes/">Custom Boxes</a></li>-->
                     <!--			<li><a href="javascript:void(0)">Blog</a></li>-->
                     <!--			<li><a href="javascript:void(0)">Partners</a></li>-->
                     <!--			<li><a href="javascript:void(0)">Affiliate Program</a></li>-->
