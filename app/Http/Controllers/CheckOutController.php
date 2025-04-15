@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\EcwidApiClient;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -14,6 +16,9 @@ class CheckoutController extends Controller
         return view('layouts.checkout');
     }
 
+    /**
+     * @throws GuzzleException
+     */
     public function processCheckout(Request $request)
     {
         $request->validate([
@@ -53,14 +58,8 @@ class CheckoutController extends Controller
             "orderComments" => "Order placed via Laravel backend"
         ];
 
-        $storeId = "109333282";
-        $accessToken = env('secret_Asd3RgYgyNkGaKhN3hke67RHyAkigTXG');
-        $apiUrl = "https://app.ecwid.com/api/v3/{$storeId}/orders";
-
-        $response = \Http::withHeaders([
-            'Content-Type' => 'application/json',
-            'Authorization' => "Bearer $accessToken"
-        ])->post($apiUrl, $orderData);
+        $ecwidClient = new EcwidApiClient();
+        $response = $ecwidClient->postOrder($orderData);
 
         if ($response->successful()) {
             Session::forget('cart');
