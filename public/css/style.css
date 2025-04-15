@@ -2643,3 +2643,94 @@ body.menu-open::before {
     background: rgba(0, 0, 0, 0.3);
     z-index: 9990;
 }
+
+
+
+
+
+.hamburger {
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(-20px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#mobile-menu.active {
+    max-height: 1000px;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+
+@media (min-width: 1100px) {
+    .hamburger {
+        display: none;
+    }
+
+    #main-nav {
+        display: block !important;
+        position: static;
+        background: transparent;
+        width: auto;
+        padding: 0;
+    }
+
+    .sub-menu {
+        flex-direction: row;
+        gap: 51px;
+        list-style: none;
+        justify-content: center !important;
+    }
+}
+
+.sub-menu li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+
+
+li {
+    position: relative; /* Important: this makes the submenu position relative to the parent <li> */
+}
+
+.primary-sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    padding: 31px 30px 25px 30px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100000000;
+    transition: all 0.3s ease;
+    border-radius: 7px;
+    min-width: 425px;
+}
+
+li:hover > .primary-sub-menu {
+    display: block;
+}
+
+
+.menu-item-has-children > a::after {
+    content: '';
+    background: url(https://boxcity.com//wp-content/uploads/2025/02/arrow.png) no-repeat;
+    width: 9px;
+    height: 9px;
+    background-size: 100%;
+    display: inline-block;
+    left: 8px;
+    position: relative;
+}

@@ -4,12 +4,6 @@
 
 @section('content')
 
-    <?php
-
-    $site_url = env('SITE_URL');
-    $home_url = env ('HOME_URL');
-    ?>
-
     <section class="products-container">
         <div class="container">
             <div class="row">
@@ -17,7 +11,8 @@
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     Length
                                 </button>
                             </h2>
@@ -35,7 +30,8 @@
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     Strength
                                 </button>
                             </h2>
@@ -73,7 +69,8 @@
                         </div>
                     </div>
                     <div class="bulk-orders">
-                        <h3>For bigger bulk orders exceeding 100 boxes, reach out to our partnerships team at <a href="mailto:partnerships@boxcity.com">partnerships@boxcity.com</a></h3>
+                        <h3>For bigger bulk orders exceeding 100 boxes, reach out to our partnerships team at <a
+                                href="mailto:partnerships@boxcity.com">partnerships@boxcity.com</a></h3>
                     </div>
                     <div class="table-responsive">
                         <table id="product-table" class="responsive-table">
@@ -107,7 +104,15 @@
         </div>
     </section>
     <a href="{{route('cart')}}">
-        <div class="cart-icon"><svg class="icon-default" width="36" height="30" viewBox="0 0 36 30" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M7 7h22v18a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4V7z" stroke="currentColor" stroke-width="2"></path><path d="M13 10V6c0-2.993 2.009-5 5-5s5 2.026 5 5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+        <div class="cart-icon">
+            <svg class="icon-default" width="36" height="30" viewBox="0 0 36 30" xmlns="http://www.w3.org/2000/svg">
+                <g fill="none" fill-rule="evenodd">
+                    <path d="M7 7h22v18a4 4 0 0 1-4 4H11a4 4 0 0 1-4-4V7z" stroke="currentColor"
+                          stroke-width="2"></path>
+                    <path d="M13 10V6c0-2.993 2.009-5 5-5s5 2.026 5 5v4" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </svg>
             <div class="cart-counter">0</div>
         </div>
     </a>
@@ -138,53 +143,80 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-6">
-                                    <span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40"
-                                                                                                       maxlength="400"
-                                                                                                       class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                                                                                                       aria-required="true" aria-invalid="false" placeholder="Full Name" value=""
-                                                                                                       type="text" name="your-name"></span>
+                            <span class="wpcf7-form-control-wrap" data-name="your-name">
+                                <input size="40"
+                                       maxlength="400"
+                                       class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                                       aria-required="true"
+                                       aria-invalid="false"
+                                       placeholder="Full Name"
+                                       value=""
+                                       type="text"
+                                       name="your-name">
+                            </span>
 
                             </div>
                             <div class="col-sm-6">
-                                    <span class="wpcf7-form-control-wrap" data-name="your-company"><input size="40"
-                                                                                                          maxlength="400"
-                                                                                                          class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                                                                                                          aria-required="true" aria-invalid="false"
-                                                                                                          placeholder="Company Name (Optional)" value="" type="text"
-                                                                                                          name="your-company"></span>
+                            <span class="wpcf7-form-control-wrap" data-name="your-company">
+                                <input size="40"
+                                       maxlength="400"
+                                       class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                                       aria-required="true"
+                                       aria-invalid="false"
+                                       placeholder="Company Name (Optional)"
+                                       value=""
+                                       type="text"
+                                       name="your-company">
+                            </span>
+                            </div>
+                            <div class="col-sm-6">
+                            <span class="wpcf7-form-control-wrap" data-name="your-email">
+                                <input size="40"
+                                       maxlength="400"
+                                       class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
+                                       aria-required="true"
+                                       aria-invalid="false"
+                                       placeholder="Email"
+                                       value=""
+                                       type="email"
+                                       name="your-email">
+                            </span>
 
                             </div>
                             <div class="col-sm-6">
-                                    <span class="wpcf7-form-control-wrap" data-name="your-email"><input size="40"
-                                                                                                        maxlength="400"
-                                                                                                        class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email"
-                                                                                                        aria-required="true" aria-invalid="false" placeholder="Email" value=""
-                                                                                                        type="email" name="your-email"></span>
-
-                            </div>
-                            <div class="col-sm-6">
-                                    <span class="wpcf7-form-control-wrap" data-name="your-phone"><input size="40"
-                                                                                                        maxlength="400"
-                                                                                                        class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                                                                                                        aria-required="true" aria-invalid="false" placeholder="Phone Number"
-                                                                                                        value="" type="text" name="your-phone"></span>
+                            <span class="wpcf7-form-control-wrap" data-name="your-phone">
+                                <input size="40"
+                                       maxlength="400"
+                                       class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                                       aria-required="true"
+                                       aria-invalid="false"
+                                       placeholder="Phone Number"
+                                       value=""
+                                       type="text"
+                                       name="your-phone">
+                            </span>
 
                             </div>
                         </div>
                         <span class="wpcf7-form-control-wrap" data-name="select-service"><select
                                 class="wpcf7-form-control wpcf7-select" aria-invalid="false" name="select-service">
-                                        <option value="What Services Would You Want To Inquire About?">What Services Would
-                                            You Want To Inquire About?</option>
-                                        <option value="Moving Supplies in Van Nuys">Moving Supplies in Van Nuys</option>
-                                        <option value="Corrugated Boxes in Van Nuys">Corrugated Boxes in Van Nuys</option>
-                                        <option value="Packing Peanuts in Van Nuys">Packing Peanuts in Van Nuys</option>
-                                        <option value="mailing Tubes in Van Nuys">mailing Tubes in Van Nuys</option>
-                                        <option value="bubble Wrap in Van Nuys">bubble Wrap in Van Nuys</option>
-                                        <option value="packing Supplies in Van Nuys">packing Supplies in Van Nuys</option>
-                                    </select></span><br>
+                                <option value="What Services Would You Want To Inquire About?">What Services Would
+                                    You Want To Inquire About?</option>
+                                <option value="Moving Supplies in Van Nuys">Moving Supplies in Van Nuys</option>
+                                <option
+                                    value="Corrugated Boxes in Van Nuys">Corrugated Boxes in Van Nuys</option>
+                                <option value="Packing Peanuts in Van Nuys">Packing Peanuts in Van Nuys</option>
+                                <option value="mailing Tubes in Van Nuys">mailing Tubes in Van Nuys</option>
+                                <option value="bubble Wrap in Van Nuys">bubble Wrap in Van Nuys</option>
+                                <option
+                                    value="packing Supplies in Van Nuys">packing Supplies in Van Nuys</option>
+                            </select></span><br>
                         <span class="wpcf7-form-control-wrap" data-name="your-message"><textarea cols="40" rows="10"
-                                                                                                 maxlength="2000" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false"
-                                                                                                 placeholder="Message" name="your-message"></textarea></span>
+                                                                                                 maxlength="2000"
+                                                                                                 class="wpcf7-form-control wpcf7-textarea"
+                                                                                                 aria-invalid="false"
+                                                                                                 placeholder="Message"
+                                                                                                 name="your-message"></textarea></span>
 
                         <div class="mobile-center">
                             <input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit"
@@ -231,7 +263,8 @@
                                 </div>
                                 <div class="content-box">
                                     <p>
-                                        Workers very friendly and helpful. Variety of products. Free parking in back. FedEx pick-up.
+                                        Workers very friendly and helpful. Variety of products. Free parking in back.
+                                        FedEx pick-up.
                                     </p>
                                 </div>
                                 <div class="detail-bedge-box">
@@ -271,7 +304,8 @@
                                 </div>
                                 <div class="content-box">
                                     <p>
-                                        Variety of boxes and great customer service!!! 🫶 Customer parking available behind the building.
+                                        Variety of boxes and great customer service!!! 🫶 Customer parking available
+                                        behind the building.
                                     </p>
                                 </div>
                                 <div class="detail-bedge-box">
@@ -338,7 +372,8 @@
                                 <div class="location-details">
                                     <h2>Van Nuys, CA</h2>
                                     <p><span>Address:</span><br>16113 Sherman Way, Van Nuys, CA 91406</p>
-                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
+                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00
+                                        AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
                                     <p><span>Contact Info:</span></p>
                                     <a href="tel:8189388327">
                                         <p class="number">818-938-8327</p>
@@ -352,7 +387,10 @@
                                 </div>
                             </div>
                             <div class="location-map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6599.685108490089!2d-118.48429!3d34.201499!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c297582574910f%3A0xa211d65f8f346cd7!2s16113%20Sherman%20Way%2C%20Van%20Nuys%2C%20CA%2091406!5e0!3m2!1sen!2sus!4v1736975505697!5m2!1sen!2sus" width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6599.685108490089!2d-118.48429!3d34.201499!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c297582574910f%3A0xa211d65f8f346cd7!2s16113%20Sherman%20Way%2C%20Van%20Nuys%2C%20CA%2091406!5e0!3m2!1sen!2sus!4v1736975505697!5m2!1sen!2sus"
+                                    width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                         <div class="location-info" id="north-hollywood">
@@ -360,7 +398,8 @@
                                 <div class="location-details">
                                     <h2>North Hollywood, CA</h2>
                                     <p><span>Address:</span><br>12800 Victory Blvd North Hollywood, CA 91606</p>
-                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
+                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00
+                                        AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
                                     <p><span>Contact Info:</span></p>
                                     <a href="tel:8189381936">
                                         <p class="number">818-938-1936</p>
@@ -374,7 +413,10 @@
                                 </div>
                             </div>
                             <div class="location-map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13986.800034444543!2d-118.4220051493121!3d34.18609557420965!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29715aa9f2bed%3A0x7bbd18b56afdfe38!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973847529!5m2!1sen!2sus" width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13986.800034444543!2d-118.4220051493121!3d34.18609557420965!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29715aa9f2bed%3A0x7bbd18b56afdfe38!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973847529!5m2!1sen!2sus"
+                                    width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                         <div class="location-info" id="west-la">
@@ -382,7 +424,8 @@
                                 <div class="location-details">
                                     <h2>West Los Angeles, CA</h2>
                                     <p><span>Address:</span><br>2056 Westwood Blvd Los Angeles, CA 90025</p>
-                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
+                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00
+                                        AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
                                     <p><span>Contact Info:</span></p>
                                     <a href="tel:3105043812">
                                         <p class="number">310-504-3812</p>
@@ -396,7 +439,10 @@
                                 </div>
                             </div>
                             <div class="location-map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d41979.422198360546!2d-118.47558681377659!3d34.05227422461479!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bb99572d9987%3A0xbea3e7dedc804a21!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973739185!5m2!1sen!2sus" width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d41979.422198360546!2d-118.47558681377659!3d34.05227422461479!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bb99572d9987%3A0xbea3e7dedc804a21!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973739185!5m2!1sen!2sus"
+                                    width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                         <div class="location-info" id="valencia">
@@ -404,7 +450,8 @@
                                 <div class="location-details">
                                     <h2>Valencia, CA</h2>
                                     <p><span>Address:</span><br>23750 Lyons Ave Valencia, CA 9132</p>
-                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
+                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00
+                                        AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
                                     <p><span>Contact Info:</span></p>
                                     <a href="tel:6163104335">
                                         <p class="number">616-310-4335</p>
@@ -418,7 +465,10 @@
                                 </div>
                             </div>
                             <div class="location-map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6585.789506720767!2d-118.550695!3d34.378597!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c28694a9cb1efd%3A0x5d82ed3da618d718!2s23750%20Lyons%20Ave%2C%20Newhall%2C%20CA%2091321!5e0!3m2!1sen!2sus!4v1736976449105!5m2!1sen!2sus" width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6585.789506720767!2d-118.550695!3d34.378597!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c28694a9cb1efd%3A0x5d82ed3da618d718!2s23750%20Lyons%20Ave%2C%20Newhall%2C%20CA%2091321!5e0!3m2!1sen!2sus!4v1736976449105!5m2!1sen!2sus"
+                                    width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                         <div class="location-info" id="pasadena">
@@ -426,7 +476,8 @@
                                 <div class="location-details">
                                     <h2>Pasadena, CA</h2>
                                     <p><span>Address:</span><br>1230 E Colorado Blvd Pasadena, CA 91106</p>
-                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
+                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00
+                                        AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
                                     <p><span>Contact Info:</span></p>
                                     <a href="tel:6266188607">
                                         <p class="number">626-618-8607</p>
@@ -440,7 +491,10 @@
                                 </div>
                             </div>
                             <div class="location-map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d40745.22874419687!2d-118.14017942344513!3d34.133509165319786!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c35a6433cf7d%3A0x3981e2f9081936d7!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973648810!5m2!1sen!2sus" width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d40745.22874419687!2d-118.14017942344513!3d34.133509165319786!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c35a6433cf7d%3A0x3981e2f9081936d7!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973648810!5m2!1sen!2sus"
+                                    width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                         <div class="location-info" id="marina-del-rey">
@@ -448,7 +502,8 @@
                                 <div class="location-details">
                                     <h2>Marina Del Rey, CA</h2>
                                     <p><span>Address:</span><br>4051 Lincoln Blvd Marina Del Rey, CA 90292</p>
-                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
+                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00
+                                        AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
                                     <p><span>Contact Info:</span></p>
                                     <a href="tel:3105043907">
                                         <p class="number">310-504-3907</p>
@@ -462,7 +517,10 @@
                                 </div>
                             </div>
                             <div class="location-map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13232.72191675709!2d-118.45519996900559!3d33.98789774319579!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2ba863d4f7119%3A0xbfe5d23f222fbaba!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973566040!5m2!1sen!2sus" width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13232.72191675709!2d-118.45519996900559!3d33.98789774319579!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2ba863d4f7119%3A0xbfe5d23f222fbaba!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973566040!5m2!1sen!2sus"
+                                    width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                         <div class="location-info" id="canoga-park">
@@ -470,7 +528,8 @@
                                 <div class="location-details">
                                     <h2>Canoga Park, CA</h2>
                                     <p><span>Address:</span><br>7008 Topanga Canyon Blvd Canoga Park, CA 91303</p>
-                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
+                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00
+                                        AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
                                     <p><span>Contact Info:</span></p>
                                     <a href="tel:8188044069">
                                         <p class="number">818-804-4069</p>
@@ -484,15 +543,20 @@
                                 </div>
                             </div>
                             <div class="location-map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6599.960237051793!2d-118.60797253155526!3d34.19798438844048!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29c3e61249923%3A0x759170cb3cb66118!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973493138!5m2!1sen!2sus" width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6599.960237051793!2d-118.60797253155526!3d34.19798438844048!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29c3e61249923%3A0x759170cb3cb66118!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973493138!5m2!1sen!2sus"
+                                    width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                         <div class="location-info" id="glendale">
                             <div class="location-details-img">
                                 <div class="location-details">
                                     <h2>Glendale, CA</h2>
-                                    <p><span>Address:</span><br><a href="https://maps.app.goo.gl/GiGwsvZFyAw3u6rR8">456 W Broadway, Glendale, CA, 91204</a></p>
-                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
+                                    <p><span>Address:</span><br><a href="https://maps.app.goo.gl/GiGwsvZFyAw3u6rR8">456
+                                            W Broadway, Glendale, CA, 91204</a></p>
+                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00
+                                        AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
                                     <p><span>Contact Info:</span></p>
                                     <a href="tel:8188044122">
                                         <p class="number">818-804-4122</p>
@@ -506,15 +570,20 @@
                                 </div>
                             </div>
                             <div class="location-map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1651.0079096823806!2d-118.26504053050958!3d34.14593739613534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29752b796dabf%3A0xd4c75b75663f04dd!2sBox%20City!5e0!3m2!1sen!2s!4v1736973427237!5m2!1sen!2s" width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1651.0079096823806!2d-118.26504053050958!3d34.14593739613534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29752b796dabf%3A0xd4c75b75663f04dd!2sBox%20City!5e0!3m2!1sen!2s!4v1736973427237!5m2!1sen!2s"
+                                    width="100%" height="357" style="border:0; border-radius:20px;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                         <div class="location-info" id="azusa">
                             <div class="location-details-img">
                                 <div class="location-details">
                                     <h2>Azusa, CA</h2>
-                                    <p><span>Address:</span><br><a href="https://maps.app.goo.gl/5WYnCwEubG9izXfg9">850 W Foothill Blvd Unit 1 & 35 Azusa, CA 91702</a></p>
-                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
+                                    <p><span>Address:</span><br><a href="https://maps.app.goo.gl/5WYnCwEubG9izXfg9">850
+                                            W Foothill Blvd Unit 1 & 35 Azusa, CA 91702</a></p>
+                                    <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00
+                                        AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
                                     <p><span>Contact Info:</span></p>
                                     <a href="tel:6267210331">
                                         <p class="number">626-721-0331</p>
@@ -528,7 +597,10 @@
                                 </div>
                             </div>
                             <div class="location-map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3302.5181549683266!2d-117.9177722!3d34.1330834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c3278c1f1fd1e9%3A0x4d813a96147bf201!2s850%20W%20Foothill%20Blvd%2C%20Azusa%2C%20CA%2091702%2C%20USA!5e0!3m2!1sen!2s!4v1739806970257!5m2!1sen!2s" width="100%" height="357" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3302.5181549683266!2d-117.9177722!3d34.1330834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c3278c1f1fd1e9%3A0x4d813a96147bf201!2s850%20W%20Foothill%20Blvd%2C%20Azusa%2C%20CA%2091702%2C%20USA!5e0!3m2!1sen!2s!4v1739806970257!5m2!1sen!2s"
+                                    width="100%" height="357" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>
