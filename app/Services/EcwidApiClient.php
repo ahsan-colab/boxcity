@@ -85,4 +85,27 @@ class EcwidApiClient
 
         return json_decode($response->getBody()->getContents(), true);
     }
+
+    /**
+     * Post an order to the Ecwid API
+     *
+     * @param array $orderData
+     * @return array
+     * @throws GuzzleException
+     */
+    public function postOrder(array $orderData): array
+    {
+        $url = $this->baseUrl . '/orders';
+
+        $response = $this->client->request('POST', $url, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $this->accessToken,
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
+            ],
+            'json' => $orderData,
+        ]);
+
+        return json_decode($response->getBody()->getContents(), true);
+    }
 }

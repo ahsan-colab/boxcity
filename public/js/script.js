@@ -22,6 +22,8 @@ jQuery(document).ready(function($) {
       });
 });
 
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 document.addEventListener('DOMContentLoaded', function () {
     const locationItems = document.querySelectorAll('.list-group-item');
     const locationInfos = document.querySelectorAll('.location-info');
@@ -74,7 +76,7 @@ function loadMoreProducts() {
     });
 }
 
-// Trigger load more on scroll
+
 $(window).on('scroll', function() {
     var tableBody = $('#product-list');
     var bottomOfTableBody = tableBody.offset().top + tableBody.height();
@@ -89,17 +91,85 @@ $(document).ready(function() {
     loadMoreProducts();
 });
 
+function updateCartPage() {
+    let $cartPageList = $("#cart-page-list");
+    let cart = JSON.parse(localStorage.getItem("cart")) || []; // ← This was missing
+
+    if ($cartPageList.length) {
+        $cartPageList.empty();
+
+        if (cart.length === 0) {
+            $cartPageList.append("<tr><td colspan='3'>Cart is empty</td></tr>");
+        } else {
+            cart.forEach(item => {
+                $cartPageList.append(`
+                    <tr>
+                        <td>${item.productId}</td>
+                        <td>${item.product}</td>
+                        <td>
+                            <div class="quantity-container">
+                            <div class="qty-container">
+                                <button class="quantity-btn minus" data-product="${item.product}">−</button>
+                                <input type="text" class="cart-quantity text-center" data-product="${item.product}" value="${item.quantity}" min="1" style="width: 40px;">
+                                <button class="quantity-btn plus" data-product="${item.product}">+</button>
+                            </div>
+                            </div>
+                        </td>
+                        <td>$${item.price}</td>
+                        <td class="cart-price total-unit">$${(item.price * item.quantity).toFixed(2)}</td>
+                        <td>
+                            <button class="remove-item btn btn-danger btn-sm" data-product="${item.product}">Remove</button>
+                        </td>
+                    </tr>
+                `);
+            });
+        }
+    }
+}
+
+
+function updateCartUI() {
+    let $cartList = $("#cart-list");
+    let $cartCounter = $(".cart-counter");
+
+    // ✅ Get latest cart from localStorage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    $cartList.empty();
+    let totalItems = 0;
+
+    if (cart.length === 0) {
+        $cartList.append("<li>Cart is empty</li>");
+        $cartCounter.hide(); // Hide counter if empty
+    } else {
+        cart.forEach(item => {
+            $cartList.append(`
+                <li>${item.product} - ${item.quantity}
+                    <button class="remove-item" data-product="${item.product}">❌</button>
+                </li>
+            `);
+            totalItems += item.quantity;
+        });
+
+        $cartCounter.text(totalItems).show(); // Update and show counter
+    }
+}
+
+
+
+
 $(document).ready(function () {
     $(document).on("click", ".quantity-btn", function () {
         let $wrapper = $(this).closest(".quantity-container");
         let $input = $wrapper.find(".quantity-input");
         let value = Number($input.val()) || 1; // Use Number() to avoid skipping numbers
-        console.log(value);
         if ($(this).hasClass("plus")) {
             $input.val(value + 1);
         } else if ($(this).hasClass("minus")) {
             $input.val(Math.max(1, value - 1)); // Prevents going below 1
         }
+
+        updateCartPage();
     });
 
     // Prevent manual entry of negative or invalid values
@@ -112,6 +182,7 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
+
     let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
     updateCartUI();
     updateCartPage();
@@ -144,76 +215,46 @@ $(document).ready(function () {
             finalPrice = price;
         }
 
-        // Convert price to float to avoid issues with string values
         finalPrice = finalPrice ? parseFloat(finalPrice) : 0;
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
         if (quantity > 0) {
             let existingItem = cart.find(item => item.product === productName);
 
             if (existingItem) {
                 existingItem.quantity += quantity;
-                existingItem.price = finalPrice; // Update price if quantity changes
+                existingItem.price = finalPrice; // Optional: Only update if price should change
             } else {
-                cart.push({ product: productName, quantity: quantity, price: finalPrice, priceBulkOne: priceBulkOne, priceBulkTwo: priceBulkTwo, priceBulkThree: priceBulkThree, retailPrice : price, productThumb: productThumb, productId: productId});
+                cart.push({
+                    product: productName,
+                    quantity: quantity,
+                    price: finalPrice,
+                    priceBulkOne: priceBulkOne,
+                    priceBulkTwo: priceBulkTwo,
+                    priceBulkThree: priceBulkThree,
+                    retailPrice: price,
+                    productThumb: productThumb,
+                    productId: productId
+                });
             }
 
             localStorage.setItem("cart", JSON.stringify(cart));
             updateCartUI();
             updateCartPage();
+            updateCartDrawer();
+            openCartDrawer();
         } else {
             alert("Quantity must be at least 1");
         }
     });
 
 
-    // Update Cart UI (Header & Sidebar)
-    function updateCartUI() {
-        let $cartList = $("#cart-list");
-        let $cartCounter = $(".cart-counter");
-        $cartList.empty();
-        let totalItems = 0;
 
-        if (cart.length === 0) {
-            $cartList.append("<li>Cart is empty</li>");
-            $cartCounter.hide(); // Hide counter if empty
-        } else {
-            cart.forEach(item => {
-                $cartList.append(`
-                    <li>${item.product} - ${item.quantity}
-                        <button class="remove-item" data-product="${item.product}">❌</button>
-                    </li>
-                `);
-                totalItems += item.quantity;
-            });
 
-            $cartCounter.text(totalItems).show(); // Update and show counter
-        }
-    }
 
-    // Update Cart Page (cart.blade.php)
-    function updateCartPage() {
-        let $cartPageList = $("#cart-page-list");
-        if ($cartPageList.length) { // Only run if the cart page exists
-            $cartPageList.empty();
-            if (cart.length === 0) {
-                $cartPageList.append("<tr><td colspan='3'>Cart is empty</td></tr>");
-            } else {
-                cart.forEach(item => {
-                    $cartPageList.append(`
-                        <tr>
-                            <td>${item.product}</td>
-                            <td>
-                                <input type="number" class="cart-quantity" data-product="${item.product}" value="${item.quantity}" min="1">
-                            </td>
-                            <td>
-                                <button class="remove-item btn btn-danger btn-sm" data-product="${item.product}">❌ Remove</button>
-                            </td>
-                        </tr>
-                    `);
-                });
-            }
-        }
-    }
+
+
+
 
     // Remove Item from Cart (For Both Sidebar & Cart Page)
     $(document).on("click", ".remove-item", function () {
@@ -244,13 +285,23 @@ $(document).ready(function () {
         updateCartUI();
     });
 
+
+    function runCartUpdate() {
+        updateCartUI();
+    }
+
+    window.addEventListener('load', runCartUpdate);
+    window.addEventListener('pageshow', runCartUpdate);
+
+
+
+
     // Clear Cart
     $("#clear-cart").on("click", function () {
         sessionStorage.removeItem("cart");
         cart = [];
         updateCartUI();
         updateCartPage();
-        alert("Cart cleared!");
     });
 
     // Reset cart counter when tab is closed
@@ -300,4 +351,73 @@ $(document).ready(function () {
             $('body').removeClass('menu-open');
         }
     });
+
+    $(document).ready(function () {
+        $('li').has('.primary-sub-menu').addClass('menu-item-has-children');
+    });
+
+    $('li').has('.primary-sub-menu').hover(
+
+        function () {
+            // Mouse enter: show submenu
+            $(this).find('.primary-sub-menu').stop(true, true).slideDown(5);
+        },
+        function () {
+            // Mouse leave: hide submenu
+            $(this).find('.primary-sub-menu').stop(true, true).slideUp(5);
+        }
+    );
+
+});
+
+
+
+
+function updateCartDrawer() {
+    let $cartDrawerList = $("#cart-drawer-list");
+    $cartDrawerList.empty();
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+        $cartDrawerList.append("<tr><td colspan='3'>Cart is empty</td></tr>");
+    } else {
+        cart.forEach(item => {
+            $cartDrawerList.append(`
+                <tr>
+                    <td style="width: 60px;">
+                        <img src="${item.productThumb}" alt="${item.product}" style="width: 50px; height: 50px; object-fit: cover;">
+                    </td>
+                    <td>
+                        <strong>${item.product}</strong><br>
+                        <small>Qty: ${item.quantity}</small><br>
+                        <small>Price: $${item.price.toFixed(2)}</small>
+                    </td>
+
+                </tr>
+            `);
+        });
+    }
+}
+
+
+// Open drawer
+function openCartDrawer() {
+    $("#cartDrawer").addClass("active");
+    $("#cartBackdrop").addClass("active");
+    updateCartDrawer();
+
+    // Auto close after 10 seconds (10,000 milliseconds)
+    setTimeout(() => {
+        closeCartDrawer();
+    }, 2500);
+}
+
+// Close drawer
+function closeCartDrawer() {
+    $("#cartDrawer").removeClass("active");
+    $("#cartBackdrop").removeClass("active");
+}
+
+$(document).on("click", "#closeCartDrawer, #cartBackdrop", function() {
+    closeCartDrawer();
 });

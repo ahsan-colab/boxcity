@@ -9,10 +9,11 @@
         <table class="table">
             <thead>
             <tr>
-                <th></th>
+                <th>Product ID</th>
                 <th>Product Name</th>
                 <th>Quantity</th>
-                <th>Price</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -22,7 +23,7 @@
         </table>
         <div class="cart-total-container">
         <button id="clear-cart" class="btn btn-danger">Clear Cart</button>
-            <h3 class="cart-total">Total Price :</h3>
+            <h3 class="cart-total">Sub Total :</h3>
         </div>
         <div class="proceed-container">
         <button id="proceed-to-checkout" class="btn btn-danger">Proceed To Checkout</button>
@@ -45,19 +46,19 @@
                         console.log("Cart Item:", item);
                         $cartPageList.append(`
                     <tr>
-                        <td><img src="${item.productThumb}" class="product-thumb"></td>
-                        <td style="display: none;">${item.productId}</td>
-                        <td>${item.product}</td>
+                        <td ><a href="http://localhost/boxcity/product/${item.productId}" target="_blank">${item.productId}</a></td>
+                        <td><a href="http://localhost/boxcity/product/${item.productId}" target="_blank">${item.product}</a></td>
                         <td>
                             <div class="quantity-container">
                             <div class="qty-container">
-                                <button class="quantity-btn minus btn btn-sm btn-secondary" data-product="${item.product}">−</button>
+                                <button class="quantity-btn minus" data-product="${item.product}">−</button>
                                 <input type="text" class="cart-quantity text-center" data-product="${item.product}" value="${item.quantity}" min="1" style="width: 40px;">
-                                <button class="quantity-btn plus btn btn-sm btn-secondary" data-product="${item.product}">+</button>
+                                <button class="quantity-btn plus" data-product="${item.product}">+</button>
                             </div>
                             </div>
                         </td>
                         <td class="cart-price">$${item.price}</td>
+                        <td class="cart-price total-unit">$${(item.price * item.quantity).toFixed(2)}</td>
                         <td>
                             <button class="remove-item btn btn-sm btn-danger" data-product="${item.product}">Remove</button>
                         </td>
@@ -82,24 +83,39 @@
                 });
             }
 
+            function updateCartTotal() {
+                let total = 0;
+
+                $(".total-unit").each(function () {
+                    let priceText = $(this).text().replace("$", "").trim()
+                    console.log(priceText);
+                    let price = parseFloat(priceText) || 0;
+                    total += price;
+                });
+
+                $(".cart-total").text(`Sub Total : $${total.toFixed(2)}`);
+            }
+
+
             $(document).on("click", ".quantity-btn", function () {
-                let $row = $(this).closest("tr"); // Get the closest row
+                let $row = $(this).closest("tr");
                 let productName = $(this).data("product");
-                let $input = $row.find(".cart-quantity"); // Get input in the same row
+                let $input = $row.find(".cart-quantity");
                 let value = parseInt($input.val());
 
                 if ($(this).hasClass("plus")) {
                     $input.val(value + 1);
                 } else if ($(this).hasClass("minus")) {
-                    $input.val(Math.max(1, value - 1)); // Prevent going below 1
+                    $input.val(Math.max(1, value - 1));
                 }
 
                 let newQuantity = parseInt($input.val());
+                updateCartQuantity(productName, newQuantity, $row);
 
-                updateCartQuantity(productName, newQuantity, $row); // Pass row for updating
             });
 
-// Handle manual quantity input change
+
+
             $(document).on("change", ".cart-quantity", function () {
                 let $row = $(this).closest("tr"); // Get the closest row
                 let productName = $(this).data("product");
@@ -121,13 +137,11 @@
                 if (item) {
                     item.quantity = newQuantity;
 
-                    // Ensure all price values exist
                     let retailPrice = parseFloat(item.retailPrice) || 0;
                     let priceBulkOne = parseFloat(item.priceBulkOne) || retailPrice;
                     let priceBulkTwo = parseFloat(item.priceBulkTwo) || priceBulkOne;
                     let priceBulkThree = parseFloat(item.priceBulkThree) || priceBulkTwo;
 
-                    // Apply bulk pricing based on quantity
                     if (newQuantity >= 100) {
                         item.price = priceBulkThree;
                     } else if (newQuantity >= 50) {
@@ -135,20 +149,31 @@
                     } else if (newQuantity >= 12) {
                         item.price = priceBulkOne;
                     } else {
-                        item.price = retailPrice; // Default price for 1-11 quantity
+                        item.price = retailPrice;
                     }
 
-                    // Save updated cart to localStorage
+                    // Save to localStorage
                     localStorage.setItem("cart", JSON.stringify(cart));
 
-                    // Ensure price is a valid number before updating UI
-                    let displayPrice = parseFloat(item.price) || 0;
+                    // 🔁 Recalculate and update all total-units
+                    $(".cart-quantity").each(function () {
+                        let product = $(this).data("product");
+                        let qty = parseInt($(this).val());
+                        let row = $(this).closest("tr");
 
-                    // Update only the closest `.cart-price` inside the same row
-                    $row.find(".cart-price").text(`$${displayPrice.toFixed(2)}`);
-                    updateTotalPrice();
+                        let productItem = cart.find(p => p.product === product);
+                        if (productItem) {
+                            let unitTotal = productItem.price * qty;
+                            row.find(".total-unit").text(`$${unitTotal.toFixed(2)}`);
+                        }
+                    });
+
+                    // ✅ Now update the full cart total
+                    updateCartTotal();
                 }
             }
+
+
 
             updateTotalPrice();
 
@@ -156,16 +181,11 @@
                 let total = 0;
 
                 cart.forEach(item => {
-                    total += item.price * item.quantity; // Multiply price by quantity
+                    total += item.price * item.quantity;
                 });
 
-                $(".cart-total").text(`Total Price: $${total.toFixed(2)}`);
+                $(".cart-total").text(`Sub Total : $${total.toFixed(2)}`);
             }
-
-
-
-
-
 
 
 
@@ -252,9 +272,9 @@
 
         .remove-item {
             font-family: 'gilroy-semibolduploaded_file';
-            background: #ffe175;
-            border: 1px solid #ffe175;
-            color: #000;
+            background: #ffe175 !important;
+            border: 1px solid #ffe175 !important;
+            color: #000 !important;
             font-size: 16px;
         }
 
@@ -273,8 +293,13 @@
             width: 27%;
         }
 
-        td,th{
-         width:20%;
+        td, th {
+            width: 16.6%;
+        }
+
+        td a{
+         color: #000;
+         text-decoration: none;
         }
 
         .proceed-container{
