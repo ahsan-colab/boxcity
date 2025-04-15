@@ -76,7 +76,7 @@ function loadMoreProducts() {
     });
 }
 
-// Trigger load more on scroll
+
 $(window).on('scroll', function() {
     var tableBody = $('#product-list');
     var bottomOfTableBody = tableBody.offset().top + tableBody.height();
@@ -91,6 +91,73 @@ $(document).ready(function() {
     loadMoreProducts();
 });
 
+function updateCartPage() {
+    let $cartPageList = $("#cart-page-list");
+    let cart = JSON.parse(localStorage.getItem("cart")) || []; // ← This was missing
+
+    if ($cartPageList.length) {
+        $cartPageList.empty();
+
+        if (cart.length === 0) {
+            $cartPageList.append("<tr><td colspan='3'>Cart is empty</td></tr>");
+        } else {
+            cart.forEach(item => {
+                $cartPageList.append(`
+                    <tr>
+                        <td>${item.productId}</td>
+                        <td>${item.product}</td>
+                        <td>
+                            <div class="quantity-container">
+                            <div class="qty-container">
+                                <button class="quantity-btn minus" data-product="${item.product}">−</button>
+                                <input type="text" class="cart-quantity text-center" data-product="${item.product}" value="${item.quantity}" min="1" style="width: 40px;">
+                                <button class="quantity-btn plus" data-product="${item.product}">+</button>
+                            </div>
+                            </div>
+                        </td>
+                        <td>$${item.price}</td>
+                        <td class="cart-price total-unit">$${(item.price * item.quantity).toFixed(2)}</td>
+                        <td>
+                            <button class="remove-item btn btn-danger btn-sm" data-product="${item.product}">Remove</button>
+                        </td>
+                    </tr>
+                `);
+            });
+        }
+    }
+}
+
+
+function updateCartUI() {
+    let $cartList = $("#cart-list");
+    let $cartCounter = $(".cart-counter");
+
+    // ✅ Get latest cart from localStorage
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    $cartList.empty();
+    let totalItems = 0;
+
+    if (cart.length === 0) {
+        $cartList.append("<li>Cart is empty</li>");
+        $cartCounter.hide(); // Hide counter if empty
+    } else {
+        cart.forEach(item => {
+            $cartList.append(`
+                <li>${item.product} - ${item.quantity}
+                    <button class="remove-item" data-product="${item.product}">❌</button>
+                </li>
+            `);
+            totalItems += item.quantity;
+        });
+
+        $cartCounter.text(totalItems).show(); // Update and show counter
+    }
+}
+
+
+
+
 $(document).ready(function () {
     $(document).on("click", ".quantity-btn", function () {
         let $wrapper = $(this).closest(".quantity-container");
@@ -101,6 +168,8 @@ $(document).ready(function () {
         } else if ($(this).hasClass("minus")) {
             $input.val(Math.max(1, value - 1)); // Prevents going below 1
         }
+
+        updateCartPage();
     });
 
     // Prevent manual entry of negative or invalid values
@@ -113,6 +182,7 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
+
     let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
     updateCartUI();
     updateCartPage();
@@ -180,63 +250,10 @@ $(document).ready(function () {
 
 
 
-    function updateCartUI() {
-        let $cartList = $("#cart-list");
-        let $cartCounter = $(".cart-counter");
-
-        // ✅ Get latest cart from localStorage
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        $cartList.empty();
-        let totalItems = 0;
-
-        if (cart.length === 0) {
-            $cartList.append("<li>Cart is empty</li>");
-            $cartCounter.hide(); // Hide counter if empty
-        } else {
-            cart.forEach(item => {
-                $cartList.append(`
-                <li>${item.product} - ${item.quantity}
-                    <button class="remove-item" data-product="${item.product}">❌</button>
-                </li>
-            `);
-                totalItems += item.quantity;
-            });
-
-            $cartCounter.text(totalItems).show(); // Update and show counter
-        }
-    }
 
 
-    function updateCartPage() {
-        let $cartPageList = $("#cart-page-list");
-        let cart = JSON.parse(localStorage.getItem("cart")) || []; // ← This was missing
 
-        if ($cartPageList.length) {
-            $cartPageList.empty();
 
-            if (cart.length === 0) {
-                $cartPageList.append("<tr><td colspan='3'>Cart is empty</td></tr>");
-            } else {
-                cart.forEach(item => {
-                    $cartPageList.append(`
-                    <tr>
-                        <td>${item.productId}</td>
-                        <td>${item.product}</td>
-                        <td>
-                            <input type="number" class="cart-quantity" data-product="${item.product}" value="${item.quantity}" min="1">
-                        </td>
-                        <td>$${item.price}</td>
-                        <td>$${item.price * item.quantity}</td>
-                        <td>
-                            <button class="remove-item btn btn-danger btn-sm" data-product="${item.product}">❌ Remove</button>
-                        </td>
-                    </tr>
-                `);
-                });
-            }
-        }
-    }
 
 
     // Remove Item from Cart (For Both Sidebar & Cart Page)

@@ -51,9 +51,9 @@
                         <td>
                             <div class="quantity-container">
                             <div class="qty-container">
-                                <button class="quantity-btn minus btn btn-sm btn-secondary" data-product="${item.product}">−</button>
+                                <button class="quantity-btn minus" data-product="${item.product}">−</button>
                                 <input type="text" class="cart-quantity text-center" data-product="${item.product}" value="${item.quantity}" min="1" style="width: 40px;">
-                                <button class="quantity-btn plus btn btn-sm btn-secondary" data-product="${item.product}">+</button>
+                                <button class="quantity-btn plus" data-product="${item.product}">+</button>
                             </div>
                             </div>
                         </td>
@@ -83,6 +83,20 @@
                 });
             }
 
+            function updateCartTotal() {
+                let total = 0;
+
+                $(".total-unit").each(function () {
+                    let priceText = $(this).text().replace("$", "").trim()
+                    console.log(priceText);
+                    let price = parseFloat(priceText) || 0;
+                    total += price;
+                });
+
+                $(".cart-total").text(`Sub Total : $${total.toFixed(2)}`);
+            }
+
+
             $(document).on("click", ".quantity-btn", function () {
                 let $row = $(this).closest("tr");
                 let productName = $(this).data("product");
@@ -97,7 +111,10 @@
 
                 let newQuantity = parseInt($input.val());
                 updateCartQuantity(productName, newQuantity, $row);
+
             });
+
+
 
             $(document).on("change", ".cart-quantity", function () {
                 let $row = $(this).closest("tr"); // Get the closest row
@@ -120,13 +137,11 @@
                 if (item) {
                     item.quantity = newQuantity;
 
-                    // Convert all price values to float safely
                     let retailPrice = parseFloat(item.retailPrice) || 0;
                     let priceBulkOne = parseFloat(item.priceBulkOne) || retailPrice;
                     let priceBulkTwo = parseFloat(item.priceBulkTwo) || priceBulkOne;
                     let priceBulkThree = parseFloat(item.priceBulkThree) || priceBulkTwo;
 
-                    // Apply bulk pricing logic
                     if (newQuantity >= 100) {
                         item.price = priceBulkThree;
                     } else if (newQuantity >= 50) {
@@ -137,20 +152,27 @@
                         item.price = retailPrice;
                     }
 
-                    // Save updated cart to localStorage
+                    // Save to localStorage
                     localStorage.setItem("cart", JSON.stringify(cart));
 
-                    // Update unit price
-                    $row.find(".cart-price").text(`$${item.price.toFixed(2)}`);
+                    // 🔁 Recalculate and update all total-units
+                    $(".cart-quantity").each(function () {
+                        let product = $(this).data("product");
+                        let qty = parseInt($(this).val());
+                        let row = $(this).closest("tr");
 
-                    // Update total unit price
-                    let totalPrice = item.price * item.quantity;
-                    $row.find(".total-unit").text(`$${totalPrice.toFixed(2)}`);
+                        let productItem = cart.find(p => p.product === product);
+                        if (productItem) {
+                            let unitTotal = productItem.price * qty;
+                            row.find(".total-unit").text(`$${unitTotal.toFixed(2)}`);
+                        }
+                    });
 
-                    // Optionally update overall cart UI
-                    updateCartUI();
+                    // ✅ Now update the full cart total
+                    updateCartTotal();
                 }
             }
+
 
 
             updateTotalPrice();
@@ -164,11 +186,6 @@
 
                 $(".cart-total").text(`Sub Total : $${total.toFixed(2)}`);
             }
-
-
-
-
-
 
 
 
