@@ -104,8 +104,8 @@ function updateCartPage() {
             cart.forEach(item => {
                 $cartPageList.append(`
                     <tr>
-                        <td>${item.productId}</td>
-                        <td>${item.product}</td>
+                        <td><a href="http://localhost/boxcity/product/${item.productId}">${item.productId}</a></td>
+                        <td><a href="http://localhost/boxcity/product/${item.productId}">${item.product}</a></td>
                         <td>
                             <div class="quantity-container">
                             <div class="qty-container">

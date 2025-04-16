@@ -592,6 +592,8 @@ header ul{
     text-align: center;
     font-family: 'gilroy-semibolduploaded_file';
     padding: 0px 159px;
+    padding: 0px 72px;
+    font-size: 36px;
 }
 
 .bulk-orders a {
@@ -1151,7 +1153,7 @@ footer form input::placeholder {
     }
 
     .bulk-orders h3 {
-        padding: 0px 149px;
+        padding: 0px 38px;
     }
 
 
@@ -1207,8 +1209,8 @@ footer form input::placeholder {
     }
 
     .menu-btn a:before {
-        right: 217px;
-        top: 58px;
+        right: 170px;
+        top: 18px;
     }
 
     .heading-container h4 {
@@ -1240,7 +1242,7 @@ footer form input::placeholder {
     }
 
     .bulk-orders h3 {
-        padding: 0px 100px;
+        padding: 0px 10px;
     }
 
     footer h1 {
@@ -1280,13 +1282,13 @@ footer form input::placeholder {
     }
 
     header {
-        padding: 26px 0px !important;
+        padding: 26px 22px !important;
     }
 
 
     .menu-btn a:before {
-        right: 182px;
-        top: 58px;
+        right: 172px;
+        top: 18px;
     }
 
     .sub-menu {
@@ -1324,7 +1326,7 @@ footer form input::placeholder {
     }
 
     .bulk-orders h3 {
-        padding: 0px 100px;
+        padding: 0px 0px;
     }
 
     footer h1 {
@@ -1370,18 +1372,18 @@ footer form input::placeholder {
     }
 
     header {
-        padding: 26px 0px !important;
+        padding: 26px 18px !important;
     }
 
 
     .menu-btn a:before {
-        right: 182px;
-        top: 58px;
+        right: 169px;
+        top: 18px;
     }
 
 
     header .col-md-2 {
-        left: -54px;
+        left: 0px;
         position: relative;
     }
 
@@ -1477,19 +1479,20 @@ footer form input::placeholder {
     }
 
     header {
-        padding: 26px 0px !important;
+        padding: 26px 18px !important;
     }
 
 
     .menu-btn a:before {
-        right: 183px !important;
-        top: 58px !important;
+        right: 172px;
+        top: 18px;
     }
 
 
     header .col-md-2 {
-        left: -34px;
+        left: 0px;
         position: relative;
+        display: block !important;
     }
 
 
@@ -1526,7 +1529,8 @@ footer form input::placeholder {
     }
 
     .bulk-orders h3 {
-        padding: 0px 29px;
+        padding: 0px 0px;
+        font-size: 33px;
     }
 
     footer h1 {
@@ -1575,11 +1579,6 @@ footer form input::placeholder {
         padding-right: 0px;
     }
 
-    .menu-btn a:before {
-        right: 192px;
-        top: 82px;
-    }
-
     .accordion {
         z-index: 9999999;
     }
@@ -1620,6 +1619,7 @@ footer form input::placeholder {
 
     .bulk-orders h3 {
         padding: 0px 0px;
+        font-size: 31px;
     }
 
     .products-container .row{
@@ -1870,6 +1870,15 @@ footer form input::placeholder {
 
     .quote .row .col-sm-7 {
         padding-right: 14px;
+    }
+
+    footer .first-row{
+        flex-direction: column;
+        padding: 0px 29px;
+    }
+
+    footer .col-md-6{
+        width: 100%;
     }
 }
 
@@ -2159,6 +2168,15 @@ footer form input::placeholder {
     .quote .row .col-sm-7 {
         padding-right: 14px;
     }
+
+    footer .first-row{
+        flex-direction: column;
+        padding: 0px 29px;
+    }
+
+    footer .col-md-6{
+        width: 100%;
+    }
 }
 
 
@@ -2446,6 +2464,314 @@ footer form input::placeholder {
     .quote .row .col-sm-7 {
         padding-right: 14px;
     }
+
+    footer .first-row {
+        flex-direction: column;
+        padding: 0px 29px;
+    }
+
+    footer .col-md-6{
+        width: 100%;
+    }
+
+}
+
+
+@media screen and (min-width:601px) and (max-width:699px){
+    header {
+        padding: 26px 39px;
+    }
+
+
+    header .mb-hide {
+        display: none !important;
+    }
+
+    header .mb-show {
+        display: block !important;
+    }
+
+    header .container-fluid .row {
+        justify-content: center;
+        padding: 0px 0px;
+    }
+
+    header .col-md-2 {
+        justify-content: normal;
+    }
+
+    [alt="logo"]{
+        width:100%;
+    }
+
+    .bulk-orders {
+        padding: 40px 10px 25px 10px;
+    }
+
+    .bulk-orders h3 {
+        padding: 0px 0px;
+    }
+
+    .products-container .row{
+        flex-direction: column;
+    }
+
+    .products-container .col-lg-9 {
+        width: 100%;
+    }
+
+    .products-container .col-sm-3 {
+        width: 100%;
+    }
+
+    .heading-container {
+        padding: 60px 40px 60px 40px;
+    }
+
+    .heading-container h2 {
+        font-size: 36px;
+    }
+
+    .heading-container p {
+        font-size: 15px;
+    }
+
+    .heading-container h4 {
+        font-size: 19px;
+    }
+
+    .offer h4 {
+        font-size: 22px;
+    }
+
+    .offer a {
+        font-size: 35px;
+    }
+
+    .heading-container::before {
+        top: 1070px;
+        left: -12px;
+        width: 307px;
+        height: 194px;
+    }
+
+    .heading-container::after {
+        top: 1085px;
+        width: 175px;
+        right: 3px;
+        height: 295px;
+    }
+
+
+    th, td {
+        border-right: none !important;
+        padding: 9px !important;
+        text-align: center !important;
+    }
+
+    #mobile-menu.active {
+        max-height: 2000px !important;
+    }
+
+
+    .quote .row{
+        flex-direction: column;
+    }
+
+    .quote .row .col-sm-7{
+        width: 100%;
+    }
+
+    .quote .col-sm-5 ,.quote .col-sm-6{
+        width: 100%;
+    }
+
+
+    table tr:last-child td {
+        border-bottom: 1px solid #ADADAD;
+    }
+
+
+    .cart-drawer {
+        right: -110%;
+    }
+
+
+
+    .banner {
+        margin-top: 62px;
+    }
+
+
+    video {
+        margin-top: 34px;
+    }
+
+
+    .responsive-table,
+    .responsive-table thead,
+    .responsive-table tbody,
+    .responsive-table th,
+    .responsive-table td,
+    .responsive-table tr {
+        display: block;
+        width: 100%;
+    }
+
+    .responsive-table td{
+        display: block !important;
+    }
+
+    .responsive-table thead {
+        display: none;
+    }
+
+    .responsive-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        background: #f9f9f9;
+    }
+
+    .responsive-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 10px;
+        text-align: left;
+        position: relative;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .responsive-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        flex-basis: 50%;
+        color: #333;
+        padding-right: 10px;
+    }
+
+    .responsive-table td:last-child {
+        border-bottom: none;
+    }
+
+    section.quote h2 {
+        font-size: 40px;
+    }
+
+
+    h1 {
+        font-size: 44px !important;
+    }
+
+    .location-details .location-img {
+        width: 100%;
+    }
+    .location-details-img {
+        flex-direction: column-reverse;
+        margin-top: 32px;
+    }
+
+
+
+    footer .footer-detail {
+        margin-right: 0px;
+        margin-bottom: 40px;
+    }
+
+    .footer-detail p {
+        padding-right: 0%;
+        font-size: 19px !important;
+    }
+
+    footer h1 {
+        font-size: 24px !important;
+        margin-top: 32px;
+    }
+
+    footer input[type="email"] {
+        width: 77%;
+    }
+
+    .cart-icon {
+        right: 18px;
+    }
+
+    .location-details {
+        margin-top: 32px;
+    }
+
+    .locations-sec {
+        padding-top: 40px;
+        padding-bottom: 100px;
+    }
+
+    section.testimonials-sec {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    header ul {
+        flex-direction: column;
+    }
+
+    body {
+        position: relative;
+        z-index: 1; /* Make sure the body's stacking context is at the base */
+    }
+
+    .mobile-menu {
+        position: fixed !important;
+        top: 0;
+        left: -100%;
+        width: 87%;
+        height: 100%;
+        background-color: #fff;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        z-index: 2147483647 !important; /* Maximum z-index */
+        transition: left 0.3s ease-in-out;
+    }
+
+    /* When active, it slides in */
+    .mobile-menu.active {
+        left: 0;
+    }
+
+    .menu-btn a:before {
+        right: 172px;
+        top: 18px;
+    }
+
+
+    #product-image {
+        width: 92%;
+    }
+
+    #single-product {
+        display: none;
+        margin: 72px 0px;
+        flex-direction: column;
+    }
+
+    #product-title {
+        font-size: 28px !important;
+    }
+
+    .quote .row .col-sm-7 {
+        padding-right: 14px;
+    }
+
+    footer .first-row {
+        flex-direction: column;
+        padding: 0px 29px;
+    }
+
+    footer .col-md-6{
+        width: 100%;
+    }
 }
 
 @media screen and (min-width: 400px) and (max-width: 600px){
@@ -2515,6 +2841,11 @@ footer form input::placeholder {
 
     .cart-drawer {
         right: -110%;
+        width: 98% !important;
+    }
+
+    .cart-drawer.active {
+        right: 1%;
     }
 
     .banner {
@@ -2660,9 +2991,10 @@ footer form input::placeholder {
     }
 
     .menu-btn a:before {
-        right: 255px;
-        top: 401px;
+        right: 169px;
+        top: 18px;
     }
+
 
 
     #product-image {
@@ -2758,6 +3090,11 @@ footer form input::placeholder {
 
     .cart-drawer {
         right: -115%;
+        width: 98% !important;
+    }
+
+    .cart-drawer.active {
+        right: 1%;
     }
 
     .banner {
@@ -3346,13 +3683,15 @@ li {
     position: absolute;
     top: 100%;
     left: 0;
-    background: white;
+    background: #f1eee4;
     padding: 31px 30px 25px 30px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     z-index: 100000000;
     transition: all 0.3s ease;
     border-radius: 7px;
     min-width: 425px;
+    box-shadow: 2px 2px 20px #ccc;
+    border-radius: 10px;
 }
 
 li:hover > .primary-sub-menu {
@@ -3362,7 +3701,7 @@ li:hover > .primary-sub-menu {
 
 .menu-item-has-children > a::after {
     content: '';
-    background: url(https://boxcity.com//wp-content/uploads/2025/02/arrow.png) no-repeat;
+    background: url(../assets/arrow.png) no-repeat;
     width: 9px;
     height: 9px;
     background-size: 100%;
