@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AppMailer;
 use App\Models\Product;
 
 use App\Models\WpCf7Submit;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 
 class HomeController extends Controller
@@ -49,6 +51,17 @@ class HomeController extends Controller
             'form_value' => serialize($formFields),
             'form_date' => $submitTime,
         ]);
+
+        /*Mail::to('user@example.com')->send(new AppMailer(
+            subjectLine: 'Welcome to the App!',
+            viewName: 'emails.contact',
+            viewData: [
+                'userName' => 'John Doe',
+                'messageLine' => 'Thanks for signing up with us.',
+                'ctaLink' => 'https://yourapp.com/get-started',
+                'ctaText' => 'Get Started',
+            ]
+        ));*/
 
         dd($a);
 
