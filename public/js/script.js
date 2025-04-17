@@ -93,19 +93,21 @@ $(document).ready(function() {
 
 function updateCartPage() {
     let $cartPageList = $("#cart-page-list");
-    let cart = JSON.parse(localStorage.getItem("cart")) || []; // ← This was missing
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let $checkoutBtn = $("#proceed-to-checkout");
 
     if ($cartPageList.length) {
         $cartPageList.empty();
 
         if (cart.length === 0) {
-            $cartPageList.append("<tr><td colspan='3'>Cart is empty</td></tr>");
+            $cartPageList.append("<tr><td colspan='6'>Cart is empty</td></tr>");
+            $checkoutBtn.prop("disabled", true);
         } else {
             cart.forEach(item => {
                 $cartPageList.append(`
                     <tr>
-                        <td><a href="http://localhost/boxcity/product/${item.productId}">${item.productId}</a></td>
-                        <td><a href="http://localhost/boxcity/product/${item.productId}">${item.product}</a></td>
+                        <td><a href="${window.location.origin}/product/${item.productId}">${item.productId}</a></td>
+                        <td><a href="${window.location.origin}/product/${item.productId}">${item.product}</a></td>
                         <td>
                             <div class="quantity-container">
                             <div class="qty-container">
@@ -123,6 +125,10 @@ function updateCartPage() {
                     </tr>
                 `);
             });
+
+            if ($checkoutBtn.length) {
+                $checkoutBtn.prop("disabled", false); // Enable if cart is not empty
+            }
         }
     }
 }
@@ -131,8 +137,6 @@ function updateCartPage() {
 function updateCartUI() {
     let $cartList = $("#cart-list");
     let $cartCounter = $(".cart-counter");
-
-    // ✅ Get latest cart from localStorage
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     $cartList.empty();
