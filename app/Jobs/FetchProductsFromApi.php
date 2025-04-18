@@ -6,8 +6,7 @@ namespace App\Jobs;
 use App\Models\Product;
 use App\Services\EcwidApiClient;
 use GuzzleHttp\Exception\GuzzleException;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -16,9 +15,9 @@ use Illuminate\Support\Facades\Log;
  *
  * @package App\Jobs
  */
-class FetchProductsFromApi implements ShouldQueue
+class FetchProductsFromApi
 {
-    use Queueable;
+    use Dispatchable;
     /**
      * The Ecwid API client instance
      *
@@ -91,6 +90,8 @@ class FetchProductsFromApi implements ShouldQueue
                     'thumbnailUrl' => $product['thumbnailUrl'] ?? null,
                     'width' => $product['width'] ?? '',
                     'height' => $product['height'] ?? '',
+                    'sku' => $product['sku'] ?? '',
+                    'description' => $product['description'] ?? '',
                 ]
             );
         }

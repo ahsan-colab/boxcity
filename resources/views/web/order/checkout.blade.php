@@ -4,26 +4,35 @@
 
 @section('content')
 
-
-
     <div class="container checkout-container">
+        {{-- Page Heading --}}
         <h2>Checkout</h2>
+
         <div class="row">
+            {{-- Billing Details Section --}}
             <div class="col-md-7">
                 <h3>Billing Details</h3>
+
                 <form id="checkout-form">
+                    {{-- Full Name Field --}}
                     <div class="form-group">
                         <label for="full-name">Full Name</label>
                         <input type="text" id="full-name" name="full-name" class="form-control" required>
                     </div>
+
+                    {{-- Email Field --}}
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" class="form-control" required>
                     </div>
+
+                    {{-- Phone Field --}}
                     <div class="form-group">
                         <label for="phone">Phone</label>
                         <input type="text" id="phone" name="phone" class="form-control" required>
                     </div>
+
+                    {{-- Country, State, City, Postal Code Fields --}}
                     <div class="row form-row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -55,17 +64,19 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="city">Postal Code</label>
+                                <label for="postal-code">Postal Code</label>
                                 <input type="text" id="postal-code" name="postal-code" class="form-control" required>
                             </div>
                         </div>
                     </div>
 
-                        <div class="form-group">
+                    {{-- Address Field --}}
+                    <div class="form-group">
                         <label for="address">Address</label>
                         <textarea id="address" name="address" class="form-control" required></textarea>
                     </div>
 
+                    {{-- Order Button and Total --}}
                     <div class="btn-container">
                         <h4 class="checkout-total">Total: $0.00</h4>
                         <button id="place-order" type="submit" class="btn btn-success btn-lg">Place Order</button>
@@ -73,8 +84,10 @@
                 </form>
             </div>
 
+            {{-- Order Summary Section --}}
             <div class="col-md-5">
                 <h3>Order Summary</h3>
+
                 <table class="table">
                     <thead>
                     <tr>
@@ -84,12 +97,14 @@
                     </tr>
                     </thead>
                     <tbody id="checkout-cart-list">
+                    {{-- This will be populated dynamically with JS --}}
                     <tr><td colspan="3">Loading cart...</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
 
 
     <script>
@@ -381,70 +396,6 @@
 
         });
 
-
-
-
     </script>
 
-
-    <style>
-        .checkout-container {
-            margin-top: 20px;
-        }
-
-        .btn-container{
-            text-align: right;
-            margin-top: 40px;
-        }
-
-        .checkout-container .row {
-            margin-top: 50px;
-            margin-bottom: 50px;
-        }
-
-        .checkout-container h3 {
-            font-family: 'gilroy-semibolduploaded_file';
-        }
-
-        .checkout-total {
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 15px;
-            font-family: 'gilroy-mediumuploaded_file';
-        }
-
-        #place-order{
-            font-family: 'gilroy-bolduploaded_file';
-            background: #ffe175;
-            border: 1px solid #ffe175;
-            color: #000;
-            font-size: 19px;
-            padding: 11px 20px;
-        }
-
-        label {
-            font-family: 'gilroy-semibolduploaded_file';
-            font-size: 15px;
-        }
-
-        .form-group {
-            margin-top: 15px;
-        }
-
-        .form-row{
-           display: flex !important;
-           margin-top: 0px !important;
-           margin-bottom: 0px !important;
-        }
-
-        select{
-            font-family: 'gilroy-mediumuploaded_file';
-            font-size: 14px !important;
-        }
-
-        .form-control {
-            font-family: 'gilroy-mediumuploaded_file' !important;
-        }
-
-    </style>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Jobs\FetchProductsFromApi;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class DispatchFetchProductsJob extends Command
 {
@@ -26,11 +27,10 @@ class DispatchFetchProductsJob extends Command
      */
     public function handle()
     {
-        $this->info('Dispatching the FetchProductsFromApi job...');
+        Log::info('FetchProducts executed at ' . now());
 
-        // Dispatch the job
-        dispatch(new FetchProductsFromApi());
+        FetchProductsFromApi::dispatchSync();
 
-        $this->info('Job dispatched successfully.');
+        Log::info('Job dispatched successfully at ' . now());
     }
 }

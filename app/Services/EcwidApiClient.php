@@ -97,15 +97,30 @@ class EcwidApiClient
     {
         $url = $this->baseUrl . '/orders';
 
-        $response = $this->client->request('POST', $url, [
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->accessToken,
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json',
-            ],
-            'json' => $orderData,
-        ]);
+        try {
+            $response = $this->client->request('POST', $url, [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $this->accessToken,
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json',
+                ],
+                'json' => $orderData,
+            ]);
 
-        return json_decode($response->getBody()->getContents(), true);
+            if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 300) {
+                return json_decode($response->getBody()->getContents(), true);
+            }
+
+            return [
+                'error' => 'Failed to place the order. Status code: ' . $response->getStatusCode(),
+                'details' => $response->getBody()->getContents(),
+            ];
+
+        } catch (\Exception $e) {
+            return [
+                'error' => 'Error occurred while placing the order: ' . $e->getMessage(),
+            ];
+        }
     }
+
 }

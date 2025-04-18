@@ -10,6 +10,6 @@ class Product extends Model
      * @var string[]
      */
     protected $fillable = [
-        'productId', 'name', 'price', 'thumbnailUrl', 'width', 'height',
+        'productId', 'name', 'price', 'sku', 'thumbnailUrl', 'width', 'height', 'description',
     ];
 }

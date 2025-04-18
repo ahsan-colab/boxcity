@@ -123,6 +123,7 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-    'site_url' => env('SITE_URL', 'https://boxcity.com/')
+    'site_url' => env('SITE_URL', 'https://boxcity.com/'),
+    'currency_symbol' => env('CURRENCY_SYMBOL', '$')
 
 ];

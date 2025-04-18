@@ -22,46 +22,6 @@
 <header>
     <div class="container-fluid">
         <div class="row align-items-center justify-content-between">
-            <!-- Left Nav -->
-{{--            <div class="col-md-5 d-none d-lg-block mb-hide">--}}
-{{--                <nav>--}}
-{{--                    <ul class="sub-menu d-flex justify-content-start">--}}
-{{--                        <li><a href="javascript:void(0)">Shop Products</a>--}}
-{{--                            <ul class="primary-sub-menu">--}}
-{{--                                <li><a href="{{ config('app.site_url') }}gift-supplies">Gift Supplies</a></li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}bags-and-pouches">Bags And Pouches</a></li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}corrugated-boxes">Corrugated Boxes</a></li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}mailing-items">Mailing Items</a></li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}">Packing Supplies</a></li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}moving-boxes-and-supplies">Moving Boxes And--}}
-{{--                                        Supplies</a></li>--}}
-{{--                            </ul>--}}
-
-{{--                        </li>--}}
-
-{{--                        <li><a href="javascript:void(0)">Services</a>--}}
-{{--                            <ul class="primary-sub-menu">--}}
-{{--                                <li><a href="{{ config('app.site_url') }}b2b-incentives">Business Owner Incentives</a></li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}custom-boxes">Custom Boxes</a></li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}custom-tape">Custom Tape</a></li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}domestic-shipping">Domestic Shipping</a></li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}international-shipping">International Shipping</a>--}}
-{{--                                </li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}international-freight-forwarding">International--}}
-{{--                                        Freight Forwarding</a></li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}ltl-and-tl-shipping">LTL and TL Shipping</a></li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}pack-and-ship">Pack and Ship</a></li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}specialized-packing-for-irregular-shapes">Specialized--}}
-{{--                                        Packing For Irregular Shapes</a></li>--}}
-{{--                                <li><a href="{{ config('app.site_url') }}ups-access-point">UPS Access Point</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </li>--}}
-
-{{--                        <li><a href="{{ config('app.site_url') }}custom-tape">Locations</a></li>--}}
-{{--                    </ul>--}}
-{{--                </nav>--}}
-{{--            </div>--}}
-
             <!-- Logo -->
             <div class="col-md-2 col-6 text-center">
                 <a href="{{route('home')}}">
@@ -179,6 +139,9 @@
     @yield('content')
 </main>
 
+@if(in_array(Route::currentRouteName(), ['home', 'product.detail']))
+    @include('partials.floating_cart')
+@endif
 <footer>
     <div class="container">
         <div class="row first-row">
@@ -369,6 +332,9 @@
     </div>
 </footer>
 </body>
+<script>
+    var productDetailUrl = "{{ route('product.detail', ['id' => '000']) }}";
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
@@ -381,4 +347,5 @@
         integrity="sha512-UH428GPLVbCa8xDVooDWXytY8WASfzVv3kxCvTAFkxD2vPjouf1I3+RJ2QcSckESsb7sI+gv3yhsgw9ZhM7sDw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="{{ asset('public/js/script.js') }}"></script>
+@yield('script')
 </html>

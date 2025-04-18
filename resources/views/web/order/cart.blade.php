@@ -5,7 +5,10 @@
 @section('content')
 
     <div class="container cart-container">
+        {{-- Page Title --}}
         <h2>Your Cart</h2>
+
+        {{-- Cart Table --}}
         <table class="table">
             <thead>
             <tr>
@@ -18,22 +21,30 @@
             </tr>
             </thead>
             <tbody id="cart-page-list">
-            <tr><td colspan="5">Loading cart...</td></tr>
+            {{-- JavaScript will populate this area dynamically --}}
+            <tr><td colspan="6">Loading cart...</td></tr>
             </tbody>
         </table>
+
+        {{-- Cart Total and Clear Button --}}
         <div class="cart-total-container">
-        <button id="clear-cart" class="btn btn-danger">Clear Cart</button>
+            {{-- Button to clear the entire cart --}}
+            <button id="clear-cart" class="btn btn-danger">Clear Cart</button>
+
+            {{-- Subtotal display, to be updated dynamically --}}
             <h3 class="cart-total">Sub Total :</h3>
         </div>
+
+        {{-- Proceed to Checkout Button --}}
         <div class="proceed-container">
-        <button id="proceed-to-checkout" class="btn btn-danger">Proceed To Checkout</button>
+            <button id="proceed-to-checkout" class="btn btn-danger">Proceed To Checkout</button>
         </div>
     </div>
+
 
     <script>
         $(document).ready(function () {
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
-            console.log(cart);
             // Load Cart Items from Local Storage
             function updateCartPage() {
                 let $cartPageList = $("#cart-page-list");
@@ -43,11 +54,11 @@
                     $cartPageList.append("<tr><td colspan='5'>Cart is empty</td></tr>");
                 } else {
                     cart.forEach(item => {
-                        console.log("Cart Item:", item);
+                        var productDetailUrl = "{{ route('product.detail', ['id' => '000']) }}".replace('000', item.productId);
                         $cartPageList.append(`
                     <tr>
-                        <td ><a href="${window.location.origin}/product/${item.productId}" target="_blank">${item.productId}</a></td>
-                        <td><a href="${window.location.origin}/product/${item.productId}" target="_blank">${item.product}</a></td>
+                        <td ><a href="${productDetailUrl}" target="_blank">${item.productId}</a></td>
+                        <td><a href="${productDetailUrl}" target="_blank">${item.product}</a></td>
                         <td>
                             <div class="quantity-container">
                             <div class="qty-container">
@@ -168,7 +179,6 @@
                         }
                     });
 
-                    // ✅ Now update the full cart total
                     updateCartTotal();
                 }
             }
@@ -215,110 +225,9 @@
 
 
             $("#proceed-to-checkout").click(function () {
-                window.location.href = "{{ url('/checkout') }}";
+                window.location.href = "{{ route('checkout') }}";
             });
         });
 
     </script>
-
-    <style>
-
-        .qty-container {
-            border: 1px solid;
-            border-radius: 38px;
-            padding: 0px 2px;
-        }
-        .quantity-btn {
-            background: #FFE175 !important;
-            border: none;
-            padding: 5px 15px;
-            font-size: 25px;
-            cursor: pointer;
-            border-radius: 40px;
-            font-family: 'gilroy-regularuploaded_file';
-            color: #000 !important;
-        }
-
-        .cart-quantity{
-            width: 40px;
-            text-align: center;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            font-family: 'gilroy-semibolduploaded_file' !important;
-            background: transparent;
-        }
-
-        .table>tbody {
-            vertical-align: middle;
-        }
-
-        #cart-page-list tr {
-            border-radius: 15px !important;
-            padding: 0px 0px;
-            border: 1px solid #e4e4e4;
-        }
-
-        td{
-          border: none !important;
-        }
-
-        #clear-cart {
-            font-family: 'gilroy-semibolduploaded_file';
-            background: #ffe175;
-            border: 1px solid #ffe175;
-            color: #000;
-        }
-
-        .remove-item {
-            font-family: 'gilroy-semibolduploaded_file';
-            background: #ffe175 !important;
-            border: 1px solid #ffe175 !important;
-            color: #000 !important;
-            font-size: 16px;
-        }
-
-        .cart-total-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .cart-total {
-            font-family: 'gilroy-semibolduploaded_file';
-            font-size: 24px;
-        }
-
-        .product-thumb {
-            width: 27%;
-        }
-
-        td, th {
-            width: 16.6%;
-        }
-
-        td a{
-         color: #000;
-         text-decoration: none;
-        }
-
-        .proceed-container{
-            text-align: right;
-            margin: 33px 0px;
-        }
-
-        #proceed-to-checkout {
-            font-family: 'gilroy-bolduploaded_file';
-            background: #ffe175;
-            border: 1px solid #ffe175;
-            color: #000;
-            font-size: 21px;
-            padding: 11px 20px;
-        }
-
-
-
-
-
-    </style>
 @endsection
