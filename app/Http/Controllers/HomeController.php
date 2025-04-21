@@ -16,7 +16,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-       return view('home');
+        return view('home');
     }
 
     public function loadMoreProducts()
@@ -52,7 +52,7 @@ class HomeController extends Controller
             'form_date' => $submitTime,
         ]);
 
-        /*Mail::to('user@example.com')->send(new AppMailer(
+        Mail::to('bilal.colabarmy@gmail.com')->send(new AppMailer(
             subjectLine: 'Welcome to the App!',
             viewName: 'emails.contact',
             viewData: [
@@ -61,11 +61,13 @@ class HomeController extends Controller
                 'ctaLink' => 'https://yourapp.com/get-started',
                 'ctaText' => 'Get Started',
             ]
-        ));*/
+        ));
 
-        dd($a);
 
-        return redirect()->back()->with('success', 'Form submitted and saved to WordPress. '. $a);
+        return redirect(route('checkout.thankyou'))->with([
+            'title' => 'Thank you for contacting us. One of our team members will reach out to you shortly.',
+            'message' => "Don’t want to wait? Call us now (800) 992-6924 \n Hours: Monday to Friday 8:30AM – 5:00PM"
+        ]);
     }
 }
 

@@ -4,12 +4,21 @@
 
 @section('content')
 
-
+    @if(session('title') && session('message'))
     <div class="thank-you">
-        <h1>Thank you for your order!</h1>
-        <p>Your order was placed successfully. You’ll receive a confirmation email shortly.</p>
-        <a href="{{ url('/') }}" class="btn">Go back to Home</a>
+        <p>{{ session('title') }}</p>
+        {{--<h1>Thank you for your order!</h1>--}}
+        {{--<p>Your order was placed successfully. You’ll receive a confirmation email shortly.</p>--}}
+        <p>{!! nl2br(e(session('message'))) !!}</p>
+        <a href="{{ route('home') }}" class="btn">Go back to Home</a>
     </div>
+    @else
+        <div class="thank-you">
+            <h1>Thank you for your order!</h1>
+            <p>Your order was placed successfully. You’ll receive a confirmation email shortly.</p>
+            <a href="{{ route('home') }}" class="btn">Go back to Home</a>
+        </div>
+    @endif
 
 
 <style>
