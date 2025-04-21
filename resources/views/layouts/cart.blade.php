@@ -46,8 +46,8 @@
                         console.log("Cart Item:", item);
                         $cartPageList.append(`
                     <tr>
-                        <td ><a href="http://localhost/boxcity/product/${item.productId}" target="_blank">${item.productId}</a></td>
-                        <td><a href="http://localhost/boxcity/product/${item.productId}" target="_blank">${item.product}</a></td>
+                        <td ><a href="${window.location.origin}/product/${item.productId}" target="_blank">${item.productId}</a></td>
+                        <td><a href="${window.location.origin}/product/${item.productId}" target="_blank">${item.product}</a></td>
                         <td>
                             <div class="quantity-container">
                             <div class="qty-container">

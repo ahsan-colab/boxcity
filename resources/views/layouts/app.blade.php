@@ -23,9 +23,56 @@
     <div class="container-fluid">
         <div class="row align-items-center justify-content-between">
             <!-- Left Nav -->
-            <div class="col-md-5 d-none d-lg-block mb-hide">
-                <nav>
-                    <ul class="sub-menu d-flex justify-content-start">
+{{--            <div class="col-md-5 d-none d-lg-block mb-hide">--}}
+{{--                <nav>--}}
+{{--                    <ul class="sub-menu d-flex justify-content-start">--}}
+{{--                        <li><a href="javascript:void(0)">Shop Products</a>--}}
+{{--                            <ul class="primary-sub-menu">--}}
+{{--                                <li><a href="{{ config('app.site_url') }}gift-supplies">Gift Supplies</a></li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}bags-and-pouches">Bags And Pouches</a></li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}corrugated-boxes">Corrugated Boxes</a></li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}mailing-items">Mailing Items</a></li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}">Packing Supplies</a></li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}moving-boxes-and-supplies">Moving Boxes And--}}
+{{--                                        Supplies</a></li>--}}
+{{--                            </ul>--}}
+
+{{--                        </li>--}}
+
+{{--                        <li><a href="javascript:void(0)">Services</a>--}}
+{{--                            <ul class="primary-sub-menu">--}}
+{{--                                <li><a href="{{ config('app.site_url') }}b2b-incentives">Business Owner Incentives</a></li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}custom-boxes">Custom Boxes</a></li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}custom-tape">Custom Tape</a></li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}domestic-shipping">Domestic Shipping</a></li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}international-shipping">International Shipping</a>--}}
+{{--                                </li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}international-freight-forwarding">International--}}
+{{--                                        Freight Forwarding</a></li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}ltl-and-tl-shipping">LTL and TL Shipping</a></li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}pack-and-ship">Pack and Ship</a></li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}specialized-packing-for-irregular-shapes">Specialized--}}
+{{--                                        Packing For Irregular Shapes</a></li>--}}
+{{--                                <li><a href="{{ config('app.site_url') }}ups-access-point">UPS Access Point</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
+
+{{--                        <li><a href="{{ config('app.site_url') }}custom-tape">Locations</a></li>--}}
+{{--                    </ul>--}}
+{{--                </nav>--}}
+{{--            </div>--}}
+
+            <!-- Logo -->
+            <div class="col-md-2 col-6 text-center">
+                <a href="{{route('home')}}">
+                    <img src="{{ asset('public/assets/header-logo.png')}}" alt="logo">
+                </a>
+            </div>
+
+
+            <div class="col-md-10 col-6 d-flex justify-content-end align-items-center">
+                <nav class="d-none d-lg-block mb-hide">
+                    <ul class="sub-menu d-flex justify-content-end">
                         <li><a href="javascript:void(0)">Shop Products</a>
                             <ul class="primary-sub-menu">
                                 <li><a href="{{ config('app.site_url') }}gift-supplies">Gift Supplies</a></li>
@@ -58,22 +105,6 @@
                         </li>
 
                         <li><a href="{{ config('app.site_url') }}custom-tape">Locations</a></li>
-                    </ul>
-                </nav>
-            </div>
-
-            <!-- Logo -->
-            <div class="col-md-2 col-6 text-center">
-                <a href="{{route('home')}}">
-                    <img src="{{ asset('public/assets/header-logo.png')}}" alt="logo">
-                </a>
-            </div>
-
-            <!-- Right Nav + Hamburger -->
-            <div class="col-md-5 col-6 d-flex justify-content-end align-items-center">
-                <!-- Desktop Right Menu -->
-                <nav class="d-none d-lg-block mb-hide">
-                    <ul class="sub-menu d-flex justify-content-end">
                         <li><a href="{{ config('app.site_url') }}b2b-incentives/">Wholesale / Bulk Orders</a></li>
                         <li><a href="{{ config('app.site_url') }}custom-boxes/">Contact</a></li>
                         <li class="menu-btn"><a href="tel:8009926924">(800) 992-6924</a></li>
@@ -150,7 +181,7 @@
 
 <footer>
     <div class="container">
-        <div class="row">
+        <div class="row first-row">
             <div class="col-md-6">
                 <div class="footer-detail">
                     <a href="https://boxcityweb.colabwebdemo.com"><img src="{{ asset('public/assets/footer-logo.png')}}"
