@@ -44,9 +44,7 @@ class HomeController extends Controller
             $request->except('_token')
         );
 
-
-
-        $a = WpCf7submit::insert([
+        WpCf7submit::insert([
             'form_post_id' => $formId,
             'form_value' => serialize($formFields),
             'form_date' => $submitTime,
@@ -56,10 +54,11 @@ class HomeController extends Controller
             subjectLine: 'Welcome to the App!',
             viewName: 'emails.contact',
             viewData: [
-                'userName' => 'John Doe',
-                'messageLine' => 'Thanks for signing up with us.',
-                'ctaLink' => 'https://yourapp.com/get-started',
-                'ctaText' => 'Get Started',
+                'userName' => $formFields['your-name'] ?? '',
+                'company' => $formFields['your-company'] ?? '',
+                'phone' => $formFields['your-phone'] ?? '',
+                'service' => $formFields['select-service'] ?? '',
+                'message' => $formFields['your-message'] ?? ''
             ]
         ));
 
