@@ -120,7 +120,7 @@ return [
             'username'  => env('WP_DB_USERNAME', 'boxcitywebcolab_wp_hsme5'),
             'password'  => env('WP_DB_PASSWORD', 'u5xD^3Tonb!88Kas'),
             'charset'   => 'utf8',
-            'collation' => 'latin_1_swedish_ci',
+            'collation' => 'utf8_unicode_520_ci',
             'prefix'    => 'g1SONFX_',
             'strict'    => false,
             'engine'    => null,
