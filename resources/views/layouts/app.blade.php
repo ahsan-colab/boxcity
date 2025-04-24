@@ -248,23 +248,11 @@
                     Sign up for tips &amp; tricks
                 </h2>
                 <div class="emaillist" id="es_form_f3-n1">
-                    <form action="/#es_form_f3-n1" method="post"
+                    <form action="{{route('submit.newsletter')}}" method="post"
                           class="es_subscription_form es_shortcode_form  es_ajax_subscription_form"
-                          id="es_subscription_form_67cad1bc73b49" data-source="ig-es" data-form-id="3"><input
-                            type="hidden" name="esfpx_form_id" value="3"><input type="hidden" name="esfpx_lists[]"
-                                                                                value="16874e0f3d36"><input
-                            type="hidden" name="es" value="subscribe">
-                        <input type="hidden" name="esfpx_es_form_identifier" value="f3-n1">
-                        <input type="hidden" name="esfpx_es_email_page" value="8">
-                        <input type="hidden" name="esfpx_es_email_page_url" value="{{ config('app.site_url') }}">
-                        <input type="hidden" name="esfpx_status" value="Unconfirmed">
-                        <input type="hidden" name="esfpx_es-subscribe" id="es-subscribe-67cad1bc73b49"
-                               value="6667762871">
-                        <label style="position:absolute;top:-99999px;left:-99999px;z-index:-99;" aria-hidden="true">
-                            <span hidden="">Please leave this field empty.</span>
-                            <input type="email" name="esfpx_es_hp_email" class="es_required_field" tabindex="-1"
-                                   autocomplete="-1" value="">
-                        </label>
+                          id="es_subscription_form_67cad1bc73b49" data-source="ig-es" data-form-id="3">
+                        @csrf
+
                         <style>form.es_subscription_form[data-form-id="3"] * {
                                 box-sizing: border-box;
                             }
@@ -350,7 +338,7 @@
                             <div class="gjs-row"></div>
                             <div class="gjs-row">
                                 <div class="gjs-cell">
-                                    <input type="email" required="" class="es-email" name="esfpx_email"
+                                    <input type="email" required="" class="es-email" name="email"
                                            autocomplete="email" placeholder="Your email" id="esfpx_email_0fe74ada6116e">
                                     <input type="submit" name="submit" value="">
                                 </div>
