@@ -81,7 +81,7 @@ class SubscriptionController extends Controller
         // Delete the token to prevent reuse
         $confirmation->delete();
 
-        return view('subscription.confirmed');
+        return view('web.subscription.confirmed');
     }
 
 }
