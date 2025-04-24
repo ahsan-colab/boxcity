@@ -31,21 +31,21 @@ class SubscriptionController extends Controller
         );
 
         $newsletter = NewsLetter::updateOrCreate([
-            'email' => $request->esfpx_email
+            'email' => $request->email
         ]);
 
         Subscriber::create([
             "list_id" => 0,
             "contact_id" => $newsletter->id,
             "status" => "unconfirmed",
-            "option_type" => 0
+            "optin_type" => 0
         ]);
 
         // Generate confirmation URL
-        $confirmationUrl = route('subscription.confirm', ['token' => $token]);
+        dd($confirmationUrl = route('subscription.confirm', ['token' => $token]));
 
         // Send confirmation email
-        Mail::to($request->esfpx_email)->send(new AppMailer(
+        Mail::to($request->email)->send(new AppMailer(
             subjectLine: 'Welcome to the BoxCity!',
             viewName: 'emails.newsletter_subscribe',
             viewData: [
@@ -66,8 +66,10 @@ class SubscriptionController extends Controller
 
         Subscriber::updateOrCreate(
             ['contact_id' => $newsletter->id],
-            ['status' => 'Subscribed'],
-            ['subscribed_at' => now()]
+            [
+                'status' => 'Subscribed',
+                'subscribed_at' => now()
+            ]
         );
 
         // Send confirmation email

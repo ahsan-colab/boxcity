@@ -10,7 +10,7 @@ class NewsLetter extends Model
 
     protected $table = 'ig_contacts';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'email'

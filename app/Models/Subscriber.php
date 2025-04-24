@@ -17,6 +17,6 @@ class Subscriber extends Model
         'status',
         'subscribed_at',
         'list_id',
-        'option_type'
+        'optin_type'
     ];
 }
