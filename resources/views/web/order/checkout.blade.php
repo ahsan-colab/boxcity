@@ -119,10 +119,11 @@
             } else {
                 cart.forEach(item => {
                     let itemTotal = item.price * item.quantity;
+                    var productDetailUrl = "{{ route('product.detail', ['id' => '000']) }}".replace('000', item.productId);
                     total += itemTotal;
                     $cartList.append(`
                     <tr>
-                        <td>${item.product}</td>
+                        <td><a href="${productDetailUrl}" target="_blank">${item.product}</a></td>
                         <td>${item.quantity}</td>
                         <td>$${itemTotal.toFixed(2)}</td>
                     </tr>

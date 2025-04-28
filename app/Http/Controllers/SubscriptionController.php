@@ -42,7 +42,7 @@ class SubscriptionController extends Controller
         ]);
 
         // Generate confirmation URL
-        dd($confirmationUrl = route('subscription.confirm', ['token' => $token]));
+        $confirmationUrl = route('subscription.confirm', ['token' => $token]);
 
         // Send confirmation email
         Mail::to($request->email)->send(new AppMailer(
