@@ -4007,4 +4007,12 @@ td a{
     body {
         max-width: 2560px !important;
     }
+
+    .container {
+        max-width: 2000px !important;
+    }
+
+    header .container-fluid .row {
+        padding: 0px 238px;
+    }
 }
