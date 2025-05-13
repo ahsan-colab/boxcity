@@ -3586,6 +3586,14 @@ footer form input::placeholder {
         text-align: center !important;
     }
 
+    .banner-img-mobile{
+        display:block !important;
+    }
+
+    .banner-img{
+        display:none !important;
+    }
+
 }
 
 
@@ -4005,7 +4013,7 @@ td a{
 
 @media screen and (min-width:2000px){
     body {
-        max-width: 2560px !important;
+        max-width: 100% !important;
     }
 
     .container {
