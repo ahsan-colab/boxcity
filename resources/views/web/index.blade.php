@@ -12,14 +12,20 @@
 
                 <div class="col-lg-9 col-sm-12">
                     <!-- Top banner -->
-                    <div class="banner">
-                        <div class="heading-container">
-                            <h4>CORRUGATED BOXES</h4>
-                            <h2>Buy Boxes in <br/>Bulk & Save Big!</h2>
-                            <p>We beat Uline pricing! Enjoy same-day local <br/> pickup or next-day delivery.</p>
-                        </div>
-                    </div>
+{{--                    <div class="banner">--}}
+{{--                        <div class="heading-container">--}}
+{{--                            <h4>CORRUGATED BOXES</h4>--}}
+{{--                            <h2>Buy Boxes in <br/>Bulk & Save Big!</h2>--}}
+{{--                            <p>We beat Uline pricing! Enjoy same-day local <br/> pickup or next-day delivery.</p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+                          <div class="banner-img">
+                              <img src="{{asset('public/assets/Full-Banner.png')}}"/>
+                          </div>
 
+                    <div class="banner-img-mobile">
+                        <img src="{{asset('public/assets/Mobile-Version.png')}}"/>
+                    </div>
                     <!-- Bulk order section -->
                     <div class="bulk-orders">
                         <h3>
