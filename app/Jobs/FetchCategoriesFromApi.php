@@ -2,49 +2,62 @@
 
 namespace App\Jobs;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\DB;
-use App\Models\Category;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Services\EcwidApiClient;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\Log;
+use App\Models\Category;
 
-class FetchCategoriesFromApi implements ShouldQueue
+
+class FetchCategoriesFromApi
 {
-    use Dispatchable, Queueable;
+    use Dispatchable;
 
     public function handle(): void
     {
-        $url = 'https://app.ecwid.com/api/v3/109333282/categories';
-        $params = [
-            'withSubcategories' => 'true',
-            'hidden_categories' => 'true',
-            'parentIds' => '174055330',
-        ];
+        $ecwidApiClient = new EcwidApiClient();
+        $limit = config('ecwid.limit');
+        $offset = 0;
+        $totalFetched = 0;
 
         try {
-            $response = Http::get($url, $params);
+            $data = $ecwidApiClient->fetchCategories($limit, $offset);
+            // Get the total number of products
+            $total = $data['total'];
 
-            if ($response->successful()) {
-                $categories = $response->json('items');
+            do {
+                $data = $ecwidApiClient->fetchCategories($limit, $offset);
+                $categories = $data['items'];
 
-                foreach ($categories as $category) {
-                    Category::updateOrCreate(
-                        ['id' => $category['id']],
-                        [
-                            'category_name' => $category['name'] ?? '',
-                            'parent_id' => $category['parentId'] ?? null,
-                        ]
-                    );
-                }
+                $totalFetched += count($categories);
 
-                Log::info('Categories successfully fetched and stored.');
-            } else {
-                Log::error('Failed to fetch categories: ' . $response->body());
-            }
+                // Store valid products
+                $this->storeCategories($categories);
+
+                $offset += $limit; // Move to the next set of products
+            } while ($totalFetched < $total);
         } catch (\Exception $e) {
-            Log::error('Error while fetching categories: ' . $e->getMessage());
+            Log::error('Failed to fetch categories from API', ['error' => $e->getMessage()]);
+        }
+    }
+
+    /**
+     * Store or update products in the database
+     *
+     * @param array $categories
+     * @return void
+     */
+    public function storeCategories(array $categories): void
+    {
+        foreach ($categories as $category) {
+            Category::updateOrCreate(
+                ['categoryId' => $category['id']],
+                [
+                    'categoryName' => $category['name'] ?? '',
+                    'parentId' => isset($category['parentId']) && $category['parentId'] != config('ecwid.category_id')
+                        ? $category['parentId']
+                        : null,
+                ]
+            );
         }
     }
 }

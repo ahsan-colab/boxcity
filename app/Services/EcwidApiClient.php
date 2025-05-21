@@ -87,6 +87,28 @@ class EcwidApiClient
     }
 
     /**
+     * Fetch Category from the Ecwid API with pagination
+     *
+     * @param int $limit
+     * @param int $offset
+     * @param int|null $category
+     * @return array
+     * @throws GuzzleException
+     */
+    public function fetchCategories(int $limit, int $offset, int $category = null): array
+    {
+        $response = $this->get('/categories', [
+            'withSubcategories' => 'true',
+            'hidden_categories' => 'true',
+            'parentIds' => $category ?? config('ecwid.category_id'),
+            'limit' => $limit,
+            'offset' => $offset,
+        ]);
+
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
+    /**
      * Post an order to the Ecwid API
      *
      * @param array $orderData
