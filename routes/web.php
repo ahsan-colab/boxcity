@@ -32,6 +32,15 @@ Route::get('/fetch-products', function () {
 });
 
 
+use App\Jobs\FetchCategoriesFromApi;
+
+Route::get('/fetch-categories', function () {
+    dispatch(new FetchCategoriesFromApi());
+    return 'Categories fetch job dispatched.';
+});
+
+
+
 //temp
 Route::get('/subscription/confirmation', function () {
     return view('subscription.confirmed');
