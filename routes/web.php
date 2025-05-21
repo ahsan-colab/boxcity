@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Artisan;
@@ -13,6 +14,7 @@ Route::post('/post-contact', [FormController::class, 'submitContactForm'])->name
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('submit.newsletter');
 Route::get('/confirm-subscription/{token}', [SubscriptionController::class, 'confirm'])->name('subscription.confirm');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::get('/category', [CategoryController::class, 'index'])->name('category');
 Route::get('/product', [ProductController::class, 'index'])->name('product');
 Route::get('/product/{id}', [ProductController::class, 'detail'])->name('product.detail');
 Route::get('/load-more-products', [ProductController::class, 'loadMoreProducts'])->name('products.load-more');
