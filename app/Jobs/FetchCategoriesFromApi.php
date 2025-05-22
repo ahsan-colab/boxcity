@@ -23,6 +23,7 @@ class FetchCategoriesFromApi
             $data = $ecwidApiClient->fetchCategories($limit, $offset);
             // Get the total number of products
             $total = $data['total'];
+            $this->storeParentCategory();
 
             do {
                 $data = $ecwidApiClient->fetchCategories($limit, $offset);
@@ -53,12 +54,26 @@ class FetchCategoriesFromApi
                 ['categoryId' => $category['id']],
                 [
                     'categoryName' => $category['name'] ?? '',
-                    'parentId' => isset($category['parentId']) && $category['parentId'] != config('ecwid.category_id')
-                        ? $category['parentId']
-                        : null,
+                    'parentId' => $category['parentId'] ?? null,
                 ]
             );
         }
+    }
+
+    /**
+     * Store or update parent products in the database
+     *
+     * @return void
+     */
+    public function storeParentCategory(): void
+    {
+        Category::updateOrCreate(
+            ['categoryId' => config('ecwid.category_id')],
+            [
+                'categoryName' => 'Corrugated Boxes',
+                'parentId' => null,
+            ]
+        );
     }
 }
 

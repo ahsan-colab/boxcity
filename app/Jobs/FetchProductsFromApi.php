@@ -48,7 +48,7 @@ class FetchProductsFromApi
                 $products = $data['items'];
 
                 $filteredProducts = $this->filterValidProducts($products);
-                $totalFetched += count($filteredProducts);
+                $totalFetched += count($products);
 
                 // Store valid products
                 $this->storeProducts($filteredProducts);
@@ -91,6 +91,7 @@ class FetchProductsFromApi
                     'width' => $product['width'] ?? '',
                     'height' => $product['height'] ?? '',
                     'sku' => $product['sku'] ?? '',
+                    'categoryId' => $product['categoryIds'][0] ?? '',
                     'description' => $product['description'] ?? '',
                 ]
             );

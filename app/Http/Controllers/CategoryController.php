@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index(): View
     {
-        $categories = Category::with('childrenRecursive')->whereNull('parent_id')->get();
+        $categories = Category::with('childrenRecursive')->whereNull('parentId')->get();
         dd($categories);
     }
 }
