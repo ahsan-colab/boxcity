@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class CategoryController extends Controller
@@ -14,7 +16,62 @@ class CategoryController extends Controller
      */
     public function index(): View
     {
-        $categories = Category::with('childrenRecursive')->whereNull('parentId')->get();
+        //$categories = Category::with('childrenRecursive')->whereNull('parentId')->get();
+
+        $categories = Category::withCount('products')->get();
+
+        foreach ($categories as $category) {
+            echo "Category: {$category->categoryName}, Products: {$category->products_count}<br>";
+        }
         dd($categories);
     }
+
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Support\Collection
+     */
+    public function getProductsByCategoryLevel(Request $request)
+    {
+        $categoryId = $request->get('categoryId');
+        $category = Category::where('categoryId', $categoryId)->first();
+
+        if (!$category) {
+            return collect(); // or throw an exception
+        }
+
+        // Check if it has children (i.e. it's a 1st or 2nd level)
+        if ($category->children()->exists()) {
+            // It's a parent — get all descendant categoryIds
+            $allCategoryIds = collect([$category->categoryId]);
+            $this->collectDescendantCategoryIds($category, $allCategoryIds);
+
+            // Get all products under this branch
+            return $this->bindResponse(Product::whereIn('categoryId', $allCategoryIds)->paginate(60));
+        } else {
+            // Leaf node — just get its own products
+            return $this->bindResponse($category->products->paginate(60));
+        }
+    }
+
+    // Recursive helper to collect all descendant categoryIds
+    public function collectDescendantCategoryIds($category, &$ids)
+    {
+        foreach ($category->children as $child) {
+            $ids->push($child->categoryId);
+            $this->collectDescendantCategoryIds($child, $ids);
+        }
+    }
+
+    protected function bindResponse($products){
+        $productHtml = view('partials.product_list', ['products' => $products])->render();
+
+        return response()->json([
+            'product_html' => $productHtml,
+            'next_page_url' => $products->nextPageUrl(),
+            'has_more' => $products->hasMorePages(),
+        ]);
+    }
+
+
 }

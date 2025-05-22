@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
@@ -16,7 +17,8 @@ class ProductController extends Controller
      */
     public function index(): View
     {
-        return view('web.index');
+        $categories = Category::withCount('products')->get();
+        return view('web.index', ['categories' => $categories]);
     }
 
     /**
