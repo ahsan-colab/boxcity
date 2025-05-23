@@ -4024,3 +4024,8 @@ td a{
         padding: 0px 238px;
     }
 }
+
+
+.filters{
+    cursor: pointer;
+}

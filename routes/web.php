@@ -40,6 +40,9 @@ Route::get('/fetch-categories', function () {
 });
 
 
+Route::get('/products/by-category', [CategoryController::class, 'getProductsByCategoryLevel'])
+    ->name('category.Level');
+
 
 //temp
 Route::get('/subscription/confirmation', function () {

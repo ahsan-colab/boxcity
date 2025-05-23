@@ -23,7 +23,7 @@ class Category extends Model
 
     public function childrenRecursive()
     {
-        return $this->children()->with('childrenRecursive');
+        return $this->children()->with('childrenRecursive')->withCount('products');
     }
 
     public function products()

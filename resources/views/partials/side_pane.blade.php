@@ -1,4 +1,8 @@
 <!-- Side pane -->
+<?php
+use App\Models\Category;
+?>
+
 <div class="col-sm-3">
 
     <!-- Side filter -->
@@ -34,10 +38,7 @@
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
                 <div class="accordion-body">
-                    <ul>
-                        <li>Regular</li>
-                        <li>Double</li>
-                    </ul>
+                    @include('partials.category-accordion', ['categories' => $categories])
                 </div>
             </div>
         </div>
@@ -58,3 +59,23 @@
     </div>
 
 </div>
+
+
+<script>
+    $(document).on('click', '.filters', function () {
+        const categoryId = $(this).data('category-id');
+
+        $.ajax({
+            url: "{{ route('category.Level') }}",
+            method: "GET",
+            data: { categoryId },
+            success: function (response) {
+                $('#product-list').html(response.product_html);
+            },
+            error: function () {
+                alert('Something went wrong.');
+            }
+        });
+    });
+
+</script>
