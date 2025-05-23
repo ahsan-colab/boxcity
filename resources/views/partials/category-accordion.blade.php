@@ -1,7 +1,7 @@
 @foreach($categories as $category)
     <div class="accordion-item">
         <h2 class="accordion-header" id="heading-{{ $category->categoryId }}">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            <button class="accordion-button filters collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapse-{{ $category->categoryId }}" aria-expanded="false"
                     aria-controls="collapse-{{ $category->categoryId }}">
                 {{ $category->categoryName }} ({{ $category->products->count() }})
