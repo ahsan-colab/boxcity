@@ -73,7 +73,7 @@ use App\Models\Category;
                 $('#product-list').html(response.product_html);
             },
             error: function () {
-                $('#product-list').html('<div style="display: block; text-align: center; margin-left: 222% !important; margin: 20px 0px;  width: 100%;">No Products Found</div>');
+                $('#product-list').html('<div style="display: block; text-align: center; margin-left: 162% !important; margin: 20px 0px;  width: 100%;">No Products Found</div>');
 
             }
         });
