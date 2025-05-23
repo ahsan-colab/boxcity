@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index(): View
     {
-        $categories = Category::withCount('products')->get();
+        $categories = Category::with('childrenRecursive')->withCount('products')->whereNull('parentId')->get();
         return view('web.index', ['categories' => $categories]);
     }
 
