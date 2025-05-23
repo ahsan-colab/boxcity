@@ -35,8 +35,8 @@ Route::get('/fetch-products', function () {
 });
 
 Route::get('/fetch-categories', function () {
-    dispatch(new FetchCategoriesFromApi());
-    return 'Categories fetch job dispatched.';
+    Artisan::call('fetch:categories');
+    return response()->json(['status' => 'Command executed successfully']);
 });
 
 
