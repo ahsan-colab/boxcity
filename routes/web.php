@@ -20,6 +20,7 @@ Route::get('/category-level', [CategoryController::class, 'getProductsByCategory
 
 Route::get('/product', [ProductController::class, 'index'])->name('product');
 Route::get('/product/{id}', [ProductController::class, 'detail'])->name('product.detail');
+Route::get('/product-length', [ProductController::class, 'getProductsByLength'])->name('product.length');
 Route::get('/load-more-products', [ProductController::class, 'loadMoreProducts'])->name('products.load-more');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
@@ -38,11 +39,6 @@ Route::get('/fetch-categories', function () {
     Artisan::call('fetch:categories');
     return response()->json(['status' => 'Command executed successfully']);
 });
-
-
-Route::get('/products/by-category', [CategoryController::class, 'getProductsByCategoryLevel'])
-    ->name('category.Level');
-
 
 //temp
 Route::get('/subscription/confirmation', function () {

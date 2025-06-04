@@ -18,11 +18,18 @@ use App\Models\Category;
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
                 <div class="accordion-body">
                     <ul>
-                        <li>3" - 8" (173)</li>
-                        <li>9" - 11" (175)</li>
-                        <li>12" - 13" (198)</li>
-                        <li>14" - 17" (323)</li>
-                        <li>18" - 23" (374)</li>
+                        @foreach ($sizes as $size)
+                            @if ($size['count'] > 0)
+                                <li
+                                    class="length"
+                                    data-min="{{ $size['min'] }}"
+                                    data-max="{{ $size['max'] }}"
+                                    style="cursor: pointer;"
+                                >
+                                    {{ $size['label'] }} ({{ $size['count'] }})
+                                </li>
+                            @endif
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -66,9 +73,27 @@ use App\Models\Category;
         const categoryId = $(this).data('category-id');
 
         $.ajax({
-            url: "{{ route('category.Level') }}",
+            url: "{{ route('category.level') }}",
             method: "GET",
             data: { categoryId },
+            success: function (response) {
+                $('#product-list').html(response.product_html);
+            },
+            error: function () {
+                $('#product-list').html('<div style="display: block; text-align: center; margin-left: 162% !important; margin: 20px 0px;  width: 100%;">No Products Found</div>');
+
+            }
+        });
+    });
+
+    $(document).on('click', '.length', function () {
+        const min = $(this).data('min');
+        const max = $(this).data('max');
+
+        $.ajax({
+            url: "{{ route('product.length') }}",
+            method: "GET",
+            data: { min, max },
             success: function (response) {
                 $('#product-list').html(response.product_html);
             },

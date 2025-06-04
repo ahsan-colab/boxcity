@@ -88,6 +88,7 @@ class FetchProductsFromApi
                     'name' => $product['name'] ?? '',
                     'price' => $product['price'] ?? '',
                     'thumbnailUrl' => $product['thumbnailUrl'] ?? null,
+                    'length' => $product['dimensions']['length'] ?? '',
                     'width' => $product['width'] ?? '',
                     'height' => $product['height'] ?? '',
                     'sku' => $product['sku'] ?? '',

@@ -68,7 +68,7 @@ class CategoryController extends Controller
     }
 
     protected function bindResponse($products){
-        $productHtml = view('partials.product_list', ['products' => $products])->render();
+        $productHtml = view('partials.product_list', ['products' => $products, 'scroll' => 'false'])->render();
 
         return response()->json([
             'product_html' => $productHtml,

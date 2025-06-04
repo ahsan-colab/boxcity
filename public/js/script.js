@@ -82,7 +82,7 @@ $(window).on('scroll', function() {
     var bottomOfTableBody = tableBody.offset().top + tableBody.height();
     var bottomOfWindow = $(window).scrollTop() + $(window).height();
 
-    if (bottomOfWindow >= bottomOfTableBody - 100) {
+    if (bottomOfWindow >= bottomOfTableBody - 100 && tableBody.find('tr.scroll-false').length === 0) {
         loadMoreProducts();
     }
 });
