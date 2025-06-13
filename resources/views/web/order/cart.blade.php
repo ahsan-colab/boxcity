@@ -16,7 +16,9 @@
                 <th>Product Name</th>
                 <th>Quantity</th>
                 <th>Unit Price</th>
-                <th>Total Price</th>
+                <th>Retail Price</th>
+                <th>Discounted Price</th>
+                <th>You Save</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -46,38 +48,38 @@
         $(document).ready(function () {
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
             // Load Cart Items from Local Storage
-            function updateCartPage() {
-                let $cartPageList = $("#cart-page-list");
-                $cartPageList.empty();
+            {{--function updateCartPage() {--}}
+            {{--    let $cartPageList = $("#cart-page-list");--}}
+            {{--    $cartPageList.empty();--}}
 
-                if (cart.length === 0) {
-                    $cartPageList.append("<tr><td colspan='5'>Cart is empty</td></tr>");
-                } else {
-                    cart.forEach(item => {
-                        var productDetailUrl = "{{ route('product.detail', ['id' => '000']) }}".replace('000', item.productId);
-                        $cartPageList.append(`
-                    <tr>
-                        <td ><a href="${productDetailUrl}" target="_blank">${item.productId}</a></td>
-                        <td><a href="${productDetailUrl}" target="_blank">${item.product}</a></td>
-                        <td>
-                            <div class="quantity-container">
-                            <div class="qty-container">
-                                <button class="quantity-btn minus" data-product="${item.product}">−</button>
-                                <input type="text" class="cart-quantity text-center" data-product="${item.product}" value="${item.quantity}" min="1" style="width: 40px;">
-                                <button class="quantity-btn plus" data-product="${item.product}">+</button>
-                            </div>
-                            </div>
-                        </td>
-                        <td class="cart-price">$${item.price}</td>
-                        <td class="cart-price total-unit">$${(item.price * item.quantity).toFixed(2)}</td>
-                        <td>
-                            <button class="remove-item btn btn-sm btn-danger" data-product="${item.product}">Remove</button>
-                        </td>
-                    </tr>
-                `);
-                    });
-                }
-            }
+            {{--    if (cart.length === 0) {--}}
+            {{--        $cartPageList.append("<tr><td colspan='5'>Cart is empty</td></tr>");--}}
+            {{--    } else {--}}
+            {{--        cart.forEach(item => {--}}
+            {{--            var productDetailUrl = "{{ route('product.detail', ['id' => '000']) }}".replace('000', item.productId);--}}
+            {{--            $cartPageList.append(`--}}
+            {{--        <tr>--}}
+            {{--            <td ><a href="${productDetailUrl}" target="_blank">${item.productId}</a></td>--}}
+            {{--            <td><a href="${productDetailUrl}" target="_blank">${item.product}</a></td>--}}
+            {{--            <td>--}}
+            {{--                <div class="quantity-container">--}}
+            {{--                <div class="qty-container">--}}
+            {{--                    <button class="quantity-btn minus" data-product="${item.product}">−</button>--}}
+            {{--                    <input type="text" class="cart-quantity text-center" data-product="${item.product}" value="${item.quantity}" min="1" style="width: 40px;">--}}
+            {{--                    <button class="quantity-btn plus" data-product="${item.product}">+</button>--}}
+            {{--                </div>--}}
+            {{--                </div>--}}
+            {{--            </td>--}}
+            {{--            <td class="cart-price">$${item.price}</td>--}}
+            {{--            <td class="cart-price total-unit">$${(item.price * item.quantity).toFixed(2)}</td>--}}
+            {{--            <td>--}}
+            {{--                <button class="remove-item btn btn-sm btn-danger" data-product="${item.product}">Remove</button>--}}
+            {{--            </td>--}}
+            {{--        </tr>--}}
+            {{--    `);--}}
+            {{--        });--}}
+            {{--    }--}}
+            {{--}--}}
 
             updateCartPage(); // Update cart page on load
             syncCartWithSession(); // Sync cart with Laravel session on page load
@@ -94,18 +96,7 @@
                 });
             }
 
-            function updateCartTotal() {
-                let total = 0;
 
-                $(".total-unit").each(function () {
-                    let priceText = $(this).text().replace("$", "").trim()
-                    console.log(priceText);
-                    let price = parseFloat(priceText) || 0;
-                    total += price;
-                });
-
-                $(".cart-total").text(`Sub Total : $${total.toFixed(2)}`);
-            }
 
 
             $(document).on("click", ".quantity-btn", function () {
@@ -139,75 +130,18 @@
                 }
 
                 updateCartQuantity(productName, newQuantity, $row); // Pass row for updating
+                updateCartPage();
             });
 
 
-            function updateCartQuantity(productName, newQuantity, $row) {
-                let item = cart.find(item => item.product === productName);
 
-                if (item) {
-                    item.quantity = newQuantity;
-
-                    let retailPrice = parseFloat(item.retailPrice) || 0;
-                    let priceBulkOne = parseFloat(item.priceBulkOne) || retailPrice;
-                    let priceBulkTwo = parseFloat(item.priceBulkTwo) || priceBulkOne;
-                    let priceBulkThree = parseFloat(item.priceBulkThree) || priceBulkTwo;
-
-                    if (newQuantity >= 100) {
-                        item.price = priceBulkThree;
-                    } else if (newQuantity >= 50) {
-                        item.price = priceBulkTwo;
-                    } else if (newQuantity >= 12) {
-                        item.price = priceBulkOne;
-                    } else {
-                        item.price = retailPrice;
-                    }
-
-                    // Save to localStorage
-                    localStorage.setItem("cart", JSON.stringify(cart));
-
-                    // 🔁 Recalculate and update all total-units
-                    $(".cart-quantity").each(function () {
-                        let product = $(this).data("product");
-                        let qty = parseInt($(this).val());
-                        let row = $(this).closest("tr");
-
-                        let productItem = cart.find(p => p.product === product);
-                        if (productItem) {
-                            let unitTotal = productItem.price * qty;
-                            row.find(".total-unit").text(`$${unitTotal.toFixed(2)}`);
-                        }
-                    });
-
-                    updateCartTotal();
-                }
-            }
 
 
 
             updateTotalPrice();
 
-            function updateTotalPrice() {
-                let total = 0;
-
-                cart.forEach(item => {
-                    total += item.price * item.quantity;
-                });
-
-                $(".cart-total").text(`Sub Total : $${total.toFixed(2)}`);
-            }
 
 
-
-            // Remove Item from Cart
-            $(document).on("click", ".remove-item", function () {
-                let productName = $(this).data("product");
-                cart = cart.filter(item => item.product !== productName);
-                localStorage.setItem("cart", JSON.stringify(cart));
-                updateCartPage();
-                syncCartWithSession(); // Update session after item removal
-                updateTotalPrice();
-            });
 
             // Clear Cart
             $("#clear-cart").click(function () {

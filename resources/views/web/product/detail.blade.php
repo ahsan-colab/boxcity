@@ -84,7 +84,7 @@
                                     <!-- Quantity Increment/Decrement Controls -->
                                     <div class="qty-container">
                                         <button class="quantity-btn minus">−</button>
-                                        <input type="text" class="quantity-input" value="12">
+                                        <input type="text" class="quantity-input" value="1">
                                         <button class="quantity-btn plus">+</button>
                                     </div>
 

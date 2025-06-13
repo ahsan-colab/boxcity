@@ -91,7 +91,120 @@ $(document).ready(function() {
     loadMoreProducts();
 });
 
+
+
+function updateCartTotal() {
+    let total = 0;
+
+    $(".total-unit").each(function () {
+        let priceText = $(this).text().replace("$", "").trim()
+        console.log(priceText);
+        let price = parseFloat(priceText) || 0;
+        total += price;
+    });
+
+    $(".cart-total").text(`Sub Total : $${total.toFixed(2)}`);
+}
+
+
+function updateTotalPrice() {
+    let total = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+    });
+
+    $(".cart-total").text(`Sub Total : $${total.toFixed(2)}`);
+}
+
+
+function getGroupKey(productName) {
+    if (productName.toLowerCase().includes("corrugated boxes")) {
+        return "Corrugated Boxes"; // normalized group name
+    }
+    return productName;
+}
+
+function applyGroupPricing() {
+    const grouped = {};
+
+    // First, group products by groupKey
+    cart.forEach(item => {
+        const groupKey = getGroupKey(item.product);
+        if (!grouped[groupKey]) grouped[groupKey] = [];
+        grouped[groupKey].push(item);
+    });
+
+    for (const groupKey in grouped) {
+        const groupItems = grouped[groupKey];
+        const groupTotalQty = grouped[groupKey].reduce((sum, i) => sum + i.quantity, 0);
+
+        groupItems.forEach(i => {
+            const retail = parseFloat(i.retailPrice) || 0;
+            const bulk1 = parseFloat(i.priceBulkOne) || retail;
+            const bulk2 = parseFloat(i.priceBulkTwo) || bulk1;
+            const bulk3 = parseFloat(i.priceBulkThree) || bulk2;
+
+            if (groupTotalQty >= 99) {
+                i.price = bulk3;
+            } else if (groupTotalQty >= 49) {
+                i.price = bulk2;
+            } else if (groupTotalQty >= 12) {
+                i.price = bulk1;
+            } else {
+                i.price = retail;
+            }
+
+        });
+    }
+
+    return grouped;
+}
+
+
+function updateCartQuantity(productName, newQuantity, $row) {
+    let item = cart.find(item => item.product === productName);
+
+    if (item) {
+        item.quantity = newQuantity;
+
+        let retailPrice = parseFloat(item.retailPrice) || 0;
+        let priceBulkOne = parseFloat(item.priceBulkOne) || retailPrice;
+        let priceBulkTwo = parseFloat(item.priceBulkTwo) || priceBulkOne;
+        let priceBulkThree = parseFloat(item.priceBulkThree) || priceBulkTwo;
+
+
+
+        applyGroupPricing();
+
+        // Save to localStorage
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        $(".cart-quantity").each(function () {
+            let product = $(this).data("product");
+            let qty = parseInt($(this).val());
+            let row = $(this).closest("tr");
+
+            let productItem = cart.find(p => p.product === product);
+            if (productItem) {
+                let unitTotal = productItem.price * qty;
+                row.find(".total-unit").text(`$${unitTotal.toFixed(2)}`);
+                row.find(".cart-price").text(`$${productItem.price.toFixed(2)}`);
+            }
+            applyGroupPricing();
+        });
+
+
+        updateCartTotal();
+        applyGroupPricing();
+    }
+}
+
+
 function updateCartPage() {
+
+    let finalPrice = applyGroupPricing();
+    console.log(finalPrice);
     let $cartPageList = $("#cart-page-list");
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let $checkoutBtn = $("#proceed-to-checkout");
@@ -103,7 +216,10 @@ function updateCartPage() {
             $cartPageList.append("<tr><td colspan='6'>Cart is empty</td></tr>");
             $checkoutBtn.prop("disabled", true);
         } else {
-            cart.forEach(item => {
+            localStorage.setItem("cart", JSON.stringify(cart));
+            console.log("Updated cart with pricing:", cart);
+            finalPrice["Corrugated Boxes"].forEach(item => {
+
                 $cartPageList.append(`
                     <tr>
                         <td><a href="${productDetailUrl.replace('000', item.productId)}">${item.productId}</a></td>
@@ -117,8 +233,10 @@ function updateCartPage() {
                             </div>
                             </div>
                         </td>
-                        <td>$${item.price}</td>
+                        <td class="cart-price">$${item.price}</td>
+                        <td class="cart-price total-unit">$${item.retailPrice}</td>
                         <td class="cart-price total-unit">$${(item.price * item.quantity).toFixed(2)}</td>
+                        <td class="cart-price total-unit">$${(item.retailPrice * item.quantity - item.price * item.quantity).toFixed(2)}</td>
                         <td>
                             <button class="remove-item btn btn-danger btn-sm" data-product="${item.product}">Remove</button>
                         </td>
@@ -129,10 +247,18 @@ function updateCartPage() {
             if ($checkoutBtn.length) {
                 $checkoutBtn.prop("disabled", false); // Enable if cart is not empty
             }
+
         }
     }
+
+
 }
 
+
+$(document).ready(function () {
+    updateCartPage();
+    applyGroupPricing();
+});
 
 function updateCartUI() {
     let $cartList = $("#cart-list");
@@ -172,18 +298,39 @@ $(document).ready(function () {
         } else if ($(this).hasClass("minus")) {
             $input.val(Math.max(1, value - 1)); // Prevents going below 1
         }
-
         updateCartPage();
+        updateTotalPrice();
     });
 
-    // Prevent manual entry of negative or invalid values
+
     $(document).on("input", ".quantity-input", function () {
-        let val = $(this).val().replace(/[^0-9]/g, ""); // Remove non-numeric characters
-        $(this).val(val || 1); // Ensure at least 1 is set
+        let val = $(this).val().replace(/[^0-9]/g, "");
+        $(this).val(val || 1);
     });
 });
 
 
+function syncCartWithSession() {
+    $.ajax({
+        url: "{{ route('cart.store') }}",
+        method: "POST",
+        data: { cart: cart, _token: "{{ csrf_token() }}" },
+        success: function (response) {
+            console.log("Cart synced with session!");
+        }
+    });
+}
+
+
+$(document).on("click", ".remove-item", function () {
+    let productName = $(this).data("product");
+    cart = cart.filter(item => item.product !== productName);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    syncCartWithSession(); // Update session after item removal
+    updateTotalPrice();
+    updateCartPage();
+});
 
 $(document).ready(function () {
 
@@ -243,10 +390,12 @@ $(document).ready(function () {
             }
 
             localStorage.setItem("cart", JSON.stringify(cart));
+            applyGroupPricing();
             updateCartUI();
             updateCartPage();
             updateCartDrawer();
             openCartDrawer();
+
         } else {
             alert("Quantity must be at least 1");
         }
@@ -261,33 +410,27 @@ $(document).ready(function () {
 
 
     // Remove Item from Cart (For Both Sidebar & Cart Page)
-    $(document).on("click", ".remove-item", function () {
-        let productName = $(this).data("product");
-        cart = cart.filter(item => item.product !== productName); // Remove item
-        sessionStorage.setItem("cart", JSON.stringify(cart)); // Save changes
-        updateCartUI();
-        updateCartPage();
-    });
+
 
     // Update Quantity in Cart Page
-    $(document).on("change", ".cart-quantity", function () {
-        let productName = $(this).data("product");
-        let newQuantity = parseInt($(this).val());
-
-        if (newQuantity < 1) {
-            alert("Quantity must be at least 1");
-            $(this).val(1);
-            return;
-        }
-
-        let item = cart.find(item => item.product === productName);
-        if (item) {
-            item.quantity = newQuantity; // Update quantity
-        }
-
-        sessionStorage.setItem("cart", JSON.stringify(cart)); // Save changes
-        updateCartUI();
-    });
+    // $(document).on("change", ".cart-quantity", function () {
+    //     let productName = $(this).data("product");
+    //     let newQuantity = parseInt($(this).val());
+    //
+    //     if (newQuantity < 1) {
+    //         alert("Quantity must be at least 1");
+    //         $(this).val(1);
+    //         return;
+    //     }
+    //
+    //     let item = cart.find(item => item.product === productName);
+    //     if (item) {
+    //         item.quantity = newQuantity; // Update quantity
+    //     }
+    //
+    //     sessionStorage.setItem("cart", JSON.stringify(cart)); // Save changes
+    //     updateCartUI();
+    // });
 
 
     function runCartUpdate() {
