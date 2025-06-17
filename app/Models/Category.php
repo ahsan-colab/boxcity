@@ -23,11 +23,35 @@ class Category extends Model
 
     public function childrenRecursive()
     {
-        return $this->children()->with('childrenRecursive')->withCount('products');
+        return $this->children()
+            ->with(['childrenRecursive', 'products'])
+            ->withCount('products');
     }
 
     public function products()
     {
         return $this->hasMany(Product::class, 'categoryId', 'categoryId');
     }
+
+
+    protected function getTotalProductCountAttribute()
+    {
+        $count = $this->products_count ?? $this->products()->count();
+
+        foreach ($this->childrenRecursive as $child) {
+            $count += $child->total_product_count;  // recursion here!
+        }
+
+        return $count;
+    }
+
+    public function assignTotalProductCount($category)
+    {
+        $category->total_product_count = $category->getTotalProductCountAttribute();
+
+        foreach ($category->childrenRecursive as $child) {
+            $this->assignTotalProductCount($child);
+        }
+    }
+
 }

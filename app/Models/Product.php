@@ -23,4 +23,10 @@ class Product extends Model
     {
         return $query->whereRaw('CAST(length AS UNSIGNED) BETWEEN ? AND ?', [$min, $max]);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'categoryId', 'categoryId');
+    }
+
 }

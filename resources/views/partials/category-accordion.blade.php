@@ -1,4 +1,4 @@
-@foreach($categories as $category)
+@foreach($categories[0]->childrenRecursive as $category)
     <div class="accordion-item filters-inner">
         <h2 class="accordion-header" id="heading-{{ $category->categoryId }}">
             <div class="d-flex justify-content-between align-items-center accordion-button collapsed px-3 py-2">

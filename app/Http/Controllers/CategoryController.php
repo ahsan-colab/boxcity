@@ -16,19 +16,20 @@ class CategoryController extends Controller
      */
     public function index(): View
     {
-        $categories = Category::with(['childrenRecursive', 'products'])
-
+        $categories = Category::with(['childrenRecursive'])
+            ->withCount('products')
+            ->whereNull('parentId')
             ->get();
 
-        $categories = Category::with('childrenRecursive')->withCount('products')->whereNull('parentId')->get();
-
         foreach ($categories as $category) {
-            echo "Category: {$category->categoryName}, Products: {$category->products_count}<br>";
+            $category->assignTotalProductCount($category);
         }
-        dd($categories);
+
+        dd($categories[0]->childrenRecursive);
         return view('index', compact('categories'));
 
     }
+
 
 
     /**

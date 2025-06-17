@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Services\EcwidApiClient;
 use GuzzleHttp\Exception\GuzzleException;
@@ -37,26 +38,33 @@ class FetchProductsFromApi
         $limit = config('ecwid.limit');
         $offset = 0;
         $totalFetched = 0;
+        $categories = Category::pluck('categoryId');
+        foreach ($categories as $category) {
+            try {
+                // Get the total number of products
+                $data = $ecwidApiClient->fetchProducts($limit, $offset, $category);
+                $total = $data['total'];
+                $lastCount = 0;
+                do {
+                    $data = $ecwidApiClient->fetchProducts($limit, $offset, $category);
+                    $products = $data['items'];
 
-        try {
-            // Get the total number of products
-            $data = $ecwidApiClient->fetchProducts($limit, $offset);
-            $total = $data['total'];
+                    $filteredProducts = $this->filterValidProducts($products);
+                    $totalFetched += count($products);
 
-            do {
-                $data = $ecwidApiClient->fetchProducts($limit, $offset);
-                $products = $data['items'];
+                    // Store valid products
+                    $this->storeProducts($filteredProducts, $category);
 
-                $filteredProducts = $this->filterValidProducts($products);
-                $totalFetched += count($products);
+                    $offset += $limit; // Move to the next set of products
+                    if($lastCount == $totalFetched){
+                        break;
+                    }
 
-                // Store valid products
-                $this->storeProducts($filteredProducts);
-
-                $offset += $limit; // Move to the next set of products
-            } while ($totalFetched < $total);
-        } catch (\Exception $e) {
-            Log::error('Failed to fetch products from API', ['error' => $e->getMessage()]);
+                    $lastCount = $totalFetched;
+                } while ($totalFetched < $total);
+            } catch (\Exception $e) {
+                Log::error('Failed to fetch products from API', ['error' => $e->getMessage()]);
+            }
         }
     }
 
@@ -79,7 +87,7 @@ class FetchProductsFromApi
      * @param array $products
      * @return void
      */
-    public function storeProducts(array $products): void
+    public function storeProducts(array $products, $category): void
     {
         foreach ($products as $product) {
             Product::updateOrCreate(
@@ -92,7 +100,7 @@ class FetchProductsFromApi
                     'width' => $product['width'] ?? '',
                     'height' => $product['height'] ?? '',
                     'sku' => $product['sku'] ?? '',
-                    'categoryId' => $product['categoryIds'][0] ?? '',
+                    'categoryId' => $category,
                     'description' => $product['description'] ?? '',
                 ]
             );

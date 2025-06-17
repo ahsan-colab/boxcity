@@ -23,7 +23,15 @@ class ProductController extends Controller
      */
     public function index(): View
     {
-        $categories = Category::with('childrenRecursive')->withCount('products')->whereNull('parentId')->get();
+        //$categories = Category::with('childrenRecursive')->withCount('products')->whereNull('parentId')->get();
+        $categories = Category::with(['childrenRecursive'])
+            ->withCount('products')
+            ->whereNull('parentId')
+            ->get();
+
+        foreach ($categories as $category) {
+            $category->assignTotalProductCount($category);
+        }
         $rawCounts = Product::selectRaw("
                         COUNT(CASE WHEN CAST(length AS UNSIGNED) BETWEEN 3 AND 8 THEN 1 END) AS range_3_8,
                         COUNT(CASE WHEN CAST(length AS UNSIGNED) BETWEEN 9 AND 11 THEN 1 END) AS range_9_11,
