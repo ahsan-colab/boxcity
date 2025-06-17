@@ -4029,3 +4029,7 @@ td a{
 .filters{
     cursor: pointer;
 }
+
+.toggle-icon {
+display: none;
+}
