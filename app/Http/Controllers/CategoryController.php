@@ -53,8 +53,8 @@ class CategoryController extends Controller
             // Get all products under this branch
             return $this->bindResponse(Product::whereIn('categoryId', $allCategoryIds)->paginate(60));
         } else {
-            // Leaf node — just get its own products
-            return $this->bindResponse($category->products->paginate(60));
+
+            return $this->bindResponse(Product::where('categoryId', $category->categoryId)->paginate(60));
         }
     }
 
