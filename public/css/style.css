@@ -1134,6 +1134,10 @@ footer form input::placeholder {
     font-family: 'gilroy-semibolduploaded_file';
 }
 
+[data-label="Discounted Bulk Price"]{
+    display: none !important;
+}
+
 @media screen and (min-width:1600px) and (max-width:1699px){
 
     .container {
@@ -1491,6 +1495,7 @@ footer form input::placeholder {
 @media screen and (min-width:1200px) and (max-width:1299px){
     th, td {
         padding: 2px !important;
+        font-size: 13px;
     }
 
     .container {
@@ -1915,6 +1920,11 @@ footer form input::placeholder {
     }
 
 
+    .qty-container {
+        padding: 0px 0px !important;
+    }
+
+
     header .mb-hide {
         display: none !important;
     }
@@ -1938,6 +1948,52 @@ footer form input::placeholder {
 
     .bulk-orders {
         padding: 40px 10px 25px 10px;
+    }
+
+
+    tbody#product-list , tbody#cart-page-list{
+        padding: 12px 12px !important;
+    }
+
+
+    tbody#product-list td, th {
+        border-right: 0px solid #ADADAD !important;
+        border-bottom: 1px solid #ADADAD !important;
+    }
+
+
+    tbody#cart-page-list td, th {
+        border-right: 0px solid #ADADAD !important;
+        border-bottom: 1px solid #ADADAD !important;
+    }
+
+    tbody#product-list td:last-child, tbody#cart-page-list td:last-child{
+        border-bottom: 0px solid #ADADAD !important;
+    }
+
+    .table-responsive  table {
+        border: 0px solid #ADADAD !important;
+    }
+
+    .table-responsive {
+        border: 0px solid #ADADAD !important;
+
+    }
+
+    .responsive-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        flex-basis: 50%;
+        color: #333;
+        padding-right: 10px;
+    }
+
+    [data-label="Discounted Bulk Price"]{
+        background: black;
+    }
+
+    .responsive-table td[data-label="Discounted Bulk Price"]::before {
+        color: #fff !important;
     }
 
     .bulk-orders h3 {
@@ -2204,7 +2260,7 @@ footer form input::placeholder {
     }
 
     .quantity-btn {
-        padding: 0px 7px !important;
+        padding: 0px 13px !important;
     }
 }
 
@@ -2239,6 +2295,57 @@ footer form input::placeholder {
     .bulk-orders {
         padding: 40px 10px 25px 10px;
     }
+
+
+    tbody#product-list , tbody#cart-page-list{
+        padding: 12px 12px !important;
+    }
+
+
+    tbody#product-list td, th {
+        border-right: 0px solid #ADADAD !important;
+        border-bottom: 1px solid #ADADAD !important;
+    }
+
+
+    tbody#cart-page-list td, th {
+        border-right: 0px solid #ADADAD !important;
+        border-bottom: 1px solid #ADADAD !important;
+    }
+
+    tbody#product-list td:last-child, tbody#cart-page-list td:last-child{
+        border-bottom: 0px solid #ADADAD !important;
+    }
+
+    .table-responsive  table {
+        border: 0px solid #ADADAD !important;
+    }
+
+    .table-responsive {
+        border: 0px solid #ADADAD !important;
+
+    }
+
+    [data-label="Discounted Bulk Price"]{
+        background: black;
+    }
+
+    .responsive-table td[data-label="Discounted Bulk Price"]::before {
+        color: #fff !important;
+    }
+
+    .responsive-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        flex-basis: 50%;
+        color: #333;
+        padding-right: 10px;
+    }
+
+    .qty-container {
+        padding: 0px 0px !important;
+    }
+
 
     .bulk-orders h3 {
         padding: 0px 0px;
@@ -2505,7 +2612,7 @@ footer form input::placeholder {
 
 
     .quantity-btn {
-        padding: 0px 6px !important;
+        padding: 0px 13px !important;
     }
 
 }
@@ -2541,6 +2648,36 @@ footer form input::placeholder {
     .bulk-orders {
         padding: 40px 10px 25px 10px;
     }
+
+    tbody#product-list , tbody#cart-page-list{
+        padding: 12px 12px !important;
+    }
+
+
+    tbody#product-list td, th {
+        border-right: 0px solid #ADADAD !important;
+        border-bottom: 1px solid #ADADAD !important;
+    }
+
+
+    tbody#cart-page-list td, th {
+        border-right: 0px solid #ADADAD !important;
+        border-bottom: 1px solid #ADADAD !important;
+    }
+
+    tbody#product-list td:last-child, tbody#cart-page-list td:last-child{
+        border-bottom: 0px solid #ADADAD !important;
+    }
+
+    .table-responsive  table {
+        border: 0px solid #ADADAD !important;
+    }
+
+    .table-responsive {
+        border: 0px solid #ADADAD !important;
+
+    }
+
 
     .bulk-orders h3 {
         padding: 0px 0px;
@@ -2830,6 +2967,43 @@ footer form input::placeholder {
 
     .bulk-orders {
         padding: 40px 10px 25px 10px;
+    }
+
+    tbody#product-list , tbody#cart-page-list{
+        padding: 12px 12px !important;
+    }
+
+
+    tbody#product-list td, th {
+        border-right: 0px solid #ADADAD !important;
+        border-bottom: 1px solid #ADADAD !important;
+    }
+
+
+    tbody#cart-page-list td, th {
+        border-right: 0px solid #ADADAD !important;
+        border-bottom: 1px solid #ADADAD !important;
+    }
+
+    tbody#product-list td:last-child, tbody#cart-page-list td:last-child{
+        border-bottom: 0px solid #ADADAD !important;
+    }
+
+    .table-responsive  table {
+        border: 0px solid #ADADAD !important;
+    }
+
+    .table-responsive {
+        border: 0px solid #ADADAD !important;
+
+    }
+
+    [data-label="Discounted Bulk Price"]{
+    background: black;
+}
+
+    .responsive-table td[data-label="Discounted Bulk Price"]::before {
+        color: #fff !important;
     }
 
     .bulk-orders h3 {
@@ -3353,6 +3527,43 @@ footer form input::placeholder {
 
     .bulk-orders {
         padding: 40px 10px 25px 10px;
+    }
+
+    tbody#product-list , tbody#cart-page-list{
+        padding: 12px 12px !important;
+    }
+
+
+    tbody#product-list td, th {
+        border-right: 0px solid #ADADAD !important;
+        border-bottom: 1px solid #ADADAD !important;
+    }
+
+
+    tbody#cart-page-list td, th {
+        border-right: 0px solid #ADADAD !important;
+        border-bottom: 1px solid #ADADAD !important;
+    }
+
+    tbody#product-list td:last-child, tbody#cart-page-list td:last-child{
+        border-bottom: 0px solid #ADADAD !important;
+    }
+
+    .table-responsive  table {
+        border: 0px solid #ADADAD !important;
+    }
+
+    .table-responsive {
+        border: 0px solid #ADADAD !important;
+
+    }
+
+    [data-label="Discounted Bulk Price"]{
+        background: black;
+    }
+
+    .responsive-table td[data-label="Discounted Bulk Price"]::before {
+        color: #fff !important;
     }
 
     .bulk-orders h3 {
@@ -3948,6 +4159,7 @@ td{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 26px;
 }
 
 .cart-total {

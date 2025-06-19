@@ -460,10 +460,36 @@ $(document).ready(function () {
 
     function applyDataLabels() {
         const headers = [
-            "Product ID :", "Name :", "Retail Price :", "12+ :", "50+ :", "100+ :",
+            "Product ID :", "Name :", "Retail Price :", "Discounted Bulk Price", "12+ :", "50+ :", "100+ :"
         ];
 
         $("#product-list tr").each(function () {
+            const $row = $(this);
+            const $cells = $row.find("td");
+
+            // Only insert if not already added (to prevent duplication)
+            if ($cells.length === 6 || $cells.length === 7) {
+                // Insert an empty <td> after the third cell (index 2)
+                $("<td></td>").insertAfter($cells.eq(2));
+            }
+
+            // Apply data-labels after adding the new <td>
+            $row.find("td").each(function (index) {
+                if (headers[index]) {
+                    $(this).attr("data-label", headers[index]);
+                }
+            });
+        });
+    }
+
+
+
+    function applyDataLabelsCart() {
+        const headers = [
+            "Product ID :", "Product Name :", "Quantity :", "Unit Price :", "Retail Price :", "Discounted Price :", "You Save :", "Action :",
+        ];
+
+        $("#cart-page-list tr").each(function () {
             $(this).find("td").each(function (index) {
                 $(this).attr("data-label", headers[index]);
             });
@@ -472,7 +498,8 @@ $(document).ready(function () {
 
     setTimeout(function () {
         applyDataLabels();
-    }, 1000); // 200ms delay, adjust as needed
+        applyDataLabelsCart();
+    }, 3000); // 200ms delay, adjust as needed
 
 
 

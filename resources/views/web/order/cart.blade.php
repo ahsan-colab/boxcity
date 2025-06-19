@@ -9,7 +9,9 @@
         <h2>Your Cart</h2>
 
         {{-- Cart Table --}}
-        <table class="table">
+
+        <div class="table-responsive">
+        <table id="product-table" class="responsive-table">
             <thead>
             <tr>
                 <th>Product ID</th>
@@ -27,7 +29,7 @@
             <tr><td colspan="6">Loading cart...</td></tr>
             </tbody>
         </table>
-
+        </div>
         {{-- Cart Total and Clear Button --}}
         <div class="cart-total-container">
             {{-- Button to clear the entire cart --}}
