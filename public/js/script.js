@@ -145,9 +145,9 @@ function applyGroupPricing() {
             const bulk2 = parseFloat(i.priceBulkTwo) || bulk1;
             const bulk3 = parseFloat(i.priceBulkThree) || bulk2;
 
-            if (groupTotalQty >= 99) {
+            if (groupTotalQty >= 100) {
                 i.price = bulk3;
-            } else if (groupTotalQty >= 49) {
+            } else if (groupTotalQty >= 50) {
                 i.price = bulk2;
             } else if (groupTotalQty >= 12) {
                 i.price = bulk1;
@@ -532,7 +532,12 @@ function updateCartDrawer() {
             $cartDrawerList.append(`
                 <tr>
                     <td style="width: 60px;">
-                        <img src="${item.productThumb}" alt="${item.product}" style="width: 50px; height: 50px; object-fit: cover;">
+                        <img
+  src="${item.productThumb}"
+  alt="${item.product}"
+  style="width: 50px; height: 50px; object-fit: cover;"
+  onerror="this.onerror=null;this.src='https://boxcityweb.colabwebdemo.com/boxcity/public/assets/header-logo.png';">
+
                     </td>
                     <td>
                         <strong>${item.product}</strong><br>
