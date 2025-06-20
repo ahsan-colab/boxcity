@@ -3571,6 +3571,11 @@ footer form input::placeholder {
         font-size: 23px;
     }
 
+
+    #clear-cart {
+        padding: 10px 17px !important;
+    }
+
     .heading-container {
         padding: 220px 40px 242px 40px;
     }
