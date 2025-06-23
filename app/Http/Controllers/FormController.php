@@ -33,7 +33,7 @@ class FormController extends Controller
             'form_date' => $submitTime,
         ]);
 
-        Mail::to($formFields['your-email'])->send(new AppMailer(
+        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new AppMailer(
              "Welcome to the BoxCity!",
              "emails.contact",
              [
