@@ -46,9 +46,9 @@ class SubscriptionController extends Controller
 
         // Send confirmation email
         Mail::to($request->email)->send(new AppMailer(
-            subjectLine: 'Welcome to the BoxCity!',
-            viewName: 'emails.newsletter_subscribe',
-            viewData: [
+            'Welcome to the BoxCity!',
+            'emails.newsletter_subscribe',
+            [
                 'cta' => $confirmationUrl
             ]
         ));
@@ -74,8 +74,8 @@ class SubscriptionController extends Controller
 
         // Send confirmation email
         Mail::to( $confirmation->email)->send(new AppMailer(
-            subjectLine: 'Welcome to the BoxCity!',
-            viewName: 'emails.newsletter_confirmed'
+            'Welcome to the BoxCity!',
+            'emails.newsletter_confirmed'
         ));
 
         // Delete the token to prevent reuse
