@@ -5,6 +5,6 @@
 <p>Company: {{ $company ?? "" }}</p>
 <p>Phone: {{ $phone ?? "" }}</p>
 <p>Service: {{ $service ?? "" }}</p>
-<p>Message: {{ $message ?? '' }}</p>
+<p>Message: {{ $msg ?? "" }}</p>
 </body>
 </html>

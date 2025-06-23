@@ -26,7 +26,7 @@ class FormController extends Controller
             ['cfdb7_status' => 'unread'],
             $request->except('_token')
         );
-//        dd($formFields);
+
         WpCf7submit::insert([
             'form_post_id' => $formId,
             'form_value' => serialize($formFields),
@@ -41,7 +41,7 @@ class FormController extends Controller
                 'company' => $formFields['your-company'] ?? '',
                 'phone' => $formFields['your-phone'] ?? '',
                 'service' => $formFields['select-service'] ?? '',
-                'message' => $formFields['your-message'] ?? ''
+                'msg' => $formFields['your-message'] ?? ''
             ]
         ));
 
