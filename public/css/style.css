@@ -1647,6 +1647,55 @@ footer form input::placeholder {
         padding: 40px 10px 25px 10px;
     }
 
+    tbody#product-list , tbody#cart-page-list{
+        padding: 12px 12px !important;
+    }
+
+
+    tbody#product-list td, th {
+        border-right: 0px solid #ADADAD !important;
+        border-bottom: 1px solid #ADADAD !important;
+    }
+
+
+    tbody#cart-page-list td, th {
+        border-right: 0px solid #ADADAD !important;
+        border-bottom: 1px solid #ADADAD !important;
+    }
+
+    tbody#product-list td:last-child, tbody#cart-page-list td:last-child{
+        border-bottom: 0px solid #ADADAD !important;
+    }
+
+    .table-responsive  table {
+        border: 0px solid #ADADAD !important;
+    }
+
+    .table-responsive {
+        border: 0px solid #ADADAD !important;
+
+    }
+
+    [data-label="Discounted Bulk Price"]{
+        background: black;
+    }
+
+    .responsive-table td[data-label="Discounted Bulk Price"]::before {
+        color: #fff !important;
+    }
+
+    .responsive-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        flex-basis: 50%;
+        color: #333;
+        padding-right: 10px;
+    }
+
+    .qty-container {
+        padding: 0px 0px !important;
+    }
+
     .bulk-orders h3 {
         padding: 0px 0px;
         font-size: 31px;
@@ -3506,7 +3555,7 @@ footer form input::placeholder {
 
 
 
-@media screen and (min-width: 300px) and (max-width: 360px){
+@media screen and (min-width: 300px) and (max-width: 399px){
 
     header {
         padding: 26px 3px;
