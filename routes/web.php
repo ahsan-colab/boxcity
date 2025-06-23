@@ -11,7 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Jobs\FetchCategoriesFromApi;
 
 Route::get('/', [ProductController::class, 'index'])->name('home');
-Route::post('/post-contact', [FormController::class, 'submitContactForm'])->name('submit.contact');
+Route::post('/post-contact', [FormController::class, 'contactForm'])->name('submit.contact');
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('submit.newsletter');
 Route::get('/confirm-subscription/{token}', [SubscriptionController::class, 'confirm'])->name('subscription.confirm');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');

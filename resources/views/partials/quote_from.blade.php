@@ -10,10 +10,9 @@
                 <p>Fill out the form to inquire about our services and a team member will get back to you with a free quote</p>
 
                 <!-- Contact Form (WordPress CF7 Style) -->
-                <form action="/location-van-nuys/#wpcf7-f122-o1" method="post" class="wpcf7-form init"
+                <form action="{{ route('submit.contact') }}" method="post" class="wpcf7-form init"
                       aria-label="Contact form" novalidate="novalidate" data-status="init">
-
-                    <!-- Hidden Inputs (Contact Form 7 Metadata) -->
+                    @csrf
                     <div style="display: none;">
                         <input type="hidden" name="_wpcf7" value="122">
                         <input type="hidden" name="_wpcf7_version" value="6.0.4">

@@ -26,7 +26,7 @@ class FormController extends Controller
             ['cfdb7_status' => 'unread'],
             $request->except('_token')
         );
-
+//        dd($formFields);
         WpCf7submit::insert([
             'form_post_id' => $formId,
             'form_value' => serialize($formFields),
@@ -34,9 +34,9 @@ class FormController extends Controller
         ]);
 
         Mail::to($formFields['your-email'])->send(new AppMailer(
-            subjectLine: 'Welcome to the BoxCity!',
-            viewName: 'emails.contact',
-            viewData: [
+             "Welcome to the BoxCity!",
+             "emails.contact",
+             [
                 'userName' => $formFields['your-name'] ?? '',
                 'company' => $formFields['your-company'] ?? '',
                 'phone' => $formFields['your-phone'] ?? '',
