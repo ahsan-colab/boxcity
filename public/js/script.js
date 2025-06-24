@@ -43,6 +43,31 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
+function applyDataLabels() {
+    const headers = [
+        "Product ID :", "Name :", "Retail Price :", "Discounted Bulk Price", "12+ :", "50+ :", "100+ :"
+    ];
+
+    $("#product-list tr").each(function () {
+        const $row = $(this);
+        const $cells = $row.find("td");
+
+        // Only insert if not already added (to prevent duplication)
+        if ($cells.length === 6 || $cells.length === 7) {
+            // Insert an empty <td> after the third cell (index 2)
+            $("<td></td>").insertAfter($cells.eq(2));
+        }
+
+        // Apply data-labels after adding the new <td>
+        $row.find("td").each(function (index) {
+            if (headers[index]) {
+                $(this).attr("data-label", headers[index]);
+            }
+        });
+    });
+}
+
 let nextPageUrl = 'load-more-products';
 let loading = false;
 let hasMore = true;
@@ -65,6 +90,8 @@ function loadMoreProducts() {
             if (!hasMore) {
                 $(window).off('scroll');
             }
+
+            applyDataLabels();
         },
         error: function(xhr, status, error) {
             console.error('Error loading more products:', error);

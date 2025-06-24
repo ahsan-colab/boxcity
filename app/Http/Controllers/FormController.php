@@ -18,13 +18,22 @@ class FormController extends Controller
 
     public function contactForm(Request $request)
     {
+        // Validate request fields
+        $validated = $request->validate([
+            'your-name' => 'required|string|max:255',
+            'your-company' => 'nullable|string|max:255',
+            'your-phone' => 'required|string|max:20',
+            'select-service' => 'required|string|max:255',
+            'your-message' => 'required|string',
+        ]);
+
         $formId = 602;
         $submitTime = Carbon::now();
 
         // Prepare data with cfdb7_status
         $formFields = array_merge(
             ['cfdb7_status' => 'unread'],
-            $request->except('_token')
+            $validated
         );
 
         WpCf7submit::insert([
@@ -33,24 +42,25 @@ class FormController extends Controller
             'form_date' => $submitTime,
         ]);
 
+        // Send mail
         Mail::to(env('MAIL_FROM_ADDRESS'))->send(new AppMailer(
-             "Welcome to the BoxCity!",
-             "emails.contact",
-             [
-                'userName' => $formFields['your-name'] ?? '',
+            "Welcome to the BoxCity!",
+            "emails.contact",
+            [
+                'userName' => $formFields['your-name'],
                 'company' => $formFields['your-company'] ?? '',
-                'phone' => $formFields['your-phone'] ?? '',
-                'service' => $formFields['select-service'] ?? '',
-                'msg' => $formFields['your-message'] ?? ''
+                'phone' => $formFields['your-phone'],
+                'service' => $formFields['select-service'],
+                'msg' => $formFields['your-message']
             ]
         ));
-
 
         return redirect(route('checkout.thankyou'))->with([
             'title' => 'Thank you for contacting us. One of our team members will reach out to you shortly.',
             'message' => "Don’t want to wait? Call us now (800) 992-6924 \n Hours: Monday to Friday 8:30AM – 5:00PM"
         ]);
     }
+
 }
 
 
