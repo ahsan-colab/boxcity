@@ -9,6 +9,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductController;
 use App\Jobs\FetchCategoriesFromApi;
+use App\Http\Controllers\PayPalController;
 
 Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::post('/post-contact', [FormController::class, 'contactForm'])->name('submit.contact');
@@ -44,3 +45,8 @@ Route::get('/fetch-categories', function () {
 Route::get('/subscription/confirmation', function () {
     return view('subscription.confirmed');
 })->name('subscription.confirmation');
+
+
+Route::post('/paypal/create-order', [PayPalController::class, 'createOrder']);
+Route::get('/paypal/success', [PayPalController::class, 'captureOrder'])->name('paypal.success');
+Route::get('/paypal/cancel', function () {return 'Payment was cancelled.';})->name('paypal.cancel');

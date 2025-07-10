@@ -4,6 +4,9 @@
 
 @section('content')
 
+    <script src="https://www.paypal.com/sdk/js?client-id=AXPTRAoox4nukY7vC1odyHWkXUNCpCJcPEOXe4ug2VLzQl_JggZumABwlUFMVvA52G2QTPTMbp54Dd6s&currency=USD"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <div class="container checkout-container">
         {{-- Page Heading --}}
         <h2>Checkout</h2>
@@ -81,6 +84,7 @@
                         <h4 class="checkout-total">Total: $0.00</h4>
                         <button id="place-order" type="submit" class="btn btn-success btn-lg">Place Order</button>
                     </div>
+                    <div id="paypal-button-container"></div>
                 </form>
             </div>
 
@@ -133,7 +137,7 @@
             $(".checkout-total").text(`Total: $${total.toFixed(2)}`);
 
 
-            $("#place-order").click(function () {
+            function submitOrderToEcwid() {
                 event.preventDefault();
                 let fullName = $("#full-name").val();
                 let email = $("#email").val();
@@ -303,7 +307,7 @@
                     },
                     success: function (response) {
                         console.log("Order placed successfully!", response);
-                        window.location.href = "{{route('checkout.thankyou')}}";
+                        {{--window.location.href = "{{route('checkout.thankyou')}}";--}}
                         localStorage.removeItem("cart");
                     },
                     error: function (xhr, status, error) {
@@ -313,7 +317,7 @@
                     }
                 });
 
-            });
+            };
 
 
 
@@ -395,7 +399,58 @@
             });
 
 
+
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    const totalElement = document.querySelector('.checkout-total');
+                    if (!totalElement) {
+                        throw new Error("Checkout total element not found.");
+                    }
+
+                    // Clean and parse the price
+                    const rawAmount = totalElement.innerText.replace(/[^0-9.]/g, '');
+                    const amount = parseFloat(rawAmount);
+
+                    if (isNaN(amount) || amount <= 0) {
+                        throw new Error("Invalid total amount.");
+                    }
+                    submitOrderToEcwid();
+                    return fetch('/boxcity/paypal/create-order', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        },
+                        body: JSON.stringify({ amount: amount })  // 👈 Send amount
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (!data.orderID) {
+                                throw new Error("Order ID not found in response");
+                            }
+                            return data.orderID;
+                        });
+
+                },
+
+                onApprove: function(data, actions) {
+                    return fetch(`/paypal/capture-order?token=${data.orderID}`)
+                        .then(res => res.json())
+                        .then(result => {
+                            console.log('Payment captured:', result);
+                        });
+                }
+            }).render('#paypal-button-container');
+
+
+
+
+
         });
+
+
+
+
 
     </script>
 
