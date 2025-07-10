@@ -53,7 +53,7 @@ class FetchProductsFromApi
                     $totalFetched += count($products);
 
                     // Store valid products
-                    $this->storeProducts($filteredProducts, $category);
+                    $this->storeProducts($products , $category);
 
                     $offset += $limit; // Move to the next set of products
                     if($lastCount == $totalFetched){
@@ -96,7 +96,7 @@ class FetchProductsFromApi
                     'name' => $product['name'] ?? '',
                     'price' => $product['price'] ?? '',
                     'thumbnailUrl' => $product['thumbnailUrl'] ?? null,
-                    'length' => $product['dimensions']['length'] ?? '',
+                    'length' => $product['attributes'][2]['value'] ?? '',
                     'width' => $product['width'] ?? '',
                     'height' => $product['height'] ?? '',
                     'sku' => $product['sku'] ?? '',
