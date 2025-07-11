@@ -1138,6 +1138,10 @@ footer form input::placeholder {
     display: none !important;
 }
 
+#place-order{
+   display: none !important;
+}
+
 @media screen and (min-width:1600px) and (max-width:1699px){
 
     .container {
@@ -1293,6 +1297,10 @@ footer form input::placeholder {
 
     .accordion {
         z-index: 9999999;
+    }
+
+    .qty-container {
+        display: flex;
     }
 
 }

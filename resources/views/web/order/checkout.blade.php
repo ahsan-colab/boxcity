@@ -172,7 +172,7 @@
                     totalBeforeGiftCardRedemption: totalAmount,
                     giftCardDoubleSpending: false,
                     email: email,
-                    paymentMethod: "Phone order",
+                    paymentMethod: "Credit or Debit card.",
                     paymentSubtype: "manual",
                     tax: 0,
                     customerTaxExempt: false,
@@ -307,6 +307,7 @@
                     },
                     success: function (response) {
                         console.log("Order placed successfully!", response);
+                        localStorage.setItem("ecwidOrderId", response.id);
                         {{--window.location.href = "{{route('checkout.thankyou')}}";--}}
                         localStorage.removeItem("cart");
                     },
@@ -434,17 +435,47 @@
                 },
 
                 onApprove: function(data, actions) {
-                    return fetch(`/paypal/capture-order?token=${data.orderID}`)
+                    return fetch(`/boxcity/paypal/capture-order?token=${data.orderID}`)
                         .then(res => res.json())
                         .then(result => {
                             console.log('Payment captured:', result);
+
+                            // Get the order ID from localStorage
+                            const ecwidOrderId = localStorage.getItem("ecwidOrderId");
+
+                            if (ecwidOrderId) {
+                                fetch(`https://app.ecwid.com/api/v3/109333282/orders/${ecwidOrderId}`, {
+                                    method: 'PUT',
+                                    headers: {
+                                        'Authorization': 'Bearer secret_Asd3RgYgyNkGaKhN3hke67RHyAkigTXG',
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        paymentStatus: "PAID"
+                                    })
+                                })
+                                    .then(updateRes => updateRes.json())
+                                    .then(updateResult => {
+                                        console.log("Ecwid order marked as PAID", updateResult);
+
+                                        // Clear order ID
+                                        localStorage.removeItem("ecwidOrderId");
+
+                                        // Redirect to thank you page
+                                        window.location.href = "{{route('checkout.thankyou')}}";
+                                    })
+                                    .catch(err => {
+                                        console.error("Failed to update Ecwid order status:", err);
+                                        alert("Order placed but status update failed. Please contact support.");
+                                    });
+                            } else {
+                                console.warn("Missing Ecwid order ID");
+                                alert("Payment succeeded but order ID is missing.");
+                            }
                         });
                 }
+
             }).render('#paypal-button-container');
-
-
-
-
 
         });
 

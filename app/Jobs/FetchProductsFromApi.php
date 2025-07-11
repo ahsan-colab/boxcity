@@ -36,36 +36,39 @@ class FetchProductsFromApi
     {
         $ecwidApiClient = new EcwidApiClient();
         $limit = config('ecwid.limit');
-        $offset = 0;
-        $totalFetched = 0;
         $categories = Category::pluck('categoryId');
         foreach ($categories as $category) {
+            $offset = 0;
+            $totalFetched = 0;
+
             try {
-                // Get the total number of products
                 $data = $ecwidApiClient->fetchProducts($limit, $offset, $category);
                 $total = $data['total'];
                 $lastCount = 0;
+
                 do {
                     $data = $ecwidApiClient->fetchProducts($limit, $offset, $category);
                     $products = $data['items'];
 
                     $filteredProducts = $this->filterValidProducts($products);
+
+                    $this->storeProducts($products, $category);
+
                     $totalFetched += count($products);
+                    $offset += $limit;
 
-                    // Store valid products
-                    $this->storeProducts($products , $category);
-
-                    $offset += $limit; // Move to the next set of products
-                    if($lastCount == $totalFetched){
+                    if ($lastCount == $totalFetched) {
                         break;
                     }
 
                     $lastCount = $totalFetched;
                 } while ($totalFetched < $total);
+
             } catch (\Exception $e) {
                 Log::error('Failed to fetch products from API', ['error' => $e->getMessage()]);
             }
         }
+
     }
 
     /**

@@ -64,7 +64,7 @@ class PayPalService
         return $response->json();
     }
 
-    public function captureOrder($orderId)
+    public function captureOrder(string $orderId)
     {
         $response = Http::withToken($this->accessToken)
             ->post("{$this->baseUrl}/v2/checkout/orders/{$orderId}/capture");
@@ -75,4 +75,6 @@ class PayPalService
 
         return $response->json();
     }
+
+
 }
