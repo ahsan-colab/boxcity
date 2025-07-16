@@ -9,6 +9,7 @@
                 >
                     {{ $category->categoryName }} ({{ $category->products->count() }})
                 </span>
+                <span class="remove-filter" style="display: none;">&times;</span>
 
                 @if ($category->childrenRecursive->count())
                     <span
@@ -21,6 +22,7 @@
                     >
                         +
                     </span>
+
                 @endif
             </div>
         </h2>

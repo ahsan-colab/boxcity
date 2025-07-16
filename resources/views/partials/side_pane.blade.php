@@ -27,6 +27,9 @@ use App\Models\Category;
                                     style="cursor: pointer;"
                                 >
                                     {{ $size['label'] }} ({{ $size['count'] }})
+
+                                    <span class="remove-length" style="display: none;">&times;</span>
+
                                 </li>
                             @endif
                         @endforeach
@@ -69,8 +72,19 @@ use App\Models\Category;
 
 
 <script>
-    $(document).on('click', '.filters', function () {
+    $(document).on('click', '.filters', function (e) {
+        // If clicking the X, skip this logic
+        if ($(e.target).hasClass('remove-filter')) return;
+
         const categoryId = $(this).data('category-id');
+
+        // Remove active class from all filters
+        $('.filters').removeClass('active');
+        $('.accordion-button').removeClass('active-highlight');
+
+        // Add active state to clicked one
+        $(this).addClass('active');
+        $(this).closest('.accordion-item').find('.accordion-button').addClass('active-highlight');
 
         $.ajax({
             url: "{{ route('category.level') }}",
@@ -80,15 +94,54 @@ use App\Models\Category;
                 $('#product-list').html(response.product_html);
             },
             error: function () {
-                $('#product-list').html('<div style="display: block; text-align: center; margin-left: 162% !important; margin: 20px 0px;  width: 100%;">No Products Found</div>');
-
+                $('#product-list').html('<div style="display: block; text-align: center; margin-left: 162% !important; margin: 20px 0px; width: 100%;">No Products Found</div>');
             }
         });
     });
 
-    $(document).on('click', '.length', function () {
+
+
+
+    $(document).on('click', '.remove-filter', function (e) {
+        e.stopPropagation(); // prevent parent .filters click
+
+        const $filter = $(this).siblings('.filters');
+
+        // Remove active styles
+        $filter.removeClass('active');
+        $filter.closest('.accordion-button').removeClass('active-highlight');
+        $(this).hide();
+
+        // Reset the table (unfiltered)
+        $.ajax({
+            url: "{{ route('category.level') }}",
+            method: "GET",
+            data: {}, // no categoryId
+            success: function (response) {
+                $('#product-table tbody').html(response.product_rows);
+            },
+            error: function () {
+                $('#product-table tbody').html('<tr><td colspan="100%" style="text-align:center;">No Products Found</td></tr>');
+            }
+        });
+    });
+
+
+
+
+
+    $(document).on('click', '.length', function (e) {
+        // Prevent action if clicking the X
+        if ($(e.target).hasClass('remove-length')) return;
+
         const min = $(this).data('min');
         const max = $(this).data('max');
+
+        // Remove active from all
+        $('.length').removeClass('active');
+
+        // Add active to this
+        $(this).addClass('active');
 
         $.ajax({
             url: "{{ route('product.length') }}",
@@ -98,8 +151,28 @@ use App\Models\Category;
                 $('#product-list').html(response.product_html);
             },
             error: function () {
-                $('#product-list').html('<div style="display: block; text-align: center; margin-left: 162% !important; margin: 20px 0px;  width: 100%;">No Products Found</div>');
+                $('#product-list').html('<div style="display: block; text-align: center; margin-left: 162% !important; margin: 20px 0px; width: 100%;">No Products Found</div>');
+            }
+        });
+    });
 
+
+    $(document).on('click', '.remove-length', function (e) {
+        e.stopPropagation();
+
+        const $parent = $(this).closest('.length');
+        $parent.removeClass('active');
+
+        // Reset product list (no filter)
+        $.ajax({
+            url: "{{ route('product.length') }}",
+            method: "GET",
+            data: {}, // no min/max
+            success: function (response) {
+                $('#product-list').html(response.product_html);
+            },
+            error: function () {
+                $('#product-list').html('<div style="display: block; text-align: center; margin-left: 162% !important; margin: 20px 0px; width: 100%;">No Products Found</div>');
             }
         });
     });

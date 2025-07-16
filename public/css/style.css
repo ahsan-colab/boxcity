@@ -579,12 +579,25 @@ header ul{
 
 .accordion-body li{
     list-style: none;
-    font-family: 'gilroy-mediumuploaded_file';
+    font-family: 'gilroy-semibolduploaded_file';
     line-height: 29px;
+    padding: 2px 20px;
+}
+
+.accordion-body{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 }
 
 .accordion-button:focus{
     box-shadow:none !important;
+}
+
+
+
+.d-flex.accordion-button.active-highlight {
+    background-color: #FFE175 !important;
+    border-radius: 3px;
 }
 
 
@@ -1141,6 +1154,63 @@ footer form input::placeholder {
 #place-order{
    display: none !important;
 }
+
+
+.accordion-item.filters-inner {
+    border: none !important;
+}
+
+.filters-inner .accordion-button {
+    background: transparent !important;
+    padding-left: 22px !important;
+}
+
+
+.filters {
+    position: relative;
+    padding-right: 25px;
+}
+
+.remove-filter {
+    position: absolute;
+    top: 4px;
+    right: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    display: none;
+    font-size: 24px;
+}
+.filters.active + .remove-filter {
+    display: inline-block !important;
+}
+
+
+
+.length {
+    position: relative;
+    padding-right: 25px;
+    border-radius: 3px;
+}
+
+.length.active {
+    background-color: #FFE175 !important;
+}
+
+.length .remove-length {
+    position: absolute;
+    top: 4px;
+    right: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    display: none;
+    font-size: 24px;
+}
+
+.length.active .remove-length {
+    display: inline-block !important;
+}
+
+
 
 @media screen and (min-width:1600px) and (max-width:1699px){
 
