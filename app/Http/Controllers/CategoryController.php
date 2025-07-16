@@ -39,23 +39,41 @@ class CategoryController extends Controller
     public function getProductsByCategoryLevel(Request $request)
     {
         $categoryId = $request->get('categoryId');
+        $min = $request->get('min');
+        $max = $request->get('max');
         $category = Category::where('categoryId', $categoryId)->first();
 
-        if (!$category) {
-            return collect(); // or throw an exception
+        if (!$min && !$max && !$category) {
+            return response()->json([]);
         }
 
+
+        if ($min && $max && !$category){
+           return $this->bindResponse(Product::lengthBetween($min, $max)->paginate(60));
+        } elseif($min && $max && $category){
+            $productsLength = Product::select('id')->lengthBetween($min, $max)->pluck('id');
+        }
+
+
         // Check if it has children (i.e. it's a 1st or 2nd level)
-        if ($category->children()->exists()) {
+        if ($category && $category->children()->exists()) {
             // It's a parent — get all descendant categoryIds
             $allCategoryIds = collect([$category->categoryId]);
             $this->collectDescendantCategoryIds($category, $allCategoryIds);
 
+            $products = Product::whereIn('categoryId', $allCategoryIds);
+            if(isset($productsLength)){
+                dd($productsLength);
+                $products->whereIn('id', $productsLength);
+            }
             // Get all products under this branch
-            return $this->bindResponse(Product::whereIn('categoryId', $allCategoryIds)->paginate(60));
+            return $this->bindResponse($products->get());
         } else {
-
-            return $this->bindResponse(Product::where('categoryId', $category->categoryId)->paginate(60));
+            $products = Product::where('categoryId', $category->categoryId);
+            if(isset($productsLength)){
+                $products = $products->whereIn('id', $productsLength);
+            }
+            return $this->bindResponse($products->get());
         }
     }
 
@@ -72,9 +90,7 @@ class CategoryController extends Controller
         $productHtml = view('partials.product_list', ['products' => $products, 'scroll' => 'false'])->render();
 
         return response()->json([
-            'product_html' => $productHtml,
-            'next_page_url' => $products->nextPageUrl(),
-            'has_more' => $products->hasMorePages(),
+            'product_html' => $productHtml
         ]);
     }
 

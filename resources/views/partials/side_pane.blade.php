@@ -21,12 +21,12 @@ use App\Models\Category;
                         @foreach ($sizes as $size)
                             @if ($size['count'] > 0)
                                 <li
-                                    class="length"
                                     data-min="{{ $size['min'] }}"
                                     data-max="{{ $size['max'] }}"
                                     style="cursor: pointer;"
                                 >
-                                    {{ $size['label'] }} ({{ $size['count'] }})
+                                    <span class="length">
+                                    {{ $size['label'] }} ({{ $size['count'] }})</span>
 
                                     <span class="remove-length" style="display: none;">&times;</span>
 
@@ -72,37 +72,78 @@ use App\Models\Category;
 
 
 <script>
-    $(document).on('click', '.filters', function (e) {
+    $(document).on('click', '.filters, .length, .remove-filter, .remove-length', function (e) {
         // If clicking the X, skip this logic
-        if ($(e.target).hasClass('remove-filter')) return;
+        //if ($(e.target).hasClass('remove-filter') || $(e.target).hasClass('remove-length')) return;
 
-        const categoryId = $(this).data('category-id');
+        const $clicked = $(this);
 
-        // Remove active class from all filters
-        $('.filters').removeClass('active');
-        $('.accordion-button').removeClass('active-highlight');
+        // Wait for any Bootstrap updates to finish
+        setTimeout(function () {
 
-        // Add active state to clicked one
-        $(this).addClass('active');
-        $(this).closest('.accordion-item').find('.accordion-button').addClass('active-highlight');
+            // If it's a filter
+            if ($clicked.hasClass('filters')) {
+                $('.filters').removeClass('active');
+                $('.accordion-button').removeClass('active-highlight');
+                $clicked.closest('.accordion-button').addClass('active-highlight');
+                $clicked.addClass('active');
 
-        $.ajax({
-            url: "{{ route('category.level') }}",
-            method: "GET",
-            data: { categoryId },
-            success: function (response) {
-                $('#product-list').html(response.product_html);
-            },
-            error: function () {
-                $('#product-list').html('<div style="display: block; text-align: center; margin-left: 162% !important; margin: 20px 0px; width: 100%;">No Products Found</div>');
             }
-        });
+
+            if($clicked.hasClass('remove-filter')) {
+                $('.filters').removeClass('active');
+                $('.accordion-button').removeClass('active-highlight');
+            }
+
+            // If it's a length
+            if ($clicked.hasClass('length')) {
+                $('.length').removeClass('active');
+                $('.accordion-button').removeClass('active-highlight');
+                $clicked.closest('.accordion-item').find('.accordion-button').addClass('active-highlight');
+                $clicked.addClass('active');
+            }
+
+            if($clicked.hasClass('remove-length')) {
+                $('.length').removeClass('active');
+                $('.accordion-button').removeClass('active-highlight');
+            }
+
+            console.log('AFTER timeout - classes now:', $clicked.attr('class'));
+
+
+
+            const activeFilter = $('.filters.active');
+            const categoryId = activeFilter.length ? activeFilter.data('category-id') : null;
+
+            // Get active length (if any)
+            const activeLength = $('.length.active');
+            const min = activeLength.length ? activeLength.data('min') : null;
+            const max = activeLength.length ? activeLength.data('max') : null;
+
+            // Remove active class from all filters
+
+
+            // Add active state to clicked one
+
+
+            $.ajax({
+                url: "{{ route('category.level') }}",
+                method: "GET",
+                data: { categoryId, min, max },
+                success: function (response) {
+                    $('#product-list').html(response.product_html);
+                },
+                error: function () {
+                    $('#product-list').html('<div style="display: block; text-align: center; margin-left: 162% !important; margin: 20px 0px; width: 100%;">No Products Found</div>');
+                }
+            });
+        }, 100);
     });
 
 
 
 
-    $(document).on('click', '.remove-filter', function (e) {
+    /*$(document).on('click', '.remove-filter', function (e) {
         e.stopPropagation(); // prevent parent .filters click
 
         const $filter = $(this).siblings('.filters');
@@ -124,13 +165,13 @@ use App\Models\Category;
                 $('#product-table tbody').html('<tr><td colspan="100%" style="text-align:center;">No Products Found</td></tr>');
             }
         });
-    });
+    });*/
 
 
 
 
 
-    $(document).on('click', '.length', function (e) {
+    /*$(document).on('click', '.length', function (e) {
         // Prevent action if clicking the X
         if ($(e.target).hasClass('remove-length')) return;
 
@@ -154,10 +195,10 @@ use App\Models\Category;
                 $('#product-list').html('<div style="display: block; text-align: center; margin-left: 162% !important; margin: 20px 0px; width: 100%;">No Products Found</div>');
             }
         });
-    });
+    });*/
 
 
-    $(document).on('click', '.remove-length', function (e) {
+    /*$(document).on('click', '.remove-length', function (e) {
         e.stopPropagation();
 
         const $parent = $(this).closest('.length');
@@ -175,6 +216,6 @@ use App\Models\Category;
                 $('#product-list').html('<div style="display: block; text-align: center; margin-left: 162% !important; margin: 20px 0px; width: 100%;">No Products Found</div>');
             }
         });
-    });
+    });*/
 
 </script>
