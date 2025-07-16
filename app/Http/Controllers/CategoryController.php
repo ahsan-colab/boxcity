@@ -23,6 +23,7 @@ class CategoryController extends Controller
 
         foreach ($categories as $category) {
             $category->assignTotalProductCount($category);
+
         }
 
         dd($categories[0]->childrenRecursive);
@@ -63,7 +64,6 @@ class CategoryController extends Controller
 
             $products = Product::whereIn('categoryId', $allCategoryIds);
             if(isset($productsLength)){
-                dd($productsLength);
                 $products->whereIn('id', $productsLength);
             }
             // Get all products under this branch

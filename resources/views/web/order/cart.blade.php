@@ -17,10 +17,10 @@
                 <th>Product ID</th>
                 <th>Product Name</th>
                 <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Retail Price</th>
-                <th>Discounted Price</th>
-                <th>You Save</th>
+                <th style="display: none">Unit Price</th>
+                <th style="display: none">Retail Price</th>
+                <th>Total Price</th>
+                <th style="display: none">You Save</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -37,8 +37,9 @@
 
             {{-- Subtotal display, to be updated dynamically --}}
             <h3 class="cart-total">Sub Total :</h3>
-        </div>
 
+        </div>
+        <h3 class="save-amount">You Save :</h3>
         {{-- Proceed to Checkout Button --}}
         <div class="proceed-container">
             <button id="proceed-to-checkout" class="btn btn-danger">Proceed To Checkout</button>

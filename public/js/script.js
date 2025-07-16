@@ -130,7 +130,7 @@ function updateCartTotal() {
         total += price;
     });
 
-    $(".cart-total").text(`Sub Total : $${total.toFixed(2)}`);
+    $(".cart-total").text(`Cart Sub Total : $${total.toFixed(2)}`);
 }
 
 
@@ -141,7 +141,17 @@ function updateTotalPrice() {
         total += item.price * item.quantity;
     });
 
-    $(".cart-total").text(`Sub Total : $${total.toFixed(2)}`);
+    $(".cart-total").text(`Cart Sub Total : $${total.toFixed(2)}`);
+
+    let totalSaved = 0;
+
+    cart.forEach(item => {
+        const itemSaved = (item.retailPrice * item.quantity) - (item.price * item.quantity);
+        totalSaved += itemSaved;
+    });
+
+    $('.save-amount').text(`You Save : $${totalSaved.toFixed(2)}`);
+
 }
 
 
@@ -260,10 +270,10 @@ function updateCartPage() {
                             </div>
                             </div>
                         </td>
-                        <td class="cart-price">$${item.price}</td>
-                        <td class="cart-price total-unit">$${item.retailPrice}</td>
+                        <td class="cart-price" style="display: none">$${item.price}</td>
+                        <td class="cart-price total-unit" style="display: none">$${item.retailPrice}</td>
                         <td class="cart-price total-unit">$${(item.price * item.quantity).toFixed(2)}</td>
-                        <td class="cart-price total-unit">$${(item.retailPrice * item.quantity - item.price * item.quantity).toFixed(2)}</td>
+                        <td class="cart-price total-unit discount-amout" style="display: none">$${(item.retailPrice * item.quantity - item.price * item.quantity).toFixed(2)}</td>
                         <td>
                             <button class="remove-item btn btn-danger btn-sm" data-product="${item.product}">Remove</button>
                         </td>

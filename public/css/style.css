@@ -1196,7 +1196,7 @@ footer form input::placeholder {
     background-color: #FFE175 !important;
 }
 
-.length .remove-length {
+.remove-length {
     position: absolute;
     top: 4px;
     right: 25px;
@@ -1210,6 +1210,11 @@ footer form input::placeholder {
     display: inline-block !important;
 }
 
+.save-amount{
+   text-align: right;
+    font-family: 'gilroy-semibolduploaded_file';
+    font-size: 24px;
+}
 
 
 @media screen and (min-width:1600px) and (max-width:1699px){

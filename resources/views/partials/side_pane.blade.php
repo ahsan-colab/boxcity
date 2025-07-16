@@ -73,57 +73,71 @@ use App\Models\Category;
 
 <script>
     $(document).on('click', '.filters, .length, .remove-filter, .remove-length', function (e) {
-        // If clicking the X, skip this logic
-        //if ($(e.target).hasClass('remove-filter') || $(e.target).hasClass('remove-length')) return;
-
         const $clicked = $(this);
 
-        // Wait for any Bootstrap updates to finish
         setTimeout(function () {
 
-            // If it's a filter
+
             if ($clicked.hasClass('filters')) {
+                // Remove active class from all filters
                 $('.filters').removeClass('active');
-                $('.accordion-button').removeClass('active-highlight');
-                $clicked.closest('.accordion-button').addClass('active-highlight');
+                $('.filters').each(function () {
+                    const $this = $(this);
+                    const btn = $this.closest('.accordion-button');
+                    btn.removeClass('active-highlight');
+                    if (!$this.is($clicked)) {
+                        btn.css('background-color', '');
+                        btn.find('.remove-filter').hide();
+                    }
+                });
+
+                // Set active class on clicked filter
                 $clicked.addClass('active');
+                const $btn = $clicked.closest('.accordion-button');
+                $btn.addClass('active-highlight');
 
+                $btn.find('.remove-filter').show();
             }
 
-            if($clicked.hasClass('remove-filter')) {
-                $('.filters').removeClass('active');
-                $('.accordion-button').removeClass('active-highlight');
+
+            if ($clicked.hasClass('remove-filter')) {
+                const $btn = $clicked.closest('.accordion-button');
+                $btn.find('.filters').removeClass('active');
+                $btn.removeClass('active-highlight');
+
+                $clicked.hide();
             }
 
-            // If it's a length
+
             if ($clicked.hasClass('length')) {
                 $('.length').removeClass('active');
-                $('.accordion-button').removeClass('active-highlight');
-                $clicked.closest('.accordion-item').find('.accordion-button').addClass('active-highlight');
+                $('.length').each(function () {
+                    $(this).closest('li').css('background-color', '');
+                    $(this).siblings('.remove-length').hide();
+                });
+
                 $clicked.addClass('active');
+                $clicked.closest('.accordion-item').find('.accordion-button').addClass('active-highlight');
+                $clicked.closest('li').css('background-color', '#FFE175');
+                $clicked.siblings('.remove-length').show();
             }
 
-            if($clicked.hasClass('remove-length')) {
-                $('.length').removeClass('active');
-                $('.accordion-button').removeClass('active-highlight');
+
+            if ($clicked.hasClass('remove-length')) {
+                const $li = $clicked.closest('li');
+                $li.find('.length').removeClass('active');
+                $li.removeClass('active-highlight');
+                // ❌ Do NOT remove background
+                $clicked.hide();
             }
-
-            console.log('AFTER timeout - classes now:', $clicked.attr('class'));
-
 
 
             const activeFilter = $('.filters.active');
             const categoryId = activeFilter.length ? activeFilter.data('category-id') : null;
 
-            // Get active length (if any)
             const activeLength = $('.length.active');
-            const min = activeLength.length ? activeLength.data('min') : null;
-            const max = activeLength.length ? activeLength.data('max') : null;
-
-            // Remove active class from all filters
-
-
-            // Add active state to clicked one
+            const min = activeLength.length ? activeLength.parent('li').data('min') : null;
+            const max = activeLength.length ? activeLength.parent('li').data('max') : null;
 
 
             $.ajax({
@@ -137,8 +151,14 @@ use App\Models\Category;
                     $('#product-list').html('<div style="display: block; text-align: center; margin-left: 162% !important; margin: 20px 0px; width: 100%;">No Products Found</div>');
                 }
             });
+
         }, 100);
     });
+
+
+
+
+
 
 
 
