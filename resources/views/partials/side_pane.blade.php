@@ -127,6 +127,7 @@ use App\Models\Category;
                 const $li = $clicked.closest('li');
                 $li.find('.length').removeClass('active');
                 $li.removeClass('active-highlight');
+                $li.css('background-color', '');
                 $clicked.hide();
             }
 

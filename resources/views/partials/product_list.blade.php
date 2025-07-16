@@ -1,5 +1,6 @@
 @if($products->isEmpty())
-    <tr class="scroll-{{$scroll  ?? ''}}">
+    <tr class="scroll-{{ $scroll ?? '' }}">
+        <td colspan="100%" class="text-center py-3">No Products Found</td>
     </tr>
 @else
     @foreach ($products as $product)
