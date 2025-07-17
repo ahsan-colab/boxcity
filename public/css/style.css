@@ -1210,10 +1210,23 @@ footer form input::placeholder {
     display: inline-block !important;
 }
 
+
+.save-amount-heading{
+    text-align: right;
+}
+
 .save-amount{
-   text-align: right;
     font-family: 'gilroy-semibolduploaded_file';
     font-size: 24px;
+    background: #0fda0f;
+    padding: 7px 10px;
+    border-radius: 9px;
+}
+
+.product-count {
+    text-align: right;
+    font-family: 'gilroy-bolduploaded_file';
+    margin-top: 18px;
 }
 
 
@@ -3373,6 +3386,15 @@ footer form input::placeholder {
         display:none !important;
     }
 
+    .cart-total-container {
+        display: flex;
+        align-items: flex-end !important;
+        justify-content: flex-end;
+        margin-top: 6px;
+        flex-direction: column;
+        gap: 19px;
+    }
+
 }
 
 
@@ -3634,6 +3656,15 @@ footer form input::placeholder {
         display:none !important;
     }
 
+    .cart-total-container {
+        display: flex;
+        align-items: flex-end !important;
+        justify-content: flex-end;
+        margin-top: 6px;
+        flex-direction: column;
+        gap: 19px;
+    }
+
 }
 
 
@@ -3703,10 +3734,6 @@ footer form input::placeholder {
         font-size: 23px;
     }
 
-
-    #clear-cart {
-        padding: 10px 17px !important;
-    }
 
     .heading-container {
         padding: 220px 40px 242px 40px;
@@ -3940,6 +3967,15 @@ footer form input::placeholder {
 
     .banner-img{
         display:none !important;
+    }
+
+    .cart-total-container {
+        display: flex;
+        align-items: flex-end !important;
+        justify-content: flex-end;
+        margin-top: 6px;
+        flex-direction: column;
+        gap: 19px;
     }
 
 }
@@ -4241,6 +4277,7 @@ select{
     border: 1px solid;
     border-radius: 38px;
     padding: 0px 2px;
+    display: flex;
 }
 .quantity-btn {
     background: #FFE175 !important;

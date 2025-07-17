@@ -56,7 +56,7 @@
                             </tbody>
                         </table>
                     </div>
-
+                    <div class="product-count">Showing 20 Products</div>
                     <!-- Loading Indicator -->
                     <div id="loading" style="text-align: center; display: none;">
                         <p>Loading more products...</p>

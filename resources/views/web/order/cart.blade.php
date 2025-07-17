@@ -39,7 +39,7 @@
             <h3 class="cart-total">Sub Total :</h3>
 
         </div>
-        <h3 class="save-amount">You Save :</h3>
+        <h3 class="save-amount-heading"><span class="save-amount">You Save :</span></h3>
         {{-- Proceed to Checkout Button --}}
         <div class="proceed-container">
             <button id="proceed-to-checkout" class="btn btn-danger">Proceed To Checkout</button>

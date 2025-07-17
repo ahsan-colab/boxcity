@@ -43,6 +43,16 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// function updateProductCount() {
+//     let rowCount = 0;
+//
+//     $('#product-table tbody tr').each(function () {
+//         const cellText = $(this).find('td').text().trim();
+//         if (cellText !== 'No Products Found') {
+//             rowCount++;
+//         }
+//     });
+// }
 
 function applyDataLabels() {
     const headers = [
@@ -86,6 +96,7 @@ function loadMoreProducts() {
                 $('#product-list').append(response.product_html);
                 nextPageUrl = response.next_page_url;
                 hasMore = response.has_more;
+                updateProductCount();
             }
             if (!hasMore) {
                 $(window).off('scroll');
@@ -111,11 +122,13 @@ $(window).on('scroll', function() {
 
     if (bottomOfWindow >= bottomOfTableBody - 100 && tableBody.find('tr.scroll-false').length === 0) {
         loadMoreProducts();
+
     }
 });
 
 $(document).ready(function() {
     loadMoreProducts();
+ ;
 });
 
 
