@@ -146,6 +146,7 @@ use App\Models\Category;
                 data: { categoryId, min, max },
                 success: function (response) {
                     if (Array.isArray(response) && response.length === 0) {
+                        $('#product-list').html('');
                         loadMoreProducts();
                     }
                     $('#product-list').html(response.product_html);
