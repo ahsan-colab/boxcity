@@ -23,15 +23,13 @@ class ProductController extends Controller
      */
     public function index(): View
     {
-        //$categories = Category::with('childrenRecursive')->withCount('products')->whereNull('parentId')->get();
-        $categories = Category::with(['childrenRecursive'])
-            ->withCount('products')
-            ->whereNull('parentId')
-            ->get();
 
-        foreach ($categories as $category) {
-            $category->assignTotalProductCount($category);
-        }
+        $rootCategories = Category::with('children')->whereNull('parentId')->get();
+
+        $categories = $rootCategories->map(function ($category) {
+            return $this->buildCategoryTreeWithCounts($category);
+        });
+
         $rawCounts = Product::selectRaw("
                         COUNT(CASE WHEN CAST(length AS UNSIGNED) BETWEEN 3 AND 8 THEN 1 END) AS range_3_8,
                         COUNT(CASE WHEN CAST(length AS UNSIGNED) BETWEEN 9 AND 11 THEN 1 END) AS range_9_11,
@@ -121,31 +119,28 @@ class ProductController extends Controller
         }
     }
 
-    /**
-     * Retrieve products filtered by a specified length range and return them as rendered HTML in a JSON response.
-     *
-     * This method accepts `min` and `max` parameters from the request to filter products based on their length.
-     * If neither `min` nor `max` is provided, it returns an empty collection.
-     *
-     * @param Request $request The HTTP request containing 'min' and/or 'max' query parameters for product length filtering.
-     *
-     * @return \Illuminate\Http\JsonResponse A JSON response containing the rendered product list HTML.
-     */
-    public function getProductsByLength(Request $request): JsonResponse
+    public function buildCategoryTreeWithCounts($category)
     {
-        $min = $request->get('min');
-        $max = $request->get('max');
+        $categoryIds = collect([$category->categoryId]);
+        $this->collectDescendantCategoryIds($category, $categoryIds);
 
-        if (!$min && !$max) {
-            return response()->json([]);
-        }
+        $totalProductCount = Product::whereIn('categoryId', $categoryIds)->count();
 
-        $products = Product::lengthBetween($min, $max)->get();
-        $productHtml = view('partials.product_list', ['products' => $products, 'scroll' => 'false'])->render();
-
-        return response()->json([
-            'product_html' => $productHtml
-        ]);
+        return [
+            'categoryId' => $category->categoryId,
+            'categoryName' => $category->categoryName,
+            'totalProductCount' => $totalProductCount,
+            'children' => $category->children->map(function ($child) {
+                return $this->buildCategoryTreeWithCounts($child);
+            })->toArray()
+        ];
     }
 
+    public function collectDescendantCategoryIds($category, &$ids)
+    {
+        foreach ($category->children as $child) {
+            $ids->push($child->categoryId);
+            $this->collectDescendantCategoryIds($child, $ids);
+        }
+    }
 }

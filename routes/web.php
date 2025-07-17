@@ -21,7 +21,6 @@ Route::get('/category-level', [CategoryController::class, 'getProductsByCategory
 
 Route::get('/product', [ProductController::class, 'index'])->name('product');
 Route::get('/product/{id}', [ProductController::class, 'detail'])->name('product.detail');
-Route::get('/product-length', [ProductController::class, 'getProductsByLength'])->name('product.length');
 Route::get('/load-more-products', [ProductController::class, 'loadMoreProducts'])->name('products.load-more');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
