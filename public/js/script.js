@@ -272,9 +272,9 @@ function updateCartPage() {
 
                 $cartPageList.append(`
                     <tr>
-                        <td><a href="${productDetailUrl.replace('000', item.productId)}">${item.productId}</a></td>
-                        <td><a href="${productDetailUrl.replace('000', item.productId)}">${item.product}</a></td>
-                        <td>
+                        <td data-label="Product ID :"><a href="${productDetailUrl.replace('000', item.productId)}">${item.productId}</a></td>
+                        <td data-label="Product Name :"><a href="${productDetailUrl.replace('000', item.productId)}">${item.product}</a></td>
+                        <td data-label="Quantity :">
                             <div class="quantity-container">
                             <div class="qty-container">
                                 <button class="quantity-btn minus" data-product="${item.product}">−</button>
@@ -283,11 +283,11 @@ function updateCartPage() {
                             </div>
                             </div>
                         </td>
-                        <td class="cart-price" style="display: none">$${item.price}</td>
-                        <td class="cart-price total-unit" style="display: none">$${item.retailPrice}</td>
-                        <td class="cart-price total-unit">$${(item.price * item.quantity).toFixed(2)}</td>
-                        <td class="cart-price total-unit discount-amout" style="display: none">$${(item.retailPrice * item.quantity - item.price * item.quantity).toFixed(2)}</td>
-                        <td>
+                        <td class="cart-price" style="display: none !important;">$${item.price}</td>
+                        <td class="cart-price total-unit" style="display: none !important;">$${item.retailPrice}</td>
+                        <td class="cart-price total-unit" data-label="Total Price :">$${(item.price * item.quantity).toFixed(2)}</td>
+                        <td class="cart-price total-unit discount-amout" style="display: none !important;">$${(item.retailPrice * item.quantity - item.price * item.quantity).toFixed(2)}</td>
+                        <td data-label="Action :">
                             <button class="remove-item btn btn-danger btn-sm" data-product="${item.product}">Remove</button>
                         </td>
                     </tr>
@@ -536,7 +536,7 @@ $(document).ready(function () {
 
     function applyDataLabelsCart() {
         const headers = [
-            "Product ID :", "Product Name :", "Quantity :", "Unit Price :", "Retail Price :", "Discounted Price :", "You Save :", "Action :",
+            "Product ID :", "Product Name :", "Quantity :", "Total Price :", "Action :",
         ];
 
         $("#cart-page-list tr").each(function () {

@@ -208,7 +208,7 @@ section.quote input[type="text"], section.quote input[type="email"], section.quo
     margin-bottom: 20px;
     color: #969696 !important;
     text-align: left;
-    font-size: 18px;
+    font-size: 18px !important;
     font-style: normal;
     font-weight: 400;
     line-height: 26.933px;
@@ -483,7 +483,17 @@ h2 {
 .location-details p {
     font-family: 'gilroy-semibolduploaded_file';
     font-size: 18px;
+    margin-bottom: 0px;
 }
+
+.location-map {
+    margin-top: 15px;
+}
+
+.location-details {
+    padding-right: 20px;
+}
+
 
 .location-details-img {
     display: flex;
@@ -500,6 +510,7 @@ h2 {
 
 .location-details a {
     color: #000;
+    text-decoration: none;
 }
 
 .location-img img{
@@ -3395,6 +3406,10 @@ footer form input::placeholder {
         gap: 19px;
     }
 
+    .checkout-container .row .col-md-7{
+        order: 2;
+    }
+
 }
 
 
@@ -3664,6 +3679,11 @@ footer form input::placeholder {
         flex-direction: column;
         gap: 19px;
     }
+
+    .checkout-container .row .col-md-7{
+        order: 2;
+    }
+
 
 }
 
@@ -3977,6 +3997,11 @@ footer form input::placeholder {
         flex-direction: column;
         gap: 19px;
     }
+
+    .checkout-container .row .col-md-7{
+        order: 2;
+    }
+
 
 }
 
@@ -4419,3 +4444,25 @@ td a{
 .toggle-icon {
 display: none;
 }
+
+
+/*Aftab css*/
+.cart-drawer {
+    height: 400px;
+}
+section.quote input[type="text"],
+section.quote input[type="email"],
+section.quote tel,
+section.quote textarea,
+section.quote select {
+    color: #757575 !important;
+}
+@media screen and (max-width:700px){
+    td.cart-price {
+        display: none !important;
+    }
+    .container.checkout-container .row {
+        flex-direction: column-reverse;
+    }
+}
+/*Aftab css ends*/

@@ -170,6 +170,7 @@ use App\Models\Category;
                         loadMoreProducts();
                     }
                     $('#product-list').html(response.product_html);
+                    applyDataLabels();
                     updateProductCount();
                 },
                 error: function () {
