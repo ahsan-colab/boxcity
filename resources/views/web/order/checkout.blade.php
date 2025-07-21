@@ -121,17 +121,29 @@
             if (cart.length === 0) {
                 $cartList.append("<tr><td colspan='3'>Your cart is empty</td></tr>");
             } else {
-                cart.forEach(item => {
-                    let itemTotal = item.price * item.quantity;
+                cart.forEach((item, index) => {
+                    // Get the price from the existing table if available
+                    let priceCell = document.querySelectorAll('tr[data-label="Total Price :"] td')[index];
+                    let itemTotal = 0;
+
+                    if (priceCell) {
+                        let priceText = priceCell.textContent.trim().replace('$', '');
+                        itemTotal = parseFloat(priceText);
+                    } else {
+                        // fallback to manual calculation
+                        itemTotal = item.price * item.quantity;
+                    }
+
                     var productDetailUrl = "{{ route('product.detail', ['id' => '000']) }}".replace('000', item.productId);
                     total += itemTotal;
+
                     $cartList.append(`
-                    <tr>
-                        <td><a href="${productDetailUrl}" target="_blank">${item.product}</a></td>
-                        <td>${item.quantity}</td>
-                        <td>$${itemTotal.toFixed(2)}</td>
-                    </tr>
-                `);
+            <tr>
+                <td><a href="${productDetailUrl}" target="_blank">${item.product}</a></td>
+                <td>${item.quantity}</td>
+                <td>$${itemTotal.toFixed(2)}</td>
+            </tr>
+        `);
                 });
             }
             $(".checkout-total").text(`Total: $${total.toFixed(2)}`);
