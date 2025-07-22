@@ -50,7 +50,7 @@ class CategoryController extends Controller
 
 
         if ($min && $max && !$category){
-           return $this->bindResponse(Product::lengthBetween($min, $max)->paginate(60));
+           return $this->bindResponse(Product::lengthBetween($min, $max)->get());
         } elseif($min && $max && $category){
             $productsLength = Product::select('id')->lengthBetween($min, $max)->pluck('id');
         }
