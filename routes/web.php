@@ -46,7 +46,7 @@ Route::get('/subscription/confirmation', function () {
 })->name('subscription.confirmation');
 
 
-Route::post('/paypal/create-order', [PayPalController::class, 'createOrder']);
-Route::get('/paypal/capture-order', [PayPalController::class, 'captureOrder']);
+Route::post('/paypal/create-order', [PayPalController::class, 'createOrder'])->name('paypal.create');
+Route::get('/paypal/capture-order', [PayPalController::class, 'captureOrder'])->name('paypal.capture');
 Route::get('/paypal/success', [PayPalController::class, 'captureOrder'])->name('paypal.success');
 Route::get('/paypal/cancel', function () {return 'Payment was cancelled.';})->name('paypal.cancel');

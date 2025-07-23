@@ -428,7 +428,7 @@
                         throw new Error("Invalid total amount.");
                     }
                     submitOrderToEcwid();
-                    return fetch('/boxcity/paypal/create-order', {
+                    return fetch('{{route("paypal.create")}}', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -447,7 +447,7 @@
                 },
 
                 onApprove: function(data, actions) {
-                    return fetch(`/boxcity/paypal/capture-order?token=${data.orderID}`)
+                    return fetch(`{{route("paypal.capture")}}?token=${data.orderID}`)
                         .then(res => res.json())
                         .then(result => {
                             console.log('Payment captured:', result);

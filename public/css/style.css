@@ -3101,6 +3101,14 @@ footer form input::placeholder {
     footer .col-md-6{
         width: 100%;
     }
+
+    .checkout-container .row .col-md-5{
+        order: 2;
+    }
+
+    .checkout-container .row:first-of-type {
+        gap: 50px;
+    }
 }
 
 @media screen and (min-width: 400px) and (max-width: 600px){
@@ -3406,9 +3414,15 @@ footer form input::placeholder {
         gap: 19px;
     }
 
-    .checkout-container .row .col-md-7{
+    .checkout-container .row .col-md-5{
         order: 2;
     }
+
+    .checkout-container .row:first-of-type {
+        gap: 50px;
+    }
+
+
 
 }
 
@@ -3680,8 +3694,12 @@ footer form input::placeholder {
         gap: 19px;
     }
 
-    .checkout-container .row .col-md-7{
+    .checkout-container .row .col-md-5{
         order: 2;
+    }
+
+    .checkout-container .row:first-of-type {
+        gap: 50px;
     }
 
 
@@ -3998,8 +4016,12 @@ footer form input::placeholder {
         gap: 19px;
     }
 
-    .checkout-container .row .col-md-7{
+    .checkout-container .row .col-md-5{
         order: 2;
+    }
+
+    .checkout-container .row:first-of-type {
+        gap: 50px;
     }
 
 
