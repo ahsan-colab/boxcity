@@ -342,11 +342,11 @@ $(document).ready(function () {
     $(document).on("click", ".quantity-btn", function () {
         let $wrapper = $(this).closest(".quantity-container");
         let $input = $wrapper.find(".quantity-input");
-        let value = Number($input.val()) || 1; // Use Number() to avoid skipping numbers
+        let value = Number($input.val()) || 1;
         if ($(this).hasClass("plus")) {
             $input.val(value + 1);
         } else if ($(this).hasClass("minus")) {
-            $input.val(Math.max(1, value - 1)); // Prevents going below 1
+            $input.val(Math.max(1, value - 1));
         }
         updateCartPage();
         updateTotalPrice();
@@ -377,7 +377,7 @@ $(document).on("click", ".remove-item", function () {
     cart = cart.filter(item => item.product !== productName);
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    syncCartWithSession(); // Update session after item removal
+    syncCartWithSession();
     updateTotalPrice();
     updateCartPage();
 });
@@ -474,33 +474,6 @@ $(document).ready(function () {
     $(window).on("unload", function () {
         sessionStorage.removeItem("cart");
     });
-
-
-
-    // function applyDataLabels() {
-    //     const headers = [
-    //         "Product ID :", "Name :", "Retail Price :", "Discounted Bulk Price", "12+ :", "50+ :", "100+ :"
-    //     ];
-    //
-    //     $("#product-list tr").each(function () {
-    //         const $row = $(this);
-    //         const $cells = $row.find("td");
-    //
-    //         // Only insert if not already added (to prevent duplication)
-    //         if ($cells.length === 6 || $cells.length === 7) {
-    //             // Insert an empty <td> after the third cell (index 2)
-    //             $("<td></td>").insertAfter($cells.eq(2));
-    //         }
-    //
-    //         // Apply data-labels after adding the new <td>
-    //         $row.find("td").each(function (index) {
-    //             if (headers[index]) {
-    //                 $(this).attr("data-label", headers[index]);
-    //             }
-    //         });
-    //     });
-    // }
-
 
 
     function applyDataLabelsCart() {

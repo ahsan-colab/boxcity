@@ -4,8 +4,6 @@ use App\Models\Category;
 ?>
 
 <div class="col-sm-3">
-
-    <!-- Side filter -->
     <div class="accordion" id="accordionExample">
         <!-- Length filter -->
         <div class="accordion-item">

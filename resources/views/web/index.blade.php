@@ -87,14 +87,8 @@
                     </div>
 
                     <div class="product-table">
-                    <!-- Product table -->
                     </div>
-                    <!-- Loading Indicator -->
-{{--                    <div id="loading" style="text-align: center; display: none;">--}}
-{{--                        <p>Loading more products...</p>--}}
-{{--                    </div>--}}
                 </div>
-
             </div>
         </div>
     </section>
@@ -137,12 +131,7 @@
                         <!-- Product table -->
 
                         <div class="product-table">
-                            <!-- Product table -->
                         </div>
-
-                        <!-- Loading Indicator -->
-{{--                            <p>Loading more products...</p>--}}
-                        {{--                        </div>--}}
                     </div>
 
                 </div>
@@ -288,4 +277,3 @@
 
     </script>
 @endsection
-
