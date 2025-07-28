@@ -9,7 +9,7 @@
         $agent = new Agent();
     @endphp
 
-    @if ($agent->isMobile())
+    @if ($agent->isMobile() || $agent->isTablet())
     <section class="products-container">
         <div class="container">
             <div class="row">
@@ -106,6 +106,11 @@
             .cart-icon {
             z-index: 999999;
           }
+
+          .banner-img-mobile{
+             display: block;
+          }
+
     </style>
 
 
