@@ -78,58 +78,58 @@ function applyDataLabels() {
     });
 }
 
-let nextPageUrl = 'load-more-products';
-let loading = false;
-let hasMore = true;
-
-function loadMoreProducts() {
-    if (loading || !hasMore) return;
-    loading = true;
-    $('#loading').show();
-    $.ajax({
-        url: nextPageUrl,
-        method: 'GET',
-        dataType: 'json',
-        success: function(response) {
-            if (response.product_html) {
-                // Append the rendered HTML for the products
-                $('#product-list').append(response.product_html);
-                nextPageUrl = response.next_page_url;
-                hasMore = response.has_more;
-                updateProductCount();
-            }
-            if (!hasMore) {
-                $(window).off('scroll');
-            }
-
-            applyDataLabels();
-        },
-        error: function(xhr, status, error) {
-            console.error('Error loading more products:', error);
-        },
-        complete: function() {
-            loading = false;
-            $('#loading').hide();
-        }
-    });
-}
-
-
-$(window).on('scroll', function() {
-    var tableBody = $('#product-list');
-    var bottomOfTableBody = tableBody.offset().top + tableBody.height();
-    var bottomOfWindow = $(window).scrollTop() + $(window).height();
-
-    if (bottomOfWindow >= bottomOfTableBody - 100 && tableBody.find('tr.scroll-false').length === 0) {
-        loadMoreProducts();
-
-    }
-});
-
-$(document).ready(function() {
-    loadMoreProducts();
- ;
-});
+// let nextPageUrl = 'load-more-products';
+// let loading = false;
+// let hasMore = true;
+//
+// function loadMoreProducts() {
+//     if (loading || !hasMore) return;
+//     loading = true;
+//     $('#loading').show();
+//     $.ajax({
+//         url: nextPageUrl,
+//         method: 'GET',
+//         dataType: 'json',
+//         success: function(response) {
+//             if (response.product_html) {
+//                 // Append the rendered HTML for the products
+//                 $('#product-list').append(response.product_html);
+//                 nextPageUrl = response.next_page_url;
+//                 hasMore = response.has_more;
+//                 updateProductCount();
+//             }
+//             if (!hasMore) {
+//                 $(window).off('scroll');
+//             }
+//
+//             applyDataLabels();
+//         },
+//         error: function(xhr, status, error) {
+//             console.error('Error loading more products:', error);
+//         },
+//         complete: function() {
+//             loading = false;
+//             $('#loading').hide();
+//         }
+//     });
+// }
+//
+//
+// $(window).on('scroll', function() {
+//     var tableBody = $('#product-list');
+//     var bottomOfTableBody = tableBody.offset().top + tableBody.height();
+//     var bottomOfWindow = $(window).scrollTop() + $(window).height();
+//
+//     if (bottomOfWindow >= bottomOfTableBody - 100 && tableBody.find('tr.scroll-false').length === 0) {
+//         loadMoreProducts();
+//
+//     }
+// });
+//
+// $(document).ready(function() {
+//     loadMoreProducts();
+//  ;
+// });
 
 
 
@@ -452,37 +452,6 @@ $(document).ready(function () {
     });
 
 
-
-
-
-
-
-
-
-    // Remove Item from Cart (For Both Sidebar & Cart Page)
-
-
-    // Update Quantity in Cart Page
-    // $(document).on("change", ".cart-quantity", function () {
-    //     let productName = $(this).data("product");
-    //     let newQuantity = parseInt($(this).val());
-    //
-    //     if (newQuantity < 1) {
-    //         alert("Quantity must be at least 1");
-    //         $(this).val(1);
-    //         return;
-    //     }
-    //
-    //     let item = cart.find(item => item.product === productName);
-    //     if (item) {
-    //         item.quantity = newQuantity; // Update quantity
-    //     }
-    //
-    //     sessionStorage.setItem("cart", JSON.stringify(cart)); // Save changes
-    //     updateCartUI();
-    // });
-
-
     function runCartUpdate() {
         updateCartUI();
     }
@@ -508,29 +477,29 @@ $(document).ready(function () {
 
 
 
-    function applyDataLabels() {
-        const headers = [
-            "Product ID :", "Name :", "Retail Price :", "Discounted Bulk Price", "12+ :", "50+ :", "100+ :"
-        ];
-
-        $("#product-list tr").each(function () {
-            const $row = $(this);
-            const $cells = $row.find("td");
-
-            // Only insert if not already added (to prevent duplication)
-            if ($cells.length === 6 || $cells.length === 7) {
-                // Insert an empty <td> after the third cell (index 2)
-                $("<td></td>").insertAfter($cells.eq(2));
-            }
-
-            // Apply data-labels after adding the new <td>
-            $row.find("td").each(function (index) {
-                if (headers[index]) {
-                    $(this).attr("data-label", headers[index]);
-                }
-            });
-        });
-    }
+    // function applyDataLabels() {
+    //     const headers = [
+    //         "Product ID :", "Name :", "Retail Price :", "Discounted Bulk Price", "12+ :", "50+ :", "100+ :"
+    //     ];
+    //
+    //     $("#product-list tr").each(function () {
+    //         const $row = $(this);
+    //         const $cells = $row.find("td");
+    //
+    //         // Only insert if not already added (to prevent duplication)
+    //         if ($cells.length === 6 || $cells.length === 7) {
+    //             // Insert an empty <td> after the third cell (index 2)
+    //             $("<td></td>").insertAfter($cells.eq(2));
+    //         }
+    //
+    //         // Apply data-labels after adding the new <td>
+    //         $row.find("td").each(function (index) {
+    //             if (headers[index]) {
+    //                 $(this).attr("data-label", headers[index]);
+    //             }
+    //         });
+    //     });
+    // }
 
 
 
@@ -649,4 +618,26 @@ function closeCartDrawer() {
 
 $(document).on("click", "#closeCartDrawer, #cartBackdrop", function() {
     closeCartDrawer();
+});
+
+
+$(document).ready(function () {
+    $(document).on('click', '.pagination-links a', function (e) {
+        e.preventDefault();
+        let url = $(this).attr('href');
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function (data) {
+
+                $('#product-list').html($(data).find('#product-list').html());
+                $('.pagination-links').html($(data).find('.pagination-links').html());
+                applyDataLabels();
+                window.history.pushState({}, '', url);
+            },
+            error: function () {
+                alert('Pagination failed. Please try again.');
+            }
+        });
+    });
 });

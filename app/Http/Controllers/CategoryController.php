@@ -67,13 +67,13 @@ class CategoryController extends Controller
                 $products->whereIn('id', $productsLength);
             }
             // Get all products under this branch
-            return $this->bindResponse($products->get());
+            return $this->bindResponse($products->paginate(60)->withPath(url('/')));
         } else {
             $products = Product::where('categoryId', $category->categoryId);
             if(isset($productsLength)){
                 $products = $products->whereIn('id', $productsLength);
             }
-            return $this->bindResponse($products->get());
+            return $this->bindResponse($products->paginate(60)->withPath(url('/')));
         }
     }
 

@@ -1240,6 +1240,35 @@ footer form input::placeholder {
     margin-top: 18px;
 }
 
+.pagination-links nav .flex.justify-between{
+    display: none;
+}
+
+.pagination-links nav svg{
+    display: none;
+}
+
+
+.pagination-links nav a{
+    text-decoration: none;
+    font-family: 'gilroy-mediumuploaded_file';
+    color: #000 !important;
+}
+
+.pagination-links nav span, .pagination-links nav p{
+    text-decoration: none;
+    font-family: 'gilroy-bolduploaded_file';
+    color: #000 !important;
+}
+
+
+.pagination-links nav span.relative.inline-flex.items-center.px-2.py-2{
+display: none;
+}
+
+.pagination-links nav [aria-label="&laquo; Previous"], .pagination-links nav [aria-label="Next &raquo;"]{
+    display: none;
+}
 
 @media screen and (min-width:1600px) and (max-width:1699px){
 

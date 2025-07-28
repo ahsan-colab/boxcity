@@ -70,8 +70,30 @@ class ProductController extends Controller
                 'max' => 23
             ],
         ];
-        return view('web.index', ['categories' => $categories, 'sizes' => $sizes]);
+
+
+
+
+
+        $products = Product::paginate(60)->withPath(url('/'));
+        return view('web.index', ['categories' => $categories, 'sizes' => $sizes , 'products' => $products]);
     }
+
+
+    public function paginateProducts(Request $request)
+    {
+        $products = Product::paginate(60)->withPath(url('/'));
+
+
+        if ($request->ajax()) {
+            return view('partials.products_ajax', compact('products'))->render();
+        }
+
+        return view('web.index', compact('products'));
+    }
+
+
+
 
     /**
      * Display the product details page.

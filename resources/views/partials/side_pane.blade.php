@@ -97,6 +97,7 @@ use App\Models\Category;
                 // Remove active class from all filters
                 $('.filters').removeClass('active');
                 $('.filters').each(function () {
+                    let url = $(this).attr('href');
                     const $this = $(this);
                     const btn = $this.closest('.accordion-button');
                     btn.removeClass('active-highlight');
@@ -180,6 +181,5 @@ use App\Models\Category;
 
         }, 100);
     });
-
 
 </script>

@@ -11,13 +11,19 @@ use App\Http\Controllers\ProductController;
 use App\Jobs\FetchCategoriesFromApi;
 use App\Http\Controllers\PayPalController;
 
+// Homepage route — loads the main page and first product list
 Route::get('/', [ProductController::class, 'index'])->name('home');
+// AJAX pagination route — loads only product list HTML
+Route::get('/products/paginate', [ProductController::class, 'paginateProducts'])->name('products.paginate');
+
 Route::post('/post-contact', [FormController::class, 'contactForm'])->name('submit.contact');
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('submit.newsletter');
 Route::get('/confirm-subscription/{token}', [SubscriptionController::class, 'confirm'])->name('subscription.confirm');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('/category', [CategoryController::class, 'index'])->name('category');
 Route::get('/category-level', [CategoryController::class, 'getProductsByCategoryLevel'])->name('category.level');
+
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
 Route::get('/product', [ProductController::class, 'index'])->name('product');
 Route::get('/product/{id}', [ProductController::class, 'detail'])->name('product.detail');
