@@ -86,32 +86,9 @@
                         </div>
                     </div>
 
+                    <div class="product-table">
                     <!-- Product table -->
-                    <div class="table-responsive">
-                        <table id="product-table" class="responsive-table">
-                            <thead>
-                            <tr>
-                                <th rowspan="2">Product ID</th>
-                                <th rowspan="2">Name</th>
-                                <th rowspan="2">Retail Price</th>
-                                <th colspan="3" class="bulk-price-header main">Discounted Bulk Price</th>
-                                <th rowspan="2">Add To Cart</th>
-                            </tr>
-                            <tr>
-                                <th class="bulk-price-header">12+</th>
-                                <th class="bulk-price-header">50+</th>
-                                <th class="bulk-price-header">100+</th>
-                            </tr>
-                            </thead>
-                            <tbody id="product-list">
-                            @include('partials.product_list', ['products' => $products])
-                            </tbody>
-                        </table>
                     </div>
-                    <div class="pagination-links text-center mt-4">
-                        {!! $products->links() !!}
-                    </div>
-                    <div class="product-count">Showing 20 Products</div>
                     <!-- Loading Indicator -->
 {{--                    <div id="loading" style="text-align: center; display: none;">--}}
 {{--                        <p>Loading more products...</p>--}}
@@ -122,6 +99,71 @@
         </div>
     </section>
 
+
+    <style>
+          .bulk-orders {
+            margin-bottom: 30px;
+          }
+
+            .products-container {
+            margin-top: 16px;
+          }
+
+            .cart-icon {
+            z-index: 999999;
+          }
+    </style>
+
+
+    @else
+        <section class="products-container">
+            <div class="container">
+                <div class="row">
+                    <!-- Side Pane -->
+                    @include('partials.side_pane')
+
+                    <div class="col-lg-9 col-sm-12">
+                        <div class="banner-img">
+                            <img src="{{asset('public/assets/Full-Banner.png')}}"/>
+                        </div>
+                        <!-- Bulk order section -->
+                        <div class="bulk-orders">
+                            <h3>
+                                For bigger bulk orders exceeding 100 boxes, reach out to our partnerships team at
+                                <a href="mailto:partnerships@boxcity.com">partnerships@boxcity.com</a>
+                            </h3>
+                        </div>
+
+                        <!-- Product table -->
+
+                        <div class="product-table">
+                            <!-- Product table -->
+                        </div>
+
+                        <!-- Loading Indicator -->
+{{--                            <p>Loading more products...</p>--}}
+                        {{--                        </div>--}}
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    @endif
+    <!-- Cart Panel -->
+    <div class="cart-panel">
+        <h3>Shopping Cart</h3>
+        <ul id="cart-list"></ul>
+        <button id="clear-cart">Clear Cart</button>
+    </div>
+
+    <!-- Quote Request Form -->
+    @include('partials.quote_from')
+
+    <!-- Testimonials Section -->
+    @include('partials.testimonial')
+
+    <!-- Store Location Tabs -->
+    @include('partials.store_location')
     <script>
 
         function updateProductCount() {
@@ -140,10 +182,7 @@
 
         $(document).on('click', '.filters, .length, .remove-filter, .remove-length', function (e) {
             const $clicked = $(this);
-
             setTimeout(function () {
-
-
                 if ($clicked.hasClass('filters')) {
                     // Remove active class from all filters
                     $('.filters').removeClass('active');
@@ -202,123 +241,51 @@
                     updateProductCount();
                 }
 
-
-                const activeFilter = $('.filters.active');
-                const categoryId = activeFilter.length ? activeFilter.data('category-id') : null;
-
-                const activeLength = $('.length.active');
-                const min = activeLength.length ? activeLength.parent('li').data('min') : null;
-                const max = activeLength.length ? activeLength.parent('li').data('max') : null;
-
-
-                $.ajax({
-                    url: "{{ route('category.level') }}",
-                    method: "GET",
-                    data: { categoryId, min, max },
-                    success: function (response) {
-                        if (Array.isArray(response) && response.length === 0) {
-                            $('#product-list').html('');
-                            loadMoreProducts();
-                        }
-                        $('#product-list').html(response.product_html);
-                        applyDataLabels();
-                        updateProductCount();
-                    },
-                    error: function () {
-                        $('#product-list').html('<div style="display: block; text-align: center; margin-left: 162% !important; margin: 20px 0px; width: 100%;">No Products Found</div>');
-                    }
-                });
-
+                loadProducts();
             }, 100);
         });
 
+        $(document).ready(function () {
+            loadProducts();
+            $(document).on('click', '.pagination-links a', function (e) {
+                e.preventDefault();
+                let url = new URL($(this).attr('href'));
+                let page = url.searchParams.get('page');
+                page = (page && !isNaN(page)) ? parseInt(page) : 1;
+                loadProducts(page);
+            });
+        });
+
+        function loadProducts(page = 1){
+            let $len = $('.length.active').closest('li');
+            let $filter = $('.filters.active');
+            let url = "{{route('category.level')}}?page="+page;
+
+            if ($len.length) {
+                let min = $len.data('min');
+                let max = $len.data('max');
+                url = url+"&min="+min+"&max="+max;
+            }
+
+            if ($filter.length) {
+                let category_id = $filter.data('category-id');
+                url = url+"&categoryId="+category_id;
+            }
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function (response) {
+                    if (response.product_html) {
+                        $('.product-table').html(response.product_html);
+                    }
+                },
+                error: function () {
+                    alert('Pagination failed. Please try again.');
+                }
+            });
+        }
+
     </script>
-
-    <style>
-        .bulk-orders {
-            margin-bottom: 30px;
-        }
-
-        .products-container {
-            margin-top: 16px;
-        }
-
-        .cart-icon {
-            z-index: 999999;
-        }
-    </style>
-
-
-    @else
-        <section class="products-container">
-            <div class="container">
-                <div class="row">
-                    <!-- Side Pane -->
-                    @include('partials.side_pane')
-
-                    <div class="col-lg-9 col-sm-12">
-                        <div class="banner-img">
-                            <img src="{{asset('public/assets/Full-Banner.png')}}"/>
-                        </div>
-                        <!-- Bulk order section -->
-                        <div class="bulk-orders">
-                            <h3>
-                                For bigger bulk orders exceeding 100 boxes, reach out to our partnerships team at
-                                <a href="mailto:partnerships@boxcity.com">partnerships@boxcity.com</a>
-                            </h3>
-                        </div>
-
-                        <!-- Product table -->
-                        <div class="table-responsive">
-                            <table id="product-table" class="responsive-table">
-                                <thead>
-                                <tr>
-                                    <th rowspan="2">Product ID</th>
-                                    <th rowspan="2">Name</th>
-                                    <th rowspan="2">Retail Price</th>
-                                    <th colspan="3" class="bulk-price-header main">Discounted Bulk Price</th>
-                                    <th rowspan="2">Add To Cart</th>
-                                </tr>
-                                <tr>
-                                    <th class="bulk-price-header">12+</th>
-                                    <th class="bulk-price-header">50+</th>
-                                    <th class="bulk-price-header">100+</th>
-                                </tr>
-                                </thead>
-                                <tbody id="product-list">
-                                @include('partials.product_list', ['products' => $products])
-                                </tbody>
-
-                            </table>
-                        </div>
-
-                        <div class="pagination-links text-center mt-4">
-                            {!! $products->links() !!}
-                        </div>
-                        <div class="product-count">Showing 20 Products</div>
-                        <!-- Loading Indicator -->
-{{--                        <div id="loading" style="text-align: center; display: none;">--}}
-{{--                            <p>Loading more products...</p>--}}
-{{--                        </div>--}}
-                    </div>
-
-                </div>
-            </div>
-        </section>
-    @endif
-    <!-- Cart Panel -->
-    <div class="cart-panel">
-        <h3>Shopping Cart</h3>
-        <ul id="cart-list"></ul>
-        <button id="clear-cart">Clear Cart</button>
-    </div>
-
-    <!-- Quote Request Form -->
-    @include('partials.quote_from')
-
-    <!-- Testimonials Section -->
-    @include('partials.testimonial')
-
-    <!-- Store Location Tabs -->
-    @include('partials.store_location')
 @endsection
+

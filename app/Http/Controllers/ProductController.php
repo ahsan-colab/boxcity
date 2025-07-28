@@ -71,12 +71,7 @@ class ProductController extends Controller
             ],
         ];
 
-
-
-
-
-        $products = Product::paginate(60)->withPath(url('/'));
-        return view('web.index', ['categories' => $categories, 'sizes' => $sizes , 'products' => $products]);
+        return view('web.index', ['categories' => $categories, 'sizes' => $sizes ]);
     }
 
 

@@ -619,25 +619,3 @@ function closeCartDrawer() {
 $(document).on("click", "#closeCartDrawer, #cartBackdrop", function() {
     closeCartDrawer();
 });
-
-
-$(document).ready(function () {
-    $(document).on('click', '.pagination-links a', function (e) {
-        e.preventDefault();
-        let url = $(this).attr('href');
-        $.ajax({
-            url: url,
-            type: 'GET',
-            success: function (data) {
-
-                $('#product-list').html($(data).find('#product-list').html());
-                $('.pagination-links').html($(data).find('.pagination-links').html());
-                applyDataLabels();
-                window.history.pushState({}, '', url);
-            },
-            error: function () {
-                alert('Pagination failed. Please try again.');
-            }
-        });
-    });
-});

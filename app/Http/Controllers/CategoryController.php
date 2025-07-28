@@ -45,12 +45,12 @@ class CategoryController extends Controller
         $category = Category::where('categoryId', $categoryId)->first();
 
         if (!$min && !$max && !$category) {
-            return response()->json([]);
+           return $this->bindResponse(Product::paginate(60));
         }
 
 
         if ($min && $max && !$category){
-           return $this->bindResponse(Product::lengthBetween($min, $max)->get());
+           return $this->bindResponse(Product::lengthBetween($min, $max)->paginate(60));
         } elseif($min && $max && $category){
             $productsLength = Product::select('id')->lengthBetween($min, $max)->pluck('id');
         }
@@ -67,13 +67,13 @@ class CategoryController extends Controller
                 $products->whereIn('id', $productsLength);
             }
             // Get all products under this branch
-            return $this->bindResponse($products->paginate(60)->withPath(url('/')));
+            return $this->bindResponse($products->paginate(60));
         } else {
             $products = Product::where('categoryId', $category->categoryId);
             if(isset($productsLength)){
                 $products = $products->whereIn('id', $productsLength);
             }
-            return $this->bindResponse($products->paginate(60)->withPath(url('/')));
+            return $this->bindResponse($products->paginate(60));
         }
     }
 
