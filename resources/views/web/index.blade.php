@@ -272,6 +272,10 @@
                 success: function (response) {
                     if (response.product_html) {
                         $('.product-table').html(response.product_html);
+                        applyDataLabels();
+                        $('html, body').animate({
+                            scrollTop: $('#product-table').offset().top
+                        }, 500);
                     }
                 },
                 error: function () {

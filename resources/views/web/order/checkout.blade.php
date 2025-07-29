@@ -491,10 +491,6 @@
 
         });
 
-
-
-
-
     </script>
 
 @endsection
