@@ -246,8 +246,16 @@
                 let url = new URL($(this).attr('href'));
                 let page = url.searchParams.get('page');
                 page = (page && !isNaN(page)) ? parseInt(page) : 1;
+
+                if (!url.href.includes('page=1')) {
+                    $('html, body').animate({
+                        scrollTop: $('#product-table').offset().top
+                    }, 1000);
+                }
+
                 loadProducts(page);
             });
+
         });
 
         function loadProducts(page = 1){
@@ -273,9 +281,7 @@
                     if (response.product_html) {
                         $('.product-table').html(response.product_html);
                         applyDataLabels();
-                        $('html, body').animate({
-                            scrollTop: $('#product-table').offset().top
-                        }, 500);
+
                     }
                 },
                 error: function () {

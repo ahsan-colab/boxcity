@@ -73,6 +73,24 @@
                         </div>
                     </div>
 
+{{--                    <div class="form-group">--}}
+{{--                        <label for="phone">Select Location</label><br/>--}}
+{{--                        <div class="custom-select-wrapper">--}}
+{{--                            <select class="form-control">--}}
+{{--                                <option disabled selected hidden>Select a Location</option>--}}
+{{--                                <option>Van Nuys</option>--}}
+{{--                                <option>North Hollywood</option>--}}
+{{--                                <option>West Los Angeles</option>--}}
+{{--                                <option>Valencia</option>--}}
+{{--                                <option>Pasadena</option>--}}
+{{--                                <option>Marina Del Rey</option>--}}
+{{--                                <option>Canoga Park</option>--}}
+{{--                                <option>Glendale</option>--}}
+{{--                                <option>Azusa</option>--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
                     {{-- Address Field --}}
                     <div class="form-group">
                         <label for="address">Address</label>
@@ -101,7 +119,6 @@
                     </tr>
                     </thead>
                     <tbody id="checkout-cart-list">
-                    {{-- This will be populated dynamically with JS --}}
                     <tr><td colspan="3">Loading cart...</td></tr>
                     </tbody>
                 </table>

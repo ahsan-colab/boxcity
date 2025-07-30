@@ -1270,6 +1270,41 @@ display: none;
     display: none;
 }
 
+
+.custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.custom-select-wrapper select {
+    appearance: none; /* Remove default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: white;
+    width: 100%;
+    padding-right: 40px; /* Make room for the arrow */
+}
+
+.custom-select-wrapper::after {
+    content: '▼'; /* Down arrow */
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 14px;
+    color: #000;
+}
+
+
+span[aria-current="page"] span{
+   background: #FFE175 !important;
+}
+
+
+
+
 @media screen and (min-width:1600px) and (max-width:1699px){
 
     .container {
@@ -2800,6 +2835,17 @@ display: none;
         padding: 0px 13px !important;
     }
 
+    .pagination-links .inline-flex {
+        flex-wrap: wrap !important;
+        display: flex;
+        justify-content: center;
+        box-shadow: none !important;
+    }
+
+    .pagination-links .inline-flex > * {
+        margin-bottom: 10px;
+    }
+
 }
 
 
@@ -3138,6 +3184,18 @@ display: none;
     .checkout-container .row:first-of-type {
         gap: 50px;
     }
+
+
+    .pagination-links .inline-flex {
+        flex-wrap: wrap !important;
+        display: flex;
+        justify-content: center;
+        box-shadow: none !important;
+    }
+
+    .pagination-links .inline-flex > * {
+        margin-bottom: 10px;
+    }
 }
 
 @media screen and (min-width: 400px) and (max-width: 600px){
@@ -3455,6 +3513,7 @@ display: none;
         flex-wrap: wrap !important;
         display: flex;
         justify-content: center;
+        box-shadow: none !important;
     }
 
     .pagination-links .inline-flex > * {
@@ -3744,6 +3803,7 @@ display: none;
         flex-wrap: wrap !important;
         display: flex;
         justify-content: center;
+        box-shadow: none !important;
     }
 
     .pagination-links .inline-flex > * {
@@ -4076,6 +4136,7 @@ display: none;
         flex-wrap: wrap !important;
         display: flex;
         justify-content: center;
+        box-shadow: none !important;
     }
 
     .pagination-links .inline-flex > * {
