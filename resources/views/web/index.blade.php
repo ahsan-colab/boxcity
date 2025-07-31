@@ -241,22 +241,22 @@
 
         $(document).ready(function () {
             loadProducts();
+
             $(document).on('click', '.pagination-links a', function (e) {
                 e.preventDefault();
+
                 let url = new URL($(this).attr('href'));
                 let page = url.searchParams.get('page');
                 page = (page && !isNaN(page)) ? parseInt(page) : 1;
+                loadProducts(page);
 
-                if (!url.href.includes('page=1')) {
                     $('html, body').animate({
                         scrollTop: $('#product-table').offset().top
-                    }, 1000);
-                }
+                    }, 1500);
 
-                loadProducts(page);
             });
-
         });
+
 
         function loadProducts(page = 1){
             let $len = $('.length.active').closest('li');
