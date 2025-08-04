@@ -24,7 +24,6 @@ Route::get('/category', [CategoryController::class, 'index'])->name('category');
 Route::get('/category-level', [CategoryController::class, 'getProductsByCategoryLevel'])->name('category.level');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-
 Route::get('/product', [ProductController::class, 'index'])->name('product');
 Route::get('/product/{id}', [ProductController::class, 'detail'])->name('product.detail');
 Route::get('/load-more-products', [ProductController::class, 'loadMoreProducts'])->name('products.load-more');

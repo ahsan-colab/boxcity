@@ -17,91 +17,214 @@
                 <h3>Billing Details</h3>
 
                 <form id="checkout-form">
-                    {{-- Full Name Field --}}
+                    <!-- Full Name -->
                     <div class="form-group">
                         <label for="full-name">Full Name</label>
                         <input type="text" id="full-name" name="full-name" class="form-control" required>
                     </div>
 
-                    {{-- Email Field --}}
+                    <!-- Email -->
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" class="form-control" required>
                     </div>
 
-                    {{-- Phone Field --}}
+                    <!-- Phone -->
                     <div class="form-group">
                         <label for="phone">Phone</label>
                         <input type="text" id="phone" name="phone" class="form-control" required>
                     </div>
 
-                    {{-- Country, State, City, Postal Code Fields --}}
-                    <div class="row form-row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="country">Country</label>
-                                <select id="country" name="country" class="form-control" required>
-                                    <option value="" disabled selected>Select Country</option>
-                                    <option value="US">United States</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="state">State</label>
-                                <select id="state" name="state" class="form-control" required>
-                                    <option value="" disabled selected>Select State</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <select id="city" name="city" class="form-control" required>
-                                    <option value="" disabled selected>Select City</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="postal-code">Postal Code</label>
-                                <input type="text" id="postal-code" name="postal-code" class="form-control" required>
-                            </div>
-                        </div>
-                    </div>
-
-{{--                    <div class="form-group">--}}
-{{--                        <label for="phone">Select Location</label><br/>--}}
-{{--                        <div class="custom-select-wrapper">--}}
-{{--                            <select class="form-control">--}}
-{{--                                <option disabled selected hidden>Select a Location</option>--}}
-{{--                                <option>Van Nuys</option>--}}
-{{--                                <option>North Hollywood</option>--}}
-{{--                                <option>West Los Angeles</option>--}}
-{{--                                <option>Valencia</option>--}}
-{{--                                <option>Pasadena</option>--}}
-{{--                                <option>Marina Del Rey</option>--}}
-{{--                                <option>Canoga Park</option>--}}
-{{--                                <option>Glendale</option>--}}
-{{--                                <option>Azusa</option>--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-                    {{-- Address Field --}}
+                    <!-- Shipping Method -->
                     <div class="form-group">
-                        <label for="address">Address</label>
-                        <textarea id="address" name="address" class="form-control" required></textarea>
+                        <label for="shipping-method">Select Shipping Method</label>
+                        <div class="custom-select-wrapper">
+                        <select id="shipping-method" name="shipping-method" class="form-control">
+                            <option disabled selected hidden>Select Shipping Method</option>
+                            <option value="Pickup method" name="Pick up" >Pick Up</option>
+                            <option value="Delivery details" name="Delivery">Delivery</option>
+                        </select>
+                    </div>
                     </div>
 
-                    {{-- Order Button and Total --}}
+                    <!-- PICKUP SECTION -->
+                    <div id="pickup-section" class="d-none">
+
+                        <!-- Location -->
+                        <div class="form-group">
+                            <label for="pickup-location">Select Store Location</label>
+                            <div class="custom-select-wrapper">
+                            <select id="pickup-location" name="pickup-location" class="form-control">
+                                <option disabled selected hidden>Select a Location</option>
+                                <option value="#1 Box City Van Nuys" name="Pickup-VanNuys">Van Nuys</option>
+                                <option value="#2 Box City North Hollywood" name="Pickup-NorthHollywood">North Hollywood</option>
+                                <option value="#3 Box City Westwood" name="Pickup-WestLosAngeles">West Los Angeles</option>
+                                <option value="#4 Box City Valencia" name="Pickup-Valencia">Valencia</option>
+                                <option value="#5 Box City Pasadena" name="Pickup-Pasadena">Pasadena</option>
+                                <option value="#6 Box City Marina" name="Pickup-MarinaDelRey">Marina Del Rey</option>
+                                <option value="#7 Box City Canoga Park" name="Pickup-CanogaPark">Canoga Park</option>
+                                <option value="#8 Box City - Glendale" name="Pickup-Glendale">Glendale</option>
+                                <option value="#9 Box City Azusa" name="Pickup-Azusa">Azusa</option>
+                            </select>
+                        </div>
+                        </div>
+
+                        <!-- Pickup Date -->
+                        <div class="form-group">
+                            <label for="pickup-date">Pickup Date</label>
+                            <input type="date" id="pickup-date" name="pickup-date" class="form-control">
+                        </div>
+
+                        <!-- Country, State, City, Postal Code -->
+                        <div class="row form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="pickup-country">Country</label>
+                                    <div class="custom-select-wrapper">
+                                    <select id="pickup-country" name="pickup-country" class="form-control">
+                                        <option disabled selected>Select Country</option>
+                                        <option value="US">United States</option>
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="pickup-state">State</label>
+                                    <div class="custom-select-wrapper">
+                                    <select id="pickup-state" name="pickup-state" class="form-control">
+                                        <option disabled selected>Select State</option>
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="pickup-city">City</label>
+                                    <div class="custom-select-wrapper">
+                                    <select id="pickup-city" name="pickup-city" class="form-control">
+                                        <option disabled selected>Select City</option>
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="pickup-postal">Postal Code</label>
+                                    <input type="text" id="pickup-postal" name="pickup-postal" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="form-group">
+                            <label for="pickup-address">Address</label>
+                            <textarea id="pickup-address" name="pickup-address" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- DELIVERY SECTION -->
+                    <div id="delivery-section" class="d-none">
+                        <div id="shipping-address">
+
+                            <!-- Country, State, City, Zip -->
+                            <div class="row form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="shipping-country">Country</label>
+                                        <div class="custom-select-wrapper">
+                                        <select id="shipping-country" name="shipping-country" class="form-control">
+                                            <option disabled selected>Select Country</option>
+                                            <option value="US">United States</option>
+                                        </select>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="shipping-state">State</label>
+                                        <div class="custom-select-wrapper">
+                                        <select id="shipping-state" name="shipping-state" class="form-control">
+                                            <option disabled selected>Select State</option>
+                                        </select>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="shipping-city">City</label>
+                                        <div class="custom-select-wrapper">
+                                        <select id="shipping-city" name="shipping-city" class="form-control">
+                                            <option disabled selected>Select City</option>
+                                        </select>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="shipping-zip">Zip Code</label>
+                                        <input type="text" id="shipping-zip" name="shipping-zip" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="delivery-location">Select Store Location</label>
+                                <div class="custom-select-wrapper">
+                                <select id="delivery-location" name="pickup-location" class="form-control">
+                                    <option disabled selected hidden>Select a Location</option>
+                                    <option value="Local delivery (#1 Box City Van Nuys)" name="Delivery-VanNuys">Van Nuys</option>
+                                    <option value="Local delivery (#2 Box City North Hollywood)" name="Delivery-NorthHollywood">North Hollywood</option>
+                                    <option value="Local delivery (#3 Box City Westwood)" name="Delivery-WestLosAngeles">West Los Angeles</option>
+                                    <option value="Local delivery (#4 Box City Valencia)" name="Delivery-Valencia">Valencia</option>
+                                    <option value="Local delivery (#5 Box City Pasadena)" name="Delivery-Pasadena">Pasadena</option>
+                                    <option value="Local delivery (#6 Box City Marina)" name="Delivery-MarinaDelRey">Marina Del Rey</option>
+                                    <option value="Local delivery (#7 Box City Canoga Park)" name="Delivery-CanogaPark">Canoga Park</option>
+                                    <option value="Local delivery (#8 Box City - Glendale)" name="Delivery-Glendale">Glendale</option>
+                                    <option value="Local delivery – Azusa" name="Delivery-Azusa">Azusa</option>
+                                </select>
+                            </div>
+                            </div>
+
+
+                            <!-- Address -->
+                            <div class="form-group">
+                                <label for="address-text">Address</label>
+                                <textarea id="address-text" name="shipping-address-text" class="form-control"></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                        <label class="form-check-label" for="delivery-address"> Delivery Address</label>
+                        </div>
+
+                        <div class="form-check mb-2 mt-2">
+
+                            <input class="form-check-input" type="checkbox" id="same-as-billing">
+                            <label class="form-check-label" for="same-as-billing">
+                                Same as Billing Address
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="shipping-address-text">Shipping Address</label>
+                            <textarea id="shipping-address-text" name="shipping-address-text" class="form-control"></textarea>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Order Button and Total -->
                     <div class="btn-container">
                         <h4 class="checkout-total">Total: $0.00</h4>
                         <button id="place-order" type="submit" class="btn btn-success btn-lg">Place Order</button>
                     </div>
+
                     <div id="paypal-button-container"></div>
                 </form>
             </div>
@@ -171,11 +294,71 @@
                 let fullName = $("#full-name").val();
                 let email = $("#email").val();
                 let phone = $("#phone").val();
-                let address = $("#address").val();
-                let country = $("#country").val();
-                let state = $("#state").val();
-                let city = $("#city").val();
-                let postcode = $("#postal-code").val();
+                let shipmethod = $('#shipping-method').val();
+                let isPickup = (shipmethod === 'Pickup method');
+                let pickupDate = $('#pickup-date').val();
+                let formattedPickupDate = '';
+                if (isPickup) {
+                    let pickupDate = $('#pickup-date').val();
+                    if (pickupDate) {
+                        let date = new Date(pickupDate);
+                        formattedPickupDate = date.toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        });
+                    }
+                }
+
+
+                let deliveryAddress = '';
+                if (!isPickup) {
+                    if ($('#same-as-billing').is(':checked')) {
+                        deliveryAddress = $('#address-text').val();
+                    } else {
+                        deliveryAddress = $('#shipping-address-text').val();
+                    }
+                }
+
+
+
+                let address, country, state, city, postcode, Location;
+                //Pickup values
+                if (isPickup) {
+                    address = $("#pickup-address").val();
+                    country = $("#pickup-country").val();
+                    state = $("#pickup-state").val();
+                    city = $("#pickup-city").val();
+                    postcode = $("#pickup-postal").val();
+                    Location = $('#pickup-location').val();
+
+                    console.log("Pickup Address:", address);
+                    console.log("Pickup Country:", country);
+                    console.log("Pickup State:", state);
+                    console.log("Pickup City:", city);
+                    console.log("Pickup Postal Code:", postcode);
+                    console.log("Pickup Location:", Location);
+                    console.log("Pickup Date:", formattedPickupDate);
+
+
+                } else {
+                    // Delivery values
+                    address = deliveryAddress;
+                    country = $("#shipping-country").val();
+                    state = $("#shipping-state").val();
+                    city = $("#shipping-city").val();
+                    postcode = $("#shipping-zip").val();
+                    Location = $('#delivery-location').val();
+
+                    console.log("Delivery Address:", address);
+                    console.log("Delivery Country:", country);
+                    console.log("Delivery State:", state);
+                    console.log("Delivery City:", city);
+                    console.log("Delivery Postal Code:", postcode);
+                    console.log("Delivery Location:", Location);
+                }
+
+
 
                 if (!fullName || !email || !phone || !address || !country || !state || !city || !postcode) {
                     alert("Please fill all fields before placing the order.");
@@ -288,11 +471,11 @@
                         phone: phone
                     },
                     shippingOption: {
-                        shippingMethodName: "Standard Shipping",
+                        shippingMethodName: Location,
                         shippingRate: 0,
                         shippingRateWithoutTax: 0,
                         isPickup: false,
-                        fulfillmentType: "DELIVERY",
+                        fulfillmentType: isPickup ? "PICKUP" : "DELIVERY",
                         isShippingLimit: false
                     },
                     handlingFee: {
@@ -302,6 +485,7 @@
                         description: "",
                         taxes: []
                     },
+
                     predictedPackage: [],
                     shippingLabelAvailableForShipment: false,
                     shipments: [],
@@ -312,7 +496,17 @@
                     disableAllCustomerNotifications: false,
                     externalFulfillment: false,
                     pricesIncludeTax: false,
-                    orderExtraFields: [],
+                    orderExtraFields: [{
+                        id: "",
+                        value:formattedPickupDate,
+                        title: "Choose Delivery or Pick Up day",
+                        orderDetailsDisplaySection: "billing_info",
+                        orderBy: "",
+                        showInNotifications: false,
+                        showInInvoice: false,
+                        saveToCustomerProfile: false
+                    }],
+
                     discountInfo: [],
                     creditCardStatus: {
                         avsMessage: "not checked",
@@ -406,27 +600,45 @@
 
 
             $(document).ready(function () {
-                let stateDropdown = $("#state");
-                let cityDropdown = $("#city");
+                // Pickup
+                const pickupStateDropdown = $("#pickup-state");
+                const pickupCityDropdown = $("#pickup-city");
 
-                // Populate state dropdown
+                // Delivery
+                const deliveryStateDropdown = $("#shipping-state");
+                const deliveryCityDropdown = $("#shipping-city");
+
+                // Populate both state dropdowns
                 Object.keys(citiesByState).forEach(function (state) {
-                    stateDropdown.append(`<option value="${state}">${state}</option>`);
+                    pickupStateDropdown.append(`<option value="${state}">${state}</option>`);
+                    deliveryStateDropdown.append(`<option value="${state}">${state}</option>`);
                 });
 
-                // On state change, update city dropdown
-                stateDropdown.change(function () {
-                    let selectedState = $(this).val();
-                    cityDropdown.empty(); // Clear existing options
-                    cityDropdown.append('<option value="" disabled selected>Select City</option>');
+                // On pickup state change
+                pickupStateDropdown.change(function () {
+                    const selectedState = $(this).val();
+                    pickupCityDropdown.empty().append('<option value="" disabled selected>Select City</option>');
 
-                    if (selectedState in citiesByState) {
+                    if (citiesByState[selectedState]) {
                         citiesByState[selectedState].forEach(function (city) {
-                            cityDropdown.append(`<option value="${city}">${city}</option>`);
+                            pickupCityDropdown.append(`<option value="${city}">${city}</option>`);
+                        });
+                    }
+                });
+
+                // On delivery state change
+                deliveryStateDropdown.change(function () {
+                    const selectedState = $(this).val();
+                    deliveryCityDropdown.empty().append('<option value="" disabled selected>Select City</option>');
+
+                    if (citiesByState[selectedState]) {
+                        citiesByState[selectedState].forEach(function (city) {
+                            deliveryCityDropdown.append(`<option value="${city}">${city}</option>`);
                         });
                     }
                 });
             });
+
 
 
 
@@ -506,8 +718,57 @@
 
             }).render('#paypal-button-container');
 
+
+            $('#shipping-method').on('change', function () {
+                const method = $(this).val();
+
+                // Hide both sections first
+                $('#pickup-section, #delivery-section').addClass('d-none');
+
+                if (method === 'Pickup method') {
+                    $('#pickup-section').removeClass('d-none');
+                } else if (method === 'Delivery details') {
+                    $('#delivery-section').removeClass('d-none');
+                    $('#same-as-billing').prop('checked', true).trigger('change');
+                }
+            });
+
+
+            $('#shipping-address-text').closest('.form-group').hide();
+            $('#same-as-billing').on('change', function () {
+                if ($(this).is(':checked')) {
+                    $('#shipping-address-text').closest('.form-group').hide();
+                } else {
+                    $('#shipping-address-text').closest('.form-group').show();
+                }
+            });
+
+
+            setTimeout(function() {
+                const paypalContainer = document.querySelectorAll('.paypal-button-container');
+                console.log("Paypal Container:", paypalContainer);
+
+                if (paypalContainer.length > 0) {
+                    paypalContainer.forEach(function(el) {
+                        el.style.width = '100%';
+                        el.style.maxWidth = '100%';
+                    });
+                } else {
+                    console.warn('No .paypal-button-container elements found.');
+                }
+            }, 2000);
+
+
+
+
         });
 
     </script>
 
+{{--    <style>--}}
+{{--        iframe #buttons-container .paypal-button-container {--}}
+{{--            width: 100% !important;--}}
+{{--            max-width: 100% !important;--}}
+{{--        }--}}
+{{--    </style>--}}
 @endsection

@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <!-- Container for the entire product single page layout -->
+    <!-- Container for the entire product single page layout --> <!-- Container for the entire product single page layout -->
     <div class="container">
         <div class="row">
             <div id="single-product">
