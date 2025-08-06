@@ -27,6 +27,7 @@
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" class="form-control" required>
+                        <span id="email-error" style="color: red; font-size: 13px;"></span>
                     </div>
 
                     <!-- Phone -->
@@ -253,7 +254,48 @@
 
     <script>
         $(document).ready(function () {
+
+            function applyGroupPricingForCheckout(cart) {
+                const grouped = {};
+
+                // Group items by group key
+                cart.forEach(item => {
+                    const groupKey = getGroupKey(item.product); // make sure this function is defined
+                    if (!grouped[groupKey]) grouped[groupKey] = [];
+                    grouped[groupKey].push(item);
+                });
+
+                // Apply group pricing based on total group quantity
+                for (const groupKey in grouped) {
+                    const groupItems = grouped[groupKey];
+                    const groupTotalQty = groupItems.reduce((sum, i) => sum + i.quantity, 0);
+
+                    groupItems.forEach(i => {
+                        const retail = parseFloat(i.retailPrice) || 0;
+                        const bulk1 = parseFloat(i.priceBulkOne) || retail;
+                        const bulk2 = parseFloat(i.priceBulkTwo) || bulk1;
+                        const bulk3 = parseFloat(i.priceBulkThree) || bulk2;
+
+                        if (groupTotalQty >= 100) {
+                            i.price = bulk3;
+                        } else if (groupTotalQty >= 50) {
+                            i.price = bulk2;
+                        } else if (groupTotalQty >= 12) {
+                            i.price = bulk1;
+                        } else {
+                            i.price = retail;
+                        }
+                    });
+                }
+
+                // Update localStorage with new prices
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
+
+
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            applyGroupPricingForCheckout(cart);
             let $cartList = $("#checkout-cart-list");
             let total = 0;
 
@@ -645,6 +687,16 @@
             paypal.Buttons({
                 createOrder: function(data, actions) {
                     const totalElement = document.querySelector('.checkout-total');
+                    const email = $("#email").val().trim();
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    console.log(email);
+
+                    if (!emailPattern.test(email)) {
+                        $("#email-error").text("Please enter a valid email address.");
+                        return Promise.reject("Invalid email");
+                    } else {
+                        $("#email-error").text("");
+                    }
                     if (!totalElement) {
                         throw new Error("Checkout total element not found.");
                     }
@@ -742,33 +794,8 @@
                     $('#shipping-address-text').closest('.form-group').show();
                 }
             });
-
-
-            setTimeout(function() {
-                const paypalContainer = document.querySelectorAll('.paypal-button-container');
-                console.log("Paypal Container:", paypalContainer);
-
-                if (paypalContainer.length > 0) {
-                    paypalContainer.forEach(function(el) {
-                        el.style.width = '100%';
-                        el.style.maxWidth = '100%';
-                    });
-                } else {
-                    console.warn('No .paypal-button-container elements found.');
-                }
-            }, 2000);
-
-
-
-
         });
 
     </script>
 
-{{--    <style>--}}
-{{--        iframe #buttons-container .paypal-button-container {--}}
-{{--            width: 100% !important;--}}
-{{--            max-width: 100% !important;--}}
-{{--        }--}}
-{{--    </style>--}}
 @endsection

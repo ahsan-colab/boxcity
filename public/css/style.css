@@ -4611,3 +4611,16 @@ section.quote select {
     }
 }
 /*Aftab css ends*/
+
+#email-error{
+    color: red;
+    font-size: 13px;
+    font-family: 'gilroy-semibolduploaded_file';
+}
+
+#continue-shopping {
+    font-family: 'gilroy-semibolduploaded_file';
+    background: #ffe175;
+    border: 1px solid #ffe175;
+    color: #000;
+}

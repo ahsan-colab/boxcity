@@ -12,12 +12,17 @@ class PayPalController extends Controller
     public function createOrder(Request $request, PayPalService $paypal)
     {
         $amount = $request->input('amount', 0);
+        $email = $request->input('email');
 
         if ($amount <= 0) {
             return response()->json(['error' => 'Invalid amount.'], 422);
         }
 
-        $order = $paypal->createOrder($amount);
+        if (!is_string($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return response()->json(['error' => 'Invalid email.'], 422);
+        }
+
+        $order = $paypal->createOrder($amount, $email);
 
         $approveUrl = collect($order['links'])->firstWhere('rel', 'approve')['href'] ?? null;
 

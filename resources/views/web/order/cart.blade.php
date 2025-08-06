@@ -32,10 +32,10 @@
         </div>
         {{-- Cart Total and Clear Button --}}
         <div class="cart-total-container">
-            {{-- Button to clear the entire cart --}}
-            <button id="clear-cart" class="btn btn-danger">Clear Cart</button>
-
-            {{-- Subtotal display, to be updated dynamically --}}
+            <div class="cart-btn-container">
+                <button id="clear-cart" class="btn btn-danger">Clear Cart</button>
+                <a href="{{route('home')}}" id="continue-shopping" class="btn btn-danger">Continue Shopping</a>
+            </div>
             <h3 class="cart-total">Sub Total :</h3>
 
         </div>

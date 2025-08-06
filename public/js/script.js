@@ -592,3 +592,4 @@ function closeCartDrawer() {
 $(document).on("click", "#closeCartDrawer, #cartBackdrop", function() {
     closeCartDrawer();
 });
+
