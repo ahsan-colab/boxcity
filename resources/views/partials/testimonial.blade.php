@@ -15,7 +15,7 @@
                         <!-- Testimonial 1 -->
                         <div class="customer-slide">
                             <div class="img-box">
-                                <img src="{{ asset('public/assets/customer-loves-1.png')}}" alt="Customer Image">
+                                <img src="{{ asset('public/assets/customer-loves-1.webp')}}" alt="Customer Image">
                             </div>
                             <div class="rating-box">
                                 <img src="{{ asset('public/assets/star-review.png')}}" alt="Star Review">
@@ -38,7 +38,7 @@
                         <!-- Testimonial 2 -->
                         <div class="customer-slide">
                             <div class="img-box">
-                                <img src="{{ asset('public/assets/customer-loves-2.png')}}" alt="Customer Image">
+                                <img src="{{ asset('public/assets/customer-loves-2.webp')}}" alt="Customer Image">
                             </div>
                             <div class="rating-box">
                                 <img src="{{ asset('public/assets/star-review.png')}}" alt="Star Review">
@@ -60,7 +60,7 @@
                         <!-- Testimonial 3 -->
                         <div class="customer-slide">
                             <div class="img-box">
-                                <img src="{{ asset('public/assets/customer-loves-3.png')}}" alt="Customer Image">
+                                <img src="{{ asset('public/assets/customer-loves-3.webp')}}" alt="Customer Image">
                             </div>
                             <div class="rating-box">
                                 <img src="{{ asset('public/assets/star-review.png')}}" alt="Star Review">
@@ -68,7 +68,7 @@
                             </div>
                             <div class="content-box">
                                 <p>
-                                    Variety of boxes and great customer service!!! 🫶 Customer parking available
+                                    Variety of boxes and great customer service!!! ðŸ«¶ Customer parking available
                                     behind the building.
                                 </p>
                             </div>
@@ -83,7 +83,7 @@
                         <!-- Testimonial 4 (Repeat of Testimonial 2) -->
                         <div class="customer-slide">
                             <div class="img-box">
-                                <img src="{{ asset('public/assets/customer-loves-2.png')}}" alt="Customer Image">
+                                <img src="{{ asset('public/assets/customer-loves-2.webp')}}" alt="Customer Image">
                             </div>
                             <div class="rating-box">
                                 <img src="{{ asset('public/assets/star-review.png')}}" alt="Star Review">

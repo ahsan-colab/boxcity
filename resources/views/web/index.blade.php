@@ -10,108 +10,108 @@
     @endphp
 
     @if ($agent->isMobile() || $agent->isTablet())
-    <section class="products-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 col-sm-12">
-                    <div class="banner-img-mobile">
-                        <img src="{{asset('public/assets/Mobile-Version.png')}}"/>
-                    </div>
+        <section class="products-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-sm-12">
+                        <div class="banner-img-mobile">
+                            <img src="{{asset('public/assets/Mobile-Version.webp')}}"/>
+                        </div>
 
-                    <div class="offer">
-                        <h3>Why Choose<br/>Box City? </h3>
-                        <ul>
-                            <li>Lowest Price Guarantee</li>
-                            <li>Same-Day Local Pickup</li>
-                            <li>Next Day Delivery</li>
-                            <li>Trusted By Business Owners</li>
-                        </ul>
+                        <div class="offer">
+                            <h3>Why Choose<br/>Box City? </h3>
+                            <ul>
+                                <li>Lowest Price Guarantee</li>
+                                <li>Same-Day Local Pickup</li>
+                                <li>Next Day Delivery</li>
+                                <li>Trusted By Business Owners</li>
+                            </ul>
 
-                        <h4>Call Us For All Your Packing & Shipping Needs</h4>
-                        <h3><a href="tel:8009926924">(800) 992-6924</a></h3>
-                    </div>
-                    <!-- Bulk order section -->
-                    <div class="bulk-orders">
-                        <h3>
-                            For bigger bulk orders exceeding 100 boxes, reach out to our partnerships team at
-                            <a href="mailto:partnerships@boxcity.com">partnerships@boxcity.com</a>
-                        </h3>
-                    </div>
+                            <h4>Call Us For All Your Packing & Shipping Needs</h4>
+                            <h3><a href="tel:8009926924">(800) 992-6924</a></h3>
+                        </div>
+                        <!-- Bulk order section -->
+                        <div class="bulk-orders">
+                            <h3>
+                                For bigger bulk orders exceeding 100 boxes, reach out to our partnerships team at
+                                <a href="mailto:partnerships@boxcity.com">partnerships@boxcity.com</a>
+                            </h3>
+                        </div>
 
-                    <div class="accordion" id="accordionExample">
-                        <!-- Length filter -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Length
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
-                                <div class="accordion-body">
-                                    <ul>
-                                        @foreach ($sizes as $size)
-                                            @if ($size['count'] > 0)
-                                                <li
-                                                    data-min="{{ $size['min'] }}"
-                                                    data-max="{{ $size['max'] }}"
-                                                    style="cursor: pointer;"
-                                                >
+                        <div class="accordion" id="accordionExample">
+                            <!-- Length filter -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Length
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            @foreach ($sizes as $size)
+                                                @if ($size['count'] > 0)
+                                                    <li
+                                                        data-min="{{ $size['min'] }}"
+                                                        data-max="{{ $size['max'] }}"
+                                                        style="cursor: pointer;"
+                                                    >
                                     <span class="length">
                                     {{ $size['label'] }} ({{ $size['count'] }})</span>
 
-                                                    <span class="remove-length" style="display: none;">&times;</span>
+                                                        <span class="remove-length" style="display: none;">&times;</span>
 
-                                                </li>
-                                            @endif
-                                        @endforeach
-                                    </ul>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Strength filter -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Type
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                                    <div class="accordion-body">
+                                        @include('partials.category-accordion', ['categories' => $categories])
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Strength filter -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Type
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
-                                <div class="accordion-body">
-                                    @include('partials.category-accordion', ['categories' => $categories])
-                                </div>
-                            </div>
+                        <div class="product-table">
                         </div>
-                    </div>
-
-                    <div class="product-table">
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
 
-    <style>
-          .bulk-orders {
-            margin-bottom: 30px;
-          }
+        <style>
+            .bulk-orders {
+                margin-bottom: 30px;
+            }
 
             .products-container {
-            margin-top: 16px;
-          }
+                margin-top: 16px;
+            }
 
             .cart-icon {
-            z-index: 999999;
-          }
+                z-index: 999999;
+            }
 
-          .banner-img-mobile{
-             display: block;
-          }
+            .banner-img-mobile{
+                display: block;
+            }
 
-    </style>
+        </style>
 
 
     @else
@@ -123,7 +123,7 @@
 
                     <div class="col-lg-9 col-sm-12">
                         <div class="banner-img">
-                            <img src="{{asset('public/assets/Full-Banner.png')}}"/>
+                            <img src="{{asset('public/assets/Full-Banner.webp')}}"/>
                         </div>
                         <!-- Bulk order section -->
                         <div class="bulk-orders">
@@ -250,9 +250,9 @@
                 page = (page && !isNaN(page)) ? parseInt(page) : 1;
                 loadProducts(page);
 
-                    $('html, body').animate({
-                        scrollTop: $('#product-table').offset().top
-                    }, 1500);
+                $('html, body').animate({
+                    scrollTop: $('#product-table').offset().top
+                }, 1500);
 
             });
         });
