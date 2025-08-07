@@ -715,15 +715,24 @@
                             'Content-Type': 'application/json',
                             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                         },
-                        body: JSON.stringify({ amount: amount })  // 👈 Send amount
+                        body: JSON.stringify({
+                            amount: amount,
+                            email: email
+                        })
                     })
-                        .then(res => res.json())
+                        .then(res => {
+                            if (!res.ok) {
+                                throw new Error("Network response was not ok");
+                            }
+                            return res.json();
+                        })
                         .then(data => {
                             if (!data.orderID) {
                                 throw new Error("Order ID not found in response");
                             }
                             return data.orderID;
                         });
+
 
                 },
 
@@ -766,6 +775,11 @@
                                 alert("Payment succeeded but order ID is missing.");
                             }
                         });
+                },
+
+                onCancel: function (data) {
+                    console.log("Payment cancelled by user", data);
+                    window.location.reload(); // 🔁
                 }
 
             }).render('#paypal-button-container');
