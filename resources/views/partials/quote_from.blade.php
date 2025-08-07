@@ -61,12 +61,12 @@
                     <span class="wpcf7-form-control-wrap" data-name="select-service">
                         <select name="select-service" class="wpcf7-form-control wpcf7-select" aria-invalid="false" required>
                             <option value="What Services Would You Want To Inquire About?">What Services Would You Want To Inquire About?</option>
-                            <option value="Moving Supplies in Van Nuys">Moving Supplies in Van Nuys</option>
-                            <option value="Corrugated Boxes in Van Nuys">Corrugated Boxes in Van Nuys</option>
-                            <option value="Packing Peanuts in Van Nuys">Packing Peanuts in Van Nuys</option>
-                            <option value="mailing Tubes in Van Nuys">Mailing Tubes in Van Nuys</option>
-                            <option value="bubble Wrap in Van Nuys">Bubble Wrap in Van Nuys</option>
-                            <option value="packing Supplies in Van Nuys">Packing Supplies in Van Nuys</option>
+                            <option value="Moving Supplies">Moving Supplies</option>
+                            <option value="Corrugated Boxes">Corrugated Boxes</option>
+                            <option value="Packing Peanuts">Packing Peanuts</option>
+                            <option value="mailing Tubes">Mailing Tubes</option>
+                            <option value="bubble Wrap">Bubble Wrap</option>
+                            <option value="packing Supplies">Packing Supplies</option>
                         </select>
                     </span>
                     <br>
