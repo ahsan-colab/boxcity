@@ -161,7 +161,7 @@
         <div class="row first-row">
             <div class="col-md-6">
                 <div class="footer-detail">
-                    <a href="https://boxcityweb.colabwebdemo.com"><img src="{{ asset('public/assets/footer-logo.png')}}"
+                    <a href="{{route('home')}}"><img src="{{ asset('public/assets/footer-logo.png')}}"
                                                                        alt="Logo" width="auto" height="auto"> </a>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/OfficialBoxCity/"><img

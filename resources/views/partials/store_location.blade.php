@@ -33,7 +33,8 @@
                             'phone' => '818-901-0336',
                             'email' => 'vannuys@boxcity.com',
                             'img' => 'Van-Nuys-Img.webp',
-                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6599.685108490089!2d-118.48429!3d34.201499!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c297582574910f%3A0xa211d65f8f346cd7!2s16113%20Sherman%20Way%2C%20Van%20Nuys%2C%20CA%2091406!5e0!3m2!1sen!2sus!4v1736975505697!5m2!1sen!2sus'
+                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6599.685108490089!2d-118.48429!3d34.201499!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c297582574910f%3A0xa211d65f8f346cd7!2s16113%20Sherman%20Way%2C%20Van%20Nuys%2C%20CA%2091406!5e0!3m2!1sen!2sus!4v1736975505697!5m2!1sen!2sus',
+                            'url' => 'https://maps.app.goo.gl/ihsiEu9ve6LKCngN6',
                         ])
                     </div>
 
@@ -45,7 +46,8 @@
                             'phone' => '818-982-5675',
                             'email' => 'northhollywood@boxcity.com',
                             'img' => 'North-Hollywood.webp',
-                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13986.800034444543!2d-118.4220051493121!3d34.18609557420965!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29715aa9f2bed%3A0x7bbd18b56afdfe38!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973847529!5m2!1sen!2sus'
+                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13986.800034444543!2d-118.4220051493121!3d34.18609557420965!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29715aa9f2bed%3A0x7bbd18b56afdfe38!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973847529!5m2!1sen!2sus',
+                            'url' => 'https://maps.app.goo.gl/JGLfcGa3ojPLazjXA'
                         ])
                     </div>
 
@@ -57,7 +59,8 @@
                             'phone' => '310-474-5144',
                             'email' => 'westla@boxcity.com',
                             'img' => 'West-Los-Angeles.webp',
-                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d41979.422198360546!2d-118.47558681377659!3d34.05227422461479!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bb99572d9987%3A0xbea3e7dedc804a21!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973739185!5m2!1sen!2sus'
+                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d41979.422198360546!2d-118.47558681377659!3d34.05227422461479!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bb99572d9987%3A0xbea3e7dedc804a21!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973739185!5m2!1sen!2sus',
+                            'url' => 'https://maps.app.goo.gl/kUWn2fkvgFnxxipe7'
                         ])
                     </div>
 
@@ -69,7 +72,8 @@
                             'phone' => '661-254-1178',
                             'email' => 'valencia@boxcity.com',
                             'img' => 'Valencia.webp',
-                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6585.789506720767!2d-118.550695!3d34.378597!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c28694a9cb1efd%3A0x5d82ed3da618d718!2s23750%20Lyons%20Ave%2C%20Newhall%2C%20CA%2091321!5e0!3m2!1sen!2sus!4v1736976449105!5m2!1sen!2sus'
+                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6585.789506720767!2d-118.550695!3d34.378597!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c28694a9cb1efd%3A0x5d82ed3da618d718!2s23750%20Lyons%20Ave%2C%20Newhall%2C%20CA%2091321!5e0!3m2!1sen!2sus!4v1736976449105!5m2!1sen!2sus',
+                            'url' => 'https://maps.app.goo.gl/XDFyRigc4BTk4wvk9'
                         ])
                     </div>
 
@@ -81,7 +85,8 @@
                             'phone' => '626-432-1678',
                             'email' => 'pasadena@boxcity.com',
                             'img' => 'Pasadena.webp',
-                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d40745.22874419687!2d-118.14017942344513!3d34.133509165319786!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c35a6433cf7d%3A0x3981e2f9081936d7!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973648810!5m2!1sen!2sus'
+                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d40745.22874419687!2d-118.14017942344513!3d34.133509165319786!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c35a6433cf7d%3A0x3981e2f9081936d7!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973648810!5m2!1sen!2sus',
+                            'url' => 'https://maps.app.goo.gl/YnwxGJrsCL3GnMJH7'
                         ])
                     </div>
 
@@ -93,7 +98,8 @@
                             'phone' => '310-305-4682',
                             'email' => 'marina@boxcity.com',
                             'img' => 'Marina-Del-Rey.webp',
-                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13232.72191675709!2d-118.45519996900559!3d33.98789774319579!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2ba863d4f7119%3A0xbfe5d23f222fbaba!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973566040!5m2!1sen!2sus'
+                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13232.72191675709!2d-118.45519996900559!3d33.98789774319579!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2ba863d4f7119%3A0xbfe5d23f222fbaba!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973566040!5m2!1sen!2sus',
+                            'url' => 'https://maps.app.goo.gl/CKRnwYkjz24tfFps8'
                         ])
                     </div>
 
@@ -105,7 +111,8 @@
                             'phone' => '818-346-5390',
                             'email' => 'canogapark@boxcity.com',
                             'img' => 'Canoga-Park.webp',
-                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6599.960237051793!2d-118.60797253155526!3d34.19798438844048!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29c3e61249923%3A0x759170cb3cb66118!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973493138!5m2!1sen!2sus'
+                            'map' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6599.960237051793!2d-118.60797253155526!3d34.19798438844048!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29c3e61249923%3A0x759170cb3cb66118!2sBox%20City!5e0!3m2!1sen!2sus!4v1736973493138!5m2!1sen!2sus',
+                            'url' => 'https://maps.app.goo.gl/hycpoVejFCGNJ6jK8'
                         ])
                     </div>
 
@@ -117,7 +124,8 @@
                             'phone' => '818-962-4430',
                             'email' => 'glendale@boxcity.com',
                             'img' => 'Glendale.webp',
-                            'map' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1651.0079096823806!2d-118.26504053050958!3d34.14593739613534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29752b796dabf%3A0xd4c75b75663f04dd!2sBox%20City!5e0!3m2!1sen!2s!4v1736973427237!5m2!1sen!2s'
+                            'map' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1651.0079096823806!2d-118.26504053050958!3d34.14593739613534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c29752b796dabf%3A0xd4c75b75663f04dd!2sBox%20City!5e0!3m2!1sen!2s!4v1736973427237!5m2!1sen!2s',
+                            'url' => 'https://maps.app.goo.gl/mLLhwhfkY9tRmx8t9'
                         ])
                     </div>
 
@@ -129,7 +137,8 @@
                             'phone' => '626-721-0331',
                             'email' => 'azusa@boxcity.com',
                             'img' => 'AZUSA.webp',
-                            'map' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3302.5181549683266!2d-117.9177722!3d34.1330834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c3278c1f1fd1e9%3A0x4d813a96147bf201!2s850%20W%20Foothill%20Blvd%2C%20Azusa%2C%20CA%2091702%2C%20USA!5e0!3m2!1sen!2s!4v1739806970257!5m2!1sen!2s'
+                            'map' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3302.5181549683266!2d-117.9177722!3d34.1330834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c3278c1f1fd1e9%3A0x4d813a96147bf201!2s850%20W%20Foothill%20Blvd%2C%20Azusa%2C%20CA%2091702%2C%20USA!5e0!3m2!1sen!2s!4v1739806970257!5m2!1sen!2s',
+                            'url' => 'https://maps.app.goo.gl/ZmjLyfiTEoB1EHEe7'
                         ])
                     </div>
 

@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <script src="https://www.paypal.com/sdk/js?client-id=AXPTRAoox4nukY7vC1odyHWkXUNCpCJcPEOXe4ug2VLzQl_JggZumABwlUFMVvA52G2QTPTMbp54Dd6s&currency=USD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AR6e2wTLuLlHurDdYKlnbsWymNsaithT5ASiSrt0sC2cDcPCj6htPJQAdpGeyzcaVMtNR15Nw9YVO9Mv&currency=USD"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <div class="container checkout-container">
@@ -737,7 +737,7 @@
                 },
 
                 onApprove: function(data, actions) {
-                    return fetch(`{{route("paypal.capture")}}?token=${data.orderID}`)
+                    return fetch(`{{ route("paypal.capture") }}`)
                         .then(res => res.json())
                         .then(result => {
                             console.log('Payment captured:', result);

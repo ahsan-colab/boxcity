@@ -28,17 +28,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const locationItems = document.querySelectorAll('.list-group-item');
     const locationInfos = document.querySelectorAll('.location-info');
 
-    locationItems.forEach(item => {
-      item.addEventListener('click', function () {
-        // Remove active class from all items and details
-        locationItems.forEach(i => i.classList.remove('active'));
-        locationInfos.forEach(info => info.classList.remove('active'));
+    locationItems.forEach((item, index) => {
+        item.addEventListener('click', function () {
+            // Remove active class and reset border styles
+            locationItems.forEach(i => {
+                i.classList.remove('active');
+                i.style.borderBottom = ''; // reset
+            });
+            locationInfos.forEach(info => info.classList.remove('active'));
 
-        // Add active class to clicked item and corresponding details
-        const location = this.dataset.location;
-        this.classList.add('active');
-        document.getElementById(location).classList.add('active');
-      });
+            // Add active class to clicked item and corresponding details
+            const location = this.dataset.location;
+            this.classList.add('active');
+            document.getElementById(location).classList.add('active');
+
+            // Remove border-bottom from the previous item (if exists)
+            if (index > 0) {
+                locationItems[index - 1].style.borderBottom = 'none';
+            }
+        });
     });
 });
 

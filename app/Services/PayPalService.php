@@ -70,11 +70,18 @@ class PayPalService
             ->post("{$this->baseUrl}/v2/checkout/orders/{$orderId}/capture");
 
         if (!$response->successful()) {
+            \Log::error('❌ PayPal capture failed', [
+                'status' => $response->status(),
+                'order_id' => $orderId,
+                'response_body' => $response->body()
+            ]);
+
             throw new \Exception("Failed to capture PayPal order.");
         }
 
         return $response->json();
     }
+
 
 
 }

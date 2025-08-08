@@ -1,7 +1,7 @@
 <div class="location-details-img">
     <div class="location-details">
         <h2>{{ $name }}</h2>
-        <p><span>Address:</span><br>{{ $address }}</p>
+        <p><span>Address:</span><br><a href="{{$url}}">{{ $address }}</a></p>
         <p><span>Open Hours:</span><br>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 9:00
             AM - 5:00 PM<br>Sunday: 10:00 AM - 4:00 PM</p>
         <p><span>Contact Info:</span></p>

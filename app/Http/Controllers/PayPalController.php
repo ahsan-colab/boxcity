@@ -38,15 +38,28 @@ class PayPalController extends Controller
     // 🔹 Capture the order after approval
     public function captureOrder(Request $request, PayPalService $paypal)
     {
-        $orderId = $request->query('token');
+        $orderID = $request->input('orderID') ?? $request->input('token'); // fallback to token
+
+
+        if (!$orderID) {
+            return response()->json([
+                'error' => 'Missing order ID',
+                'message' => 'No orderID provided in request.'
+            ], 400);
+        }
 
         try {
-            $response = $paypal->captureOrder($orderId);
+            $response = $paypal->captureOrder($orderID);
 
-            // Payment successful → now place order
-            $checkoutRequest = new CheckoutRequest($request->all()); // Be sure this includes all required fields
-            $checkoutController = app()->make(\App\Http\Controllers\CheckoutController::class);
-            return $checkoutController->processCheckout($checkoutRequest);
+            // Optional: temporary for debugging
+            return response()->json([
+                'message' => 'Order captured successfully!',
+                'paypal_response' => $response
+            ]);
+
+             $checkoutRequest = new CheckoutRequest($request->all());
+             $checkoutController = app()->make(\App\Http\Controllers\CheckoutController::class);
+             return $checkoutController->processCheckout($checkoutRequest);
 
         } catch (\Exception $e) {
             return response()->json([
@@ -55,5 +68,9 @@ class PayPalController extends Controller
             ], 500);
         }
     }
+
+
+
+
 }
 
